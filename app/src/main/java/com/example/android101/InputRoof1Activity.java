@@ -10,15 +10,14 @@ import android.widget.EditText;
 
 public class InputRoof1Activity extends AppCompatActivity {
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_roof_1);
-
     }
+
     public void showResultsRoof1(View view) {
+
 
         // Create Intent and Bundle objects
         Intent intent = new Intent(this, ResultRoof1Activity.class);
