@@ -2,8 +2,8 @@ package com.example.android101;
 
 public class Carpenter {
 
-    public static float countRoofValues(float input1){
+    public static float countRoofValues(float theta, float B){
 
-        return input1 * 10;
+        return theta * 10 + B;
     }
 }

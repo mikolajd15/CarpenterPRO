@@ -7,6 +7,117 @@
     android:longClickable="false"
     tools:context=".InputRoof1Activity">
 
+    <EditText
+        android:id="@+id/roof1_input_S"
+        android:layout_width="138dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="@string/hint_input_value"
+        android:importantForAutofill="no"
+        android:inputType="number|numberDecimal"
+        android:minHeight="48dp"
+        android:textColorHint="#757575"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/roof1_input_C"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <EditText
+        android:id="@+id/roof1_input_C"
+        android:layout_width="138dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="@string/hint_input_value"
+        android:importantForAutofill="no"
+        android:inputType="number|numberDecimal"
+        android:minHeight="48dp"
+        android:textColorHint="#757575"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/roof1_input_E"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <EditText
+        android:id="@+id/roof1_input_E"
+        android:layout_width="138dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="@string/hint_input_value"
+        android:importantForAutofill="no"
+        android:inputType="number|numberDecimal"
+        android:minHeight="48dp"
+        android:textColorHint="#757575"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/roof1_input_D"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <EditText
+        android:id="@+id/roof1_input_D"
+        android:layout_width="138dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="@string/hint_input_value"
+        android:importantForAutofill="no"
+        android:inputType="number|numberDecimal"
+        android:minHeight="48dp"
+        android:textColorHint="#757575"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/roof1_input_A"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <EditText
+        android:id="@+id/roof1_input_A"
+        android:layout_width="138dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="@string/hint_input_value"
+        android:importantForAutofill="no"
+        android:inputType="number|numberDecimal"
+        android:minHeight="48dp"
+        android:textColorHint="#757575"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/roof1_input_B"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <EditText
+        android:id="@+id/roof1_input_B"
+        android:layout_width="138dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:hint="@string/hint_input_value"
+        android:importantForAutofill="no"
+        android:inputType="number|numberDecimal"
+        android:minHeight="48dp"
+        android:textColorHint="#757575"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/roof1_input_Theta"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <EditText
+        android:id="@+id/roof1_input_Theta"
+        android:layout_width="138dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="48dp"
+        android:ems="10"
+        android:hint="@string/hint_input_value"
+        android:importantForAutofill="no"
+        android:inputType="number|numberDecimal"
+        android:minHeight="48dp"
+        android:textColorHint="#757575"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/button_roof1_count"
         android:layout_width="wrap_content"
@@ -18,20 +129,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="UsingOnClickInXml" />
-
-    <EditText
-        android:id="@+id/roof1_input_theta"
-        android:layout_width="138dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="48dp"
-        android:ems="10"
-        android:hint="@string/hint_input_value"
-        android:inputType="number|numberDecimal"
-        android:minHeight="48dp"
-        android:textColorHint="#757575"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:importantForAutofill="no" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

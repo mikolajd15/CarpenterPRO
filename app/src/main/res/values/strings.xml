@@ -1,20 +1,18 @@
 <resources>
     <string name="app_name">Kalkulator Ciesielski PRO</string>
+
+    <!-- Strings for Main screen -->
     <string name="button_roof_1">Dach jednospadowy</string>
     <string name="button_roof_2">Dach dwuspadowy</string>
     <string name="button_roof_3">Dach 3</string>
     <string name="button_roof_4">Dach 4</string>
+
+    <!-- Strings for calculators screen -->
     <string name="hint_input_value">Podaj wartość</string>
     <string name="count">Wylicz kąty</string>
     <string name="text_input_description_1">Kąt dachu</string>
     <string name="title_activity_result_roof1">ResultRoof1Activity</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
 
 </resources>
