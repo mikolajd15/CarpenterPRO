@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -11,12 +12,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class InputRoof1Activity extends AppCompatActivity {
 
-    EditText edt_theta, edt_B, edt_A, edt_D, edt_E, edt_C, edt_S;
+    EditText edt_theta, edt_B, edt_A, edt_D, edt_E, edt_C, edt_S,
+            edt_m_d, edt_m_w, edt_pp_d, edt_pp_w,
+            edt_pk_d, edt_pk_w, edt_k_d, edt_k_w,
+            edt_fpk, edt_k_max;
+
     List<EditText> editTextList;
     Button countButton;
 
@@ -48,56 +56,57 @@ public class InputRoof1Activity extends AppCompatActivity {
         edt_E = findViewById(R.id.roof1_input_E);
         edt_C = findViewById(R.id.roof1_input_C);
         edt_S = findViewById(R.id.roof1_input_S);
+        edt_m_d = findViewById(R.id.roof1_input_m_d);
+        edt_m_w = findViewById(R.id.roof1_input_m_w);
+        edt_pp_d = findViewById(R.id.roof1_input_pp_d);
+        edt_pp_w = findViewById(R.id.roof1_input_pp_w);
+        edt_pk_d = findViewById(R.id.roof1_input_pk_d);
+        edt_pk_w = findViewById(R.id.roof1_input_pk_w);
+        edt_k_d = findViewById(R.id.roof1_input_k_d);
+        edt_k_w = findViewById(R.id.roof1_input_k_w);
+        edt_fpk = findViewById(R.id.roof1_input_fpk);
+        edt_k_max = findViewById(R.id.roof1_input_k_max);
 
         // set button to disabled initially
         countButton = findViewById(R.id.button_roof1_count);
         countButton.setEnabled(false);
 
         // initialize edit Texts array
-        editTextList = Arrays.asList(edt_theta, edt_B, edt_A, edt_D, edt_E, edt_C, edt_S);
+        editTextList = Arrays.asList(edt_theta, edt_B, edt_A, edt_D, edt_E, edt_C, edt_S,
+                edt_m_d, edt_m_w, edt_pp_d, edt_pp_w, edt_pk_d, edt_pk_w, edt_k_d, edt_k_w,
+                edt_fpk, edt_k_max);
 
         /* add text watcher to edts */
-        for (EditText edt : editTextList)
-        {
+        for (EditText edt : editTextList) {
             edt.addTextChangedListener(watcher);
         }
     }
 
     private boolean allFieldsAreFilled() {
-        for (EditText edt : editTextList)
-        {
-            if(TextUtils.isEmpty(edt.getText()))
+        for (EditText edt : editTextList) {
+            if (TextUtils.isEmpty(edt.getText()))
                 return false;
         }
 
         return true;
     }
 
-
     public void showResultsRoof1(View view) {
 
-        // Create Intent and Bundle objects
+        // Create Intent and list objects
         Intent intent = new Intent(this, ResultRoof1Activity.class);
-        Bundle inputsBundle = new Bundle();
+        List<Double> inputDoublesList = new ArrayList<>();
 
-        // add inputs from edts to Bundle
-        for (EditText edt : editTextList)
-        {
-            //TODO create list of floats and pass it to Carpenter
+        // add inputs from edts to list
+        for (EditText edt : editTextList) {
+            inputDoublesList.add(Double.parseDouble(edt.getText().toString()));
         }
-        float input_theta = Float.parseFloat(edt_theta.getText().toString());
-        float input_B = Float.parseFloat(edt_B.getText().toString());
-        float input_A = Float.parseFloat(edt_A.getText().toString());
-        float input_D = Float.parseFloat(edt_D.getText().toString());
-        float input_E = Float.parseFloat(edt_E.getText().toString());
-        float input_C = Float.parseFloat(edt_C.getText().toString());
-        float input_S = Float.parseFloat(edt_S.getText().toString());
 
         // Calculate the result using Roofer class
-        float result = Carpenter.countRoofValues(input_theta, input_B);
-        inputsBundle.putFloat("EXTRA_ROOF1_THETA", result);
+        HashMap<String, Double> results = Carpenter.countRoofValues(inputDoublesList);
 
-        intent.putExtras(inputsBundle);
+        // Pass the results and open next activity
+        intent.putExtra("EXTRA_ROOF1_RESULTS_MAP", results);
         startActivity(intent);
     }
 }
