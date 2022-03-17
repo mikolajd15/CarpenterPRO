@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Carpenter {
 
@@ -44,6 +43,19 @@ public class Carpenter {
         double result_K2 = result_Lp - (input_A + input_D - input_pk_d) / Math.cos(input_theta);
         double result_K1 = result_K2 - input_S / Math.sin(input_theta);
 
+        double result_Cd, result_Nr;
+        double no_areas = Math.floor(input_C / (input_k_d + input_k_max)) + 1;
+        double result_Pk = input_C / no_areas - input_k_d;
+
+
+        if (input_fpk == input_k_d * input_k_w) {
+            result_Cd = input_B - input_k_d;
+            result_Nr = no_areas + 1;
+        } else {
+            result_Cd = input_B - 3 * input_k_d - 2 * input_fpk;
+            result_Nr = no_areas + 3;
+        }
+
         results.put("Gamma", result_gamma);
         results.put("H1", result_H1);
         results.put("H2", result_H2);
@@ -55,6 +67,9 @@ public class Carpenter {
         results.put("N1", result_N1);
         results.put("K2", result_K2);
         results.put("K1", result_K1);
+        results.put("Pk", result_Pk);
+        results.put("Cd", result_Cd);
+        results.put("Nr", result_Nr);
 
         return results;
     }
