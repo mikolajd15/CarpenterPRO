@@ -6,14 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".ResultRoof1Activity">
 
-    <ScrollView
+    <TableLayout
+        android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <TableRow
+            android:gravity="center_horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent" >
 
             <TextView
                 android:id="@+id/roof1_result_gamma"
@@ -29,6 +30,13 @@
                 android:id="@+id/roof1_result_Lc"
                 android:layout_width="101dp"
                 android:layout_height="32dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
 
             <TextView
                 android:id="@+id/roof1_result_K1"
@@ -49,6 +57,12 @@
                 android:id="@+id/roof1_result_N2"
                 android:layout_width="101dp"
                 android:layout_height="32dp" />
+        </TableRow>
+
+        <TableRow
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
 
             <TextView
                 android:id="@+id/roof1_result_M1"
@@ -61,12 +75,24 @@
                 android:layout_height="32dp" />
 
             <TextView
-                android:id="@+id/roof1_result_H2"
+                android:id="@+id/roof1_result_H1"
                 android:layout_width="101dp"
                 android:layout_height="32dp" />
 
             <TextView
-                android:id="@+id/roof1_result_H1"
+                android:id="@+id/roof1_result_H2"
+                android:layout_width="101dp"
+                android:layout_height="32dp" />
+
+        </TableRow>
+
+        <TableRow
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:id="@+id/roof1_result_Cd"
                 android:layout_width="101dp"
                 android:layout_height="32dp" />
 
@@ -79,13 +105,8 @@
                 android:id="@+id/roof1_result_Pk"
                 android:layout_width="101dp"
                 android:layout_height="32dp" />
+        </TableRow>
 
-            <TextView
-                android:id="@+id/roof1_result_Cd"
-                android:layout_width="101dp"
-                android:layout_height="32dp" />
-
-        </LinearLayout>
-    </ScrollView>
+    </TableLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

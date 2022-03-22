@@ -11,6 +11,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,6 +28,7 @@ public class InputRoof1Activity extends AppCompatActivity {
 
     List<EditText> editTextList;
     Button countButton;
+    int roof_type;
 
     private final TextWatcher watcher = new TextWatcher() {
         @Override
@@ -47,6 +49,17 @@ public class InputRoof1Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_input_roof_1);
+        Intent intent = getIntent();
+        roof_type = intent.getIntExtra("ROOF_TYPE", 0);
+
+        ImageView roof_image_view = (ImageView) findViewById(R.id.iv_roof_image);
+        if (roof_type == 1) {
+            roof_image_view.setImageDrawable(getResources().getDrawable(R.drawable.jednospadowy, getApplicationContext().getTheme()));
+        } else if (roof_type == 2) {
+            roof_image_view.setImageDrawable(getResources().getDrawable(R.drawable.dwuspadowy, getApplicationContext().getTheme()));
+        } else {
+            throw new IllegalArgumentException("Incorrect roof type: " + roof_type);
+        }
 
         // text fields init
         edt_theta = findViewById(R.id.roof1_input_Theta);
@@ -101,9 +114,10 @@ public class InputRoof1Activity extends AppCompatActivity {
         for (EditText edt : editTextList) {
             inputDoublesList.add(Double.parseDouble(edt.getText().toString()));
         }
+        Carpenter carpenter = new Carpenter(inputDoublesList);
 
         // Calculate the result using Roofer class
-        HashMap<String, Double> results = Carpenter.countRoofValues(inputDoublesList);
+        HashMap<String, Double> results = carpenter.prepareResults(roof_type);
 
         // Pass the results and open next activity
         intent.putExtra("EXTRA_ROOF1_RESULTS_MAP", results);

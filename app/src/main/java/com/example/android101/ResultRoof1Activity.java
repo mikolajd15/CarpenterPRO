@@ -20,26 +20,62 @@ public class ResultRoof1Activity extends AppCompatActivity {
         HashMap<String, Double> results = (HashMap<String, Double>) intent.getSerializableExtra("EXTRA_ROOF1_RESULTS_MAP");
 
         // get string values from results Map
-        String result_string_gamma = String.valueOf(results.get("Gamma"));
-        String result_string_H1 = String.valueOf(results.get("H1"));
-        String result_string_H2 = String.valueOf(results.get("H2"));
-        String result_string_Lp = String.valueOf(results.get("Lp"));
-        String result_string_Lc = String.valueOf(results.get("Lc"));
-        String result_string_M2 = String.valueOf(results.get("M2"));
-        String result_string_M1 = String.valueOf(results.get("M1"));
-        String result_string_N2 = String.valueOf(results.get("N2"));
-        String result_string_N1 = String.valueOf(results.get("N1"));
-        String result_string_K2 = String.valueOf(results.get("K2"));
-        String result_string_K1 = String.valueOf(results.get("K1"));
-        String result_string_Pk = String.valueOf(results.get("Pk"));
-        String result_string_Cd = String.valueOf(results.get("Cd"));
-        String result_string_Nr = String.valueOf(results.get("Nr"));
+        String result_string_gamma = String.format("%.2f", results.get("Gamma"));
+        String result_string_H1 = String.format("%.2f", results.get("H1"));
+        String result_string_H2 = String.format("%.2f", results.get("H2"));
+        String result_string_Lp = String.format("%.2f", results.get("Lp"));
+        String result_string_Lc = String.format("%.2f", results.get("Lc"));
+        String result_string_M2 = String.format("%.2f", results.get("M2"));
+        String result_string_M1 = String.format("%.2f", results.get("M1"));
+        String result_string_N2 = String.format("%.2f", results.get("N2"));
+        String result_string_N1 = String.format("%.2f", results.get("N1"));
+        String result_string_K2 = String.format("%.2f", results.get("K2"));
+        String result_string_K1 = String.format("%.2f", results.get("K1"));
+        String result_string_Pk = String.format("%.2f", results.get("Pk"));
+        String result_string_Cd = String.format("%.2f", results.get("Cd"));
+        String result_string_Nr = String.format("%.2f", results.get("Nr"));
 
         // Capture the layout's TextView and set the theta value as its text
-        TextView textView = findViewById(R.id.roof1_result_gamma);
-        textView.setText(result_string_gamma);
-        textView.findViewById(R.id.roof1_result_Lp);
-        textView.setText(result_string_Lp);
+        TextView tv_gamma = findViewById(R.id.roof1_result_gamma);
+        TextView tv_H1 = findViewById(R.id.roof1_result_H1);
+        TextView tv_H2 = findViewById(R.id.roof1_result_H2);
+        TextView tv_Lp = findViewById(R.id.roof1_result_Lp);
+        TextView tv_Lc = findViewById(R.id.roof1_result_Lc);
+        TextView tv_M2 = findViewById(R.id.roof1_result_M2);
+        TextView tv_M1 = findViewById(R.id.roof1_result_M1);
+        TextView tv_N2 = findViewById(R.id.roof1_result_N2);
+        TextView tv_N1 = findViewById(R.id.roof1_result_N1);
+        TextView tv_K2 = findViewById(R.id.roof1_result_K2);
+        TextView tv_K1 = findViewById(R.id.roof1_result_K1);
+        TextView tv_Pk = findViewById(R.id.roof1_result_Pk);
+        TextView tv_Cd = findViewById(R.id.roof1_result_Cd);
+        TextView tv_Nr = findViewById(R.id.roof1_result_Nr);
+
+        tv_gamma.setText("gamma = "+result_string_gamma);
+        tv_H1.setText("H1 = "+result_string_H1);
+        tv_H2.setText("H2 = "+result_string_H2);
+        tv_Lp.setText("Lp = "+result_string_Lp);
+        tv_Lc.setText("Lc = "+result_string_Lc);
+        tv_M2.setText("M2 = "+result_string_M2);
+        tv_M1.setText("M1 = "+result_string_M1);
+        tv_N2.setText("N2 = "+result_string_N2);
+        tv_N1.setText("N1 = "+result_string_N1);
+        tv_K2.setText("K2 = "+result_string_K2);
+        tv_K1.setText("K1 = "+result_string_K1);
+        tv_Pk.setText("Pk = "+result_string_Pk);
+        tv_Cd.setText("Cd = "+result_string_Cd);
+        tv_Nr.setText("Nr = "+result_string_Nr);
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
