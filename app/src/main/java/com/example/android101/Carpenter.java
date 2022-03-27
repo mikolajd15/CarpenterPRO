@@ -12,7 +12,7 @@ public class Carpenter {
             input_m_d, input_m_w, input_pp_d, input_pp_w, input_pk_d, input_pk_w, input_k_d,
             input_k_w, input_fpk, input_k_max;
 
-    private double result_gamma, result_Lp, result_Lc,
+    double result_gamma, result_Lp, result_Lc,
             result_H1, result_H2, result_M2, result_M1,
             result_N2, result_N1, result_K2, result_K1,
             result_Cd, result_Nr, result_Pk;
@@ -38,7 +38,7 @@ public class Carpenter {
         input_k_max = inputValues.get(16);
     }
 
-    private void countRoof1Values(){
+    void countRoof1Values(){
         result_gamma = 90 - input_theta;
         result_H1 = (input_A - input_pk_d) * Math.tan(input_theta) + input_m_w;
         result_H2 = (input_A - input_C) * Math.tan(input_theta) + input_m_w;
@@ -64,7 +64,7 @@ public class Carpenter {
         result_Pk = result_Cd / no_areas - input_k_d;
     }
 
-    private void countRoof2Values(){
+    void countRoof2Values(){
         //TODO
     }
 

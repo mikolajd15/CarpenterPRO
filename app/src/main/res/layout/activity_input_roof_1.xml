@@ -36,7 +36,7 @@
                 android:contentDescription="@string/roof1_image"
                 android:scaleType="fitCenter"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/dwuspadowy"
+                app:srcCompat="@drawable/jednospadowy"
                 tools:ignore="ImageContrastCheck" />
 
             <TableLayout
