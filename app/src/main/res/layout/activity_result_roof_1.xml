@@ -6,107 +6,136 @@
     android:layout_height="match_parent"
     tools:context=".ResultRoof1Activity">
 
-    <TableLayout
-        android:gravity="center_horizontal"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TableRow
-            android:gravity="center_horizontal"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/roof1_result_gamma"
-                android:layout_width="101dp"
-                android:layout_height="32dp" />
+            <ImageView
+                android:id="@+id/iv_roof_image_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/roof1_image"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/jednospadowy_krokwia"
+                tools:ignore="ImageContrastCheck" />
 
-            <TextView
-                android:id="@+id/roof1_result_Lp"
-                android:layout_width="101dp"
-                android:layout_height="32dp" />
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal">
 
-            <TextView
-                android:id="@+id/roof1_result_Lc"
-                android:layout_width="101dp"
-                android:layout_height="32dp" />
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal">
 
-        </TableRow>
+                    <TextView
+                        android:id="@+id/roof1_result_gamma"
+                        android:layout_width="101dp"
+                        android:layout_height="32dp" />
 
-        <TableRow
-            android:gravity="center_horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+                    <TextView
+                        android:id="@+id/roof1_result_Lp"
+                        android:layout_width="101dp"
+                        android:layout_height="32dp" />
 
-            <TextView
-                android:id="@+id/roof1_result_K1"
-                android:layout_width="101dp"
-                android:layout_height="32dp" />
+                    <TextView
+                        android:id="@+id/roof1_result_Lc"
+                        android:layout_width="101dp"
+                        android:layout_height="32dp" />
 
-            <TextView
-                android:id="@+id/roof1_result_K2"
-                android:layout_width="101dp"
-                android:layout_height="32dp" />
+                </TableRow>
 
-            <TextView
-                android:id="@+id/roof1_result_N1"
-                android:layout_width="101dp"
-                android:layout_height="32dp" />
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal">
 
-            <TextView
-                android:id="@+id/roof1_result_N2"
-                android:layout_width="101dp"
-                android:layout_height="32dp" />
-        </TableRow>
+                    <TextView
+                        android:id="@+id/roof1_result_K1"
+                        android:layout_width="101dp"
+                        android:layout_height="32dp" />
 
-        <TableRow
-            android:gravity="center_horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+                    <TextView
+                        android:id="@+id/roof1_result_K2"
+                        android:layout_width="101dp"
+                        android:layout_height="32dp" />
 
-            <TextView
-                android:id="@+id/roof1_result_M1"
-                android:layout_width="101dp"
-                android:layout_height="32dp" />
+                    <TextView
+                        android:id="@+id/roof1_result_N1"
+                        android:layout_width="101dp"
+                        android:layout_height="32dp" />
 
-            <TextView
-                android:id="@+id/roof1_result_M2"
-                android:layout_width="101dp"
-                android:layout_height="32dp" />
+                </TableRow>
 
-            <TextView
-                android:id="@+id/roof1_result_H1"
-                android:layout_width="101dp"
-                android:layout_height="32dp" />
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal">
 
-            <TextView
-                android:id="@+id/roof1_result_H2"
-                android:layout_width="101dp"
-                android:layout_height="32dp" />
+                    <TextView
+                        android:id="@+id/roof1_result_N2"
+                        android:layout_width="101dp"
+                        android:layout_height="32dp" />
 
-        </TableRow>
+                    <TextView
+                        android:id="@+id/roof1_result_M1"
+                        android:layout_width="101dp"
+                        android:layout_height="32dp" />
 
-        <TableRow
-            android:gravity="center_horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+                    <TextView
+                        android:id="@+id/roof1_result_M2"
+                        android:layout_width="101dp"
+                        android:layout_height="32dp" />
 
-            <TextView
-                android:id="@+id/roof1_result_Cd"
-                android:layout_width="101dp"
-                android:layout_height="32dp" />
+                </TableRow>
 
-            <TextView
-                android:id="@+id/roof1_result_Nr"
-                android:layout_width="101dp"
-                android:layout_height="32dp" />
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal">
 
-            <TextView
-                android:id="@+id/roof1_result_Pk"
-                android:layout_width="101dp"
-                android:layout_height="32dp" />
-        </TableRow>
+                    <TextView
+                        android:id="@+id/roof1_result_H2"
+                        android:layout_width="101dp"
+                        android:layout_height="32dp" />
 
-    </TableLayout>
+                    <TextView
+                        android:id="@+id/roof1_result_H1"
+                        android:layout_width="101dp"
+                        android:layout_height="32dp" />
+
+                    <TextView
+                        android:id="@+id/roof1_result_Cd"
+                        android:layout_width="101dp"
+                        android:layout_height="32dp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:id="@+id/roof1_result_Nr"
+                        android:layout_width="101dp"
+                        android:layout_height="32dp" />
+
+                    <TextView
+                        android:id="@+id/roof1_result_Pk"
+                        android:layout_width="101dp"
+                        android:layout_height="32dp" />
+                </TableRow>
+
+            </TableLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

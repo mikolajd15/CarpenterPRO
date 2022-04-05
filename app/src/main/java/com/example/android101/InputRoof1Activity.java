@@ -2,9 +2,9 @@ package com.example.android101;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -17,14 +17,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class InputRoof1Activity extends AppCompatActivity {
 
     EditText edt_theta, edt_B, edt_A, edt_D, edt_E, edt_C, edt_S,
-            edt_m_d, edt_m_w, edt_pp_d, edt_pp_w,
-            edt_pk_d, edt_pk_w, edt_k_d, edt_k_w,
-            edt_fpk, edt_k_max;
+            edt_s_mu, edt_g_pk, edt_g_kr, edt_s_kr, edt_fpk , edt_k_max;
 
     List<EditText> editTextList;
     Button countButton;
@@ -45,6 +42,7 @@ public class InputRoof1Activity extends AppCompatActivity {
         }
     };
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,11 +50,21 @@ public class InputRoof1Activity extends AppCompatActivity {
         Intent intent = getIntent();
         roof_type = intent.getIntExtra("ROOF_TYPE", 0);
 
-        ImageView roof_image_view = (ImageView) findViewById(R.id.iv_roof_image);
+        edt_E = findViewById(R.id.roof1_input_E);
+
+        ImageView roof_image_view_top = (ImageView) findViewById(R.id.iv_roof_image_top);
+        ImageView roof_image_view_bot = (ImageView) findViewById(R.id.iv_roof_image_bot);
+        ImageView roof_image_view_result = (ImageView) findViewById(R.id.iv_roof_image_result);
         if (roof_type == 1) {
-            roof_image_view.setImageDrawable(getResources().getDrawable(R.drawable.jednospadowy, getApplicationContext().getTheme()));
+            roof_image_view_top.setImageDrawable(getResources().getDrawable(R.drawable.jednospadowy_budynek, getApplicationContext().getTheme()));
+            roof_image_view_bot.setImageDrawable(getResources().getDrawable(R.drawable.jednospadowy_rzut_dachu, getApplicationContext().getTheme()));
+            edt_E.setVisibility(View.VISIBLE);
+
         } else if (roof_type == 2) {
-            roof_image_view.setImageDrawable(getResources().getDrawable(R.drawable.dwuspadowy, getApplicationContext().getTheme()));
+            roof_image_view_top.setImageDrawable(getResources().getDrawable(R.drawable.dwuspadowy_symetryczny_budynek, getApplicationContext().getTheme()));
+            roof_image_view_bot.setImageDrawable(getResources().getDrawable(R.drawable.dwuspadowy_symetryczny_rzut_krokwi, getApplicationContext().getTheme()));
+            edt_E.setVisibility(View.GONE);
+            edt_E.setText("0");
         } else {
             throw new IllegalArgumentException("Incorrect roof type: " + roof_type);
         }
@@ -66,17 +74,12 @@ public class InputRoof1Activity extends AppCompatActivity {
         edt_B = findViewById(R.id.roof1_input_B);
         edt_A = findViewById(R.id.roof1_input_A);
         edt_D = findViewById(R.id.roof1_input_D);
-        edt_E = findViewById(R.id.roof1_input_E);
         edt_C = findViewById(R.id.roof1_input_C);
         edt_S = findViewById(R.id.roof1_input_S);
-        edt_m_d = findViewById(R.id.roof1_input_m_d);
-        edt_m_w = findViewById(R.id.roof1_input_m_w);
-        edt_pp_d = findViewById(R.id.roof1_input_pp_d);
-        edt_pp_w = findViewById(R.id.roof1_input_pp_w);
-        edt_pk_d = findViewById(R.id.roof1_input_pk_d);
-        edt_pk_w = findViewById(R.id.roof1_input_pk_w);
-        edt_k_d = findViewById(R.id.roof1_input_k_d);
-        edt_k_w = findViewById(R.id.roof1_input_k_w);
+        edt_s_mu = findViewById(R.id.roof1_input_s_mu);
+        edt_g_pk = findViewById(R.id.roof1_input_g_pk);
+        edt_g_kr = findViewById(R.id.roof1_input_g_kr);
+        edt_s_kr = findViewById(R.id.roof1_input_s_kr);
         edt_fpk = findViewById(R.id.roof1_input_fpk);
         edt_k_max = findViewById(R.id.roof1_input_k_max);
 
@@ -86,8 +89,7 @@ public class InputRoof1Activity extends AppCompatActivity {
 
         // initialize edit Texts array
         editTextList = Arrays.asList(edt_theta, edt_B, edt_A, edt_D, edt_E, edt_C, edt_S,
-                edt_m_d, edt_m_w, edt_pp_d, edt_pp_w, edt_pk_d, edt_pk_w, edt_k_d, edt_k_w,
-                edt_fpk, edt_k_max);
+                edt_s_mu, edt_g_pk, edt_g_kr, edt_s_kr, edt_fpk , edt_k_max);
 
         /* add text watcher to edts */
         for (EditText edt : editTextList) {
@@ -97,10 +99,13 @@ public class InputRoof1Activity extends AppCompatActivity {
 
     private boolean allFieldsAreFilled() {
         for (EditText edt : editTextList) {
+            if (roof_type != 1 && edt == edt_E)
+            {
+                continue;
+            }
             if (TextUtils.isEmpty(edt.getText()))
                 return false;
         }
-
         return true;
     }
 
@@ -108,6 +113,7 @@ public class InputRoof1Activity extends AppCompatActivity {
 
         // Create Intent and list objects
         Intent intent = new Intent(this, ResultRoof1Activity.class);
+        intent.putExtra("ROOF_TYPE", roof_type);
         List<Double> inputDoublesList = new ArrayList<>();
 
         // add inputs from edts to list

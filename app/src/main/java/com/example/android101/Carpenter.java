@@ -8,9 +8,8 @@ import java.util.List;
 public class Carpenter {
 
     HashMap<String, Double> results;
-    private final double input_theta, input_B, input_A, input_D, input_E, input_C, input_S,
-            input_m_d, input_m_w, input_pp_d, input_pp_w, input_pk_d, input_pk_w, input_k_d,
-            input_k_w, input_fpk, input_k_max;
+    double input_theta, input_B, input_A, input_D, input_E, input_C, input_S,
+            input_s_mu, input_g_pk, input_s_kr, input_g_kr, input_fpk, input_k_max;
 
     double result_gamma, result_Lp, result_Lc,
             result_H1, result_H2, result_M2, result_M1,
@@ -26,46 +25,59 @@ public class Carpenter {
         input_E = inputValues.get(4);
         input_C = inputValues.get(5);
         input_S = inputValues.get(6);
-        input_m_d = inputValues.get(7);
-        input_m_w = inputValues.get(8);
-        input_pp_d = inputValues.get(9);
-        input_pp_w = inputValues.get(10);
-        input_pk_d = inputValues.get(11);
-        input_pk_w = inputValues.get(12);
-        input_k_d = inputValues.get(13);
-        input_k_w = inputValues.get(14);
-        input_fpk = inputValues.get(15);
-        input_k_max = inputValues.get(16);
+        input_s_mu = inputValues.get(7);
+        input_g_pk = inputValues.get(8);
+        input_s_kr = inputValues.get(9);
+        input_g_kr = inputValues.get(10);
+        input_fpk = inputValues.get(11);
+        input_k_max = inputValues.get(12);
     }
 
-    void countRoof1Values(){
+    void countRoof1Values() {
+        if (input_theta <= 0 || input_theta >= 90) {
+            throw new IllegalArgumentException("Invalid value for theta! " + input_theta);
+        }
         result_gamma = 90 - input_theta;
-        result_H1 = (input_A - input_pk_d) * Math.tan(input_theta) + input_m_w;
-        result_H2 = (input_A - input_C) * Math.tan(input_theta) + input_m_w;
-        result_Lp = (input_A + input_D + input_E) / Math.cos(input_theta);
-        result_Lc = result_Lp + input_k_w * Math.tan(input_theta);
-        result_M2 = result_Lp - input_D / Math.cos(input_theta);
-        result_M1 = result_M2 - input_S / Math.sin(input_theta);
-        result_N2 = result_Lp - (input_A + input_D - input_C) / Math.cos(input_theta);
-        result_N1 = result_N2 - input_S / Math.sin(input_theta);
-        result_K2 = result_Lp - (input_A + input_D - input_pk_d) / Math.cos(input_theta);
-        result_K1 = result_K2 - input_S / Math.sin(input_theta);
+        result_H1 = (input_A - input_g_pk) * Math.tan(Math.toRadians(input_theta)) + input_s_mu;
+        result_H2 = (input_A - input_C) * Math.tan(Math.toRadians(input_theta)) + input_s_mu;
+        result_Lp = (input_A + input_D + input_E) / Math.cos(Math.toRadians(input_theta));
+        result_Lc = result_Lp + input_s_kr * Math.tan(Math.toRadians(input_theta));
+        result_M2 = result_Lp - input_D / Math.cos(Math.toRadians(input_theta));
+        result_M1 = result_M2 - input_S / Math.sin(Math.toRadians(input_theta));
+        result_N2 = result_Lp - (input_A + input_D - input_C) / Math.cos(Math.toRadians(input_theta));
+        result_N1 = result_N2 - input_S / Math.sin(Math.toRadians(input_theta));
+        result_K2 = result_Lp - (input_A + input_D - input_g_pk) / Math.cos(Math.toRadians(input_theta));
+        result_K1 = result_K2 - input_S / Math.sin(Math.toRadians(input_theta));
 
         double no_areas;
         if (input_fpk != 0) {
-            result_Cd = input_B - input_k_d;
-            no_areas = Math.floor(result_Cd / (input_k_d + input_k_max)) + 1;
+            result_Cd = input_B - input_g_kr;
+            no_areas = Math.floor(result_Cd / (input_g_kr + input_k_max)) + 1;
             result_Nr = no_areas + 1;
         } else {
-            result_Cd = input_B - 3 * input_k_d - 2 * input_fpk;
-            no_areas = Math.floor(result_Cd / (input_k_d + input_k_max)) + 1;
+            result_Cd = input_B - 3 * input_g_kr - 2 * input_fpk;
+            no_areas = Math.floor(result_Cd / (input_g_kr + input_k_max)) + 1;
             result_Nr = no_areas + 3;
         }
-        result_Pk = result_Cd / no_areas - input_k_d;
+        result_Pk = result_Cd / no_areas - input_g_kr;
     }
 
-    void countRoof2Values(){
-        //TODO
+    void countRoof2Values() {
+        if (input_theta <= 0 || input_theta >= 90) {
+            throw new IllegalArgumentException("Invalid value for theta! " + input_theta);
+        }
+        result_gamma = 90 - input_theta;
+        result_H1 = (input_A - input_g_pk) / 2 * Math.tan(Math.toRadians(input_theta)) + input_s_mu;
+        result_H2 = (input_A / 2 - input_C) * Math.tan(Math.toRadians(input_theta)) + input_s_mu;
+        result_Lp = (input_A / 2 + input_D) / Math.cos(Math.toRadians(input_theta));
+        result_Lc = result_Lp + input_s_kr * Math.tan(Math.toRadians(input_theta));
+        result_M2 = result_Lp - input_D / Math.cos(Math.toRadians(input_theta));
+        result_M1 = result_M2 - input_S / Math.sin(Math.toRadians(input_theta));
+        result_N2 = result_Lp - (input_D + input_C) / Math.cos(Math.toRadians(input_theta));
+        result_N1 = result_N2 - input_S / Math.sin(Math.toRadians(input_theta));
+        result_K2 = (input_g_pk / 2) / Math.cos(Math.toRadians(input_theta));
+        double result_S1 = result_K2 - input_S / Math.sin(Math.toRadians(input_theta));
+        result_K1 = result_S1;
     }
 
     @NonNull
@@ -73,7 +85,7 @@ public class Carpenter {
 
         if (roof_type == 1) {
             countRoof1Values();
-        } else if (roof_type == 2){
+        } else if (roof_type == 2) {
             countRoof2Values();
         } else {
             throw new IllegalArgumentException("Incorrect roof_type passed: " + roof_type);

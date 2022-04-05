@@ -5,52 +5,28 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class CarpenterUnitTest {
 
     double input_theta, input_B, input_A, input_D, input_E, input_C, input_S,
-            input_m_d, input_m_w, input_pp_d, input_pp_w, input_pk_d, input_pk_w, input_k_d,
-            input_k_w, input_fpk, input_k_max;
+            input_s_mu, input_g_pk, input_s_kr, input_g_kr, input_fpk, input_k_max;
     List<Double> testInputValues;
     Carpenter testCarpenter;
 
     @Before
-    public void setUp()
-    {
-        input_theta = 0;
-        input_B = 0;
-        input_A = 0;
-        input_D = 0;
-        input_E = 0;
-        input_C = 0;
-        input_S = 0;
-        input_m_d = 0;
-        input_m_w = 0;
-        input_pp_d = 0;
-        input_pp_w = 0;
-        input_pk_d = 0;
-        input_pk_w = 0;
-        input_k_d = 0;
-        input_k_w = 0;
-        input_fpk = 0;
-        input_k_max = 0;
-
+    public void setUp() {
         testInputValues = Arrays.asList(input_theta, input_B, input_A, input_D, input_E, input_C, input_S,
-                input_m_d, input_m_w, input_pp_d, input_pp_w, input_pk_d, input_pk_w, input_k_d,
-                input_k_w, input_fpk, input_k_max);
+                input_s_mu, input_g_pk, input_s_kr, input_g_kr, input_fpk, input_k_max);
 
         testCarpenter = new Carpenter(testInputValues);
     }
 
-    @Test
-    public void test_countingResultsRoof1() {
+    @Test(expected = IllegalArgumentException.class)
+    public void test_countingResults_initValues() {
 
         testCarpenter.countRoof1Values();
-        // TODO
         assertEquals(0, testCarpenter.result_gamma, 1e5);
         assertEquals(0, testCarpenter.result_H1, 1e5);
         assertEquals(0, testCarpenter.result_H2, 1e5);
@@ -60,23 +36,104 @@ public class CarpenterUnitTest {
         assertEquals(0, testCarpenter.result_M1, 1e5);
         assertEquals(0, testCarpenter.result_N2, 1e5);
         assertEquals(0, testCarpenter.result_N1, 1e5);
+
+        testCarpenter.countRoof2Values();
+        assertEquals(0, testCarpenter.result_gamma, 1e5);
+        assertEquals(0, testCarpenter.result_H1, 1e5);
+        assertEquals(0, testCarpenter.result_H2, 1e5);
+        assertEquals(0, testCarpenter.result_Lp, 1e5);
+        assertEquals(0, testCarpenter.result_Lc, 1e5);
+        assertEquals(0, testCarpenter.result_M2, 1e5);
+        assertEquals(0, testCarpenter.result_M1, 1e5);
+        assertEquals(0, testCarpenter.result_N2, 1e5);
+        assertEquals(0, testCarpenter.result_N1, 1e5);
+    }
+
+    @Test
+    public void test_countingResultsRoof1_ValidationValues() {
+
+        testCarpenter.input_B = 1000;
+        testCarpenter.input_fpk = 40;
+        testCarpenter.input_g_kr = 8;
+        testCarpenter.input_k_max = 70;
+
+        testCarpenter.input_theta = 30;
+        testCarpenter.input_S = 5;
+        testCarpenter.input_A = 500;
+        testCarpenter.input_D = 80;
+        testCarpenter.input_E = 20;
+        testCarpenter.input_C = 250;
+        testCarpenter.input_s_kr = 16;
+        testCarpenter.input_s_mu = 20;
+        testCarpenter.input_g_pk = 16;
+
+        testCarpenter.countRoof1Values();
+
+        assertEquals(testCarpenter.result_Lc, 702.06, 0.01);
+        assertEquals(testCarpenter.result_Lp, 692.82, 0.01);
+        assertEquals(testCarpenter.result_M2, 600.44, 0.01);
+        assertEquals(testCarpenter.result_N2, 311.77, 0.01);
+        assertEquals(testCarpenter.result_K1, 31.57, 0.01);
+        assertEquals(testCarpenter.result_H1, 299.44, 0.01);
 
     }
 
     @Test
-    public void test_countingResultsRoof2() {
+    public void test_countingResultsRoof2_ValidationValues() {
+
+        testCarpenter.input_B = 1000;
+        testCarpenter.input_fpk = 40;
+        testCarpenter.input_g_kr = 8;
+        testCarpenter.input_k_max = 70;
+
+        testCarpenter.input_theta = 30;
+        testCarpenter.input_S = 5;
+        testCarpenter.input_A = 984;
+        testCarpenter.input_D = 80;
+        testCarpenter.input_C = 250;
+        testCarpenter.input_s_kr = 16;
+        testCarpenter.input_s_mu = 20;
+        testCarpenter.input_g_pk = 16;
 
         testCarpenter.countRoof2Values();
-        // TODO
-        assertEquals(0, testCarpenter.result_gamma, 1e5);
-        assertEquals(0, testCarpenter.result_H1, 1e5);
-        assertEquals(0, testCarpenter.result_H2, 1e5);
-        assertEquals(0, testCarpenter.result_Lp, 1e5);
-        assertEquals(0, testCarpenter.result_Lc, 1e5);
-        assertEquals(0, testCarpenter.result_M2, 1e5);
-        assertEquals(0, testCarpenter.result_M1, 1e5);
-        assertEquals(0, testCarpenter.result_N2, 1e5);
-        assertEquals(0, testCarpenter.result_N1, 1e5);
 
+        assertEquals(testCarpenter.result_Lc, 669.73, 0.01);
+        assertEquals(testCarpenter.result_Lp, 660.49, 0.01);
+        assertEquals(testCarpenter.result_M2, 568.11, 0.01);
+        assertEquals(testCarpenter.result_N2, 279.44, 0.01);
+        assertEquals(testCarpenter.result_K2, 9.24, 0.01);
+        assertEquals(testCarpenter.result_H1, 299.44, 0.01);
+
+    }
+
+    @Test
+    public void test_countingResults_randomValues() {
+        for (int i = 0; i < 10000; i++) {
+
+            testCarpenter.input_theta = 30 + Math.random() * (60 - 30);
+            testCarpenter.input_B = 10 + Math.random() * (90 - 10);
+            testCarpenter.input_g_pk = 10 + Math.random() * (90 - 10);
+            testCarpenter.input_C = 10 + Math.random() * (90 - 10);
+            testCarpenter.input_A = Math.max(testCarpenter.input_g_pk, testCarpenter.input_C) + Math.random() * (90 - Math.max(testCarpenter.input_g_pk, testCarpenter.input_C));
+            testCarpenter.input_D = 10 + Math.random() * (90 - 10);
+            testCarpenter.input_E = 10 + Math.random() * (90 - 10);
+            testCarpenter.input_S = 10 + Math.random() * (90 - 10);
+            testCarpenter.input_s_mu = 10 + Math.random() * (90 - 10);
+            testCarpenter.input_s_kr = 10 + Math.random() * (90 - 10);
+            testCarpenter.input_g_kr = 10 + Math.random() * (90 - 10);
+            testCarpenter.input_fpk = 10 + Math.random() * (90 - 10);
+            testCarpenter.input_k_max = 10 + Math.random() * (90 - 10);
+
+            testCarpenter.countRoof1Values();
+            assertTrue(testCarpenter.result_gamma >= 0);
+            assertTrue(testCarpenter.result_H1 >= 0);
+            assertTrue(testCarpenter.result_H2 >= 0);
+            assertTrue(testCarpenter.result_Lp >= 0);
+            assertTrue(testCarpenter.result_Lc >= 0);
+            assertTrue(testCarpenter.result_M2 >= 0);
+            //assertTrue(testCarpenter.result_M1 >= 0);
+            assertTrue(testCarpenter.result_N2 >= 0);
+            //assertTrue(testCarpenter.result_N1 >= 0);
+        }
     }
 }

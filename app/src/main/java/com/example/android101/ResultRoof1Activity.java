@@ -2,14 +2,19 @@ package com.example.android101;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.HashMap;
 
 public class ResultRoof1Activity extends AppCompatActivity {
+    int roof_type;
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +23,16 @@ public class ResultRoof1Activity extends AppCompatActivity {
         // Get the Intent that started this activity and extract the string
         Intent intent = getIntent();
         HashMap<String, Double> results = (HashMap<String, Double>) intent.getSerializableExtra("EXTRA_ROOF1_RESULTS_MAP");
+        ImageView roof_image_view_result = (ImageView) findViewById(R.id.iv_roof_image_result);
+        roof_type = intent.getIntExtra("ROOF_TYPE", 0);
+
+        if (roof_type == 1) {
+            roof_image_view_result.setImageDrawable(getResources().getDrawable(R.drawable.jednospadowy_krokwia, getApplicationContext().getTheme()));
+        } else if (roof_type == 2) {
+            roof_image_view_result.setImageDrawable(getResources().getDrawable(R.drawable.dwuspadowy_symetryczny_krokwia, getApplicationContext().getTheme()));
+        } else {
+            throw new IllegalArgumentException("Incorrect roof type: " + roof_type);
+        }
 
         // get string values from results Map
         String result_string_gamma = String.format("%.2f", results.get("Gamma"));
@@ -51,7 +66,7 @@ public class ResultRoof1Activity extends AppCompatActivity {
         TextView tv_Cd = findViewById(R.id.roof1_result_Cd);
         TextView tv_Nr = findViewById(R.id.roof1_result_Nr);
 
-        tv_gamma.setText("gamma = "+result_string_gamma);
+        tv_gamma.setText("\u0194 = "+result_string_gamma);
         tv_H1.setText("H1 = "+result_string_H1);
         tv_H2.setText("H2 = "+result_string_H2);
         tv_Lp.setText("Lp = "+result_string_Lp);
