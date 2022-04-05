@@ -32,6 +32,7 @@
                 android:id="@+id/iv_roof_image_top"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/roof1_image"
                 android:scaleType="fitCenter"
