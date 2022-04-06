@@ -78,7 +78,7 @@ public class ResultRoof1Activity extends AppCompatActivity {
         tv_K2.setText("K2 = "+result_string_K2);
         tv_K1.setText("K1 = "+result_string_K1);
         tv_Pk.setText("Pk = "+result_string_Pk);
-        tv_Cd.setText("Cd = "+result_string_Cd);
+        tv_Cd.setText("Cd = "+result_string_Cd); //TODO remove Cd
         tv_Nr.setText("Nr = "+result_string_Nr);
     }
 

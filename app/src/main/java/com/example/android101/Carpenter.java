@@ -60,6 +60,7 @@ public class Carpenter {
             result_Nr = no_areas + 3;
         }
         result_Pk = result_Cd / no_areas - input_g_kr;
+        result_Cd = result_Lp * input_B; // TODO dodaj zmienna
     }
 
     void countRoof2Values() {
@@ -103,7 +104,7 @@ public class Carpenter {
         results.put("K2", result_K2);
         results.put("K1", result_K1);
         results.put("Pk", result_Pk);
-        results.put("Cd", result_Cd);
+        results.put("Cd", result_Cd); // dodaj tu pole dachu
         results.put("Nr", result_Nr);
 
         return results;

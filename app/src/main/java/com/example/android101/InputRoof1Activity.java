@@ -89,7 +89,7 @@ public class InputRoof1Activity extends AppCompatActivity {
 
         // initialize edit Texts array
         editTextList = Arrays.asList(edt_theta, edt_B, edt_A, edt_D, edt_E, edt_C, edt_S,
-                edt_s_mu, edt_g_pk, edt_g_kr, edt_s_kr, edt_fpk , edt_k_max);
+                edt_s_mu, edt_g_pk, edt_s_kr, edt_g_kr, edt_fpk , edt_k_max);
 
         /* add text watcher to edts */
         for (EditText edt : editTextList) {
