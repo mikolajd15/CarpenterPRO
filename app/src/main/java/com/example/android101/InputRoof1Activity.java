@@ -21,7 +21,7 @@ import java.util.List;
 public class InputRoof1Activity extends AppCompatActivity {
 
     EditText edt_theta, edt_B, edt_A, edt_D, edt_E, edt_C, edt_S,
-            edt_s_mu, edt_g_pk, edt_g_kr, edt_s_kr, edt_fpk , edt_k_max;
+            edt_s_mu, edt_g_pk, edt_g_kr, edt_s_kr, edt_fpk, edt_k_max;
 
     List<EditText> editTextList;
     Button countButton;
@@ -54,7 +54,6 @@ public class InputRoof1Activity extends AppCompatActivity {
 
         ImageView roof_image_view_top = (ImageView) findViewById(R.id.iv_roof_image_top);
         ImageView roof_image_view_bot = (ImageView) findViewById(R.id.iv_roof_image_bot);
-        ImageView roof_image_view_result = (ImageView) findViewById(R.id.iv_roof_image_result);
         if (roof_type == 1) {
             roof_image_view_top.setImageDrawable(getResources().getDrawable(R.drawable.jednospadowy_budynek, getApplicationContext().getTheme()));
             roof_image_view_bot.setImageDrawable(getResources().getDrawable(R.drawable.jednospadowy_rzut_dachu, getApplicationContext().getTheme()));
@@ -89,7 +88,7 @@ public class InputRoof1Activity extends AppCompatActivity {
 
         // initialize edit Texts array
         editTextList = Arrays.asList(edt_theta, edt_B, edt_A, edt_D, edt_E, edt_C, edt_S,
-                edt_s_mu, edt_g_pk, edt_s_kr, edt_g_kr, edt_fpk , edt_k_max);
+                edt_s_mu, edt_g_pk, edt_s_kr, edt_g_kr, edt_fpk, edt_k_max);
 
         /* add text watcher to edts */
         for (EditText edt : editTextList) {
@@ -99,8 +98,7 @@ public class InputRoof1Activity extends AppCompatActivity {
 
     private boolean allFieldsAreFilled() {
         for (EditText edt : editTextList) {
-            if (roof_type != 1 && edt == edt_E)
-            {
+            if (roof_type != 1 && edt == edt_E) {
                 continue;
             }
             if (TextUtils.isEmpty(edt.getText()))
@@ -114,13 +112,24 @@ public class InputRoof1Activity extends AppCompatActivity {
         // Create Intent and list objects
         Intent intent = new Intent(this, ResultRoof1Activity.class);
         intent.putExtra("ROOF_TYPE", roof_type);
-        List<Double> inputDoublesList = new ArrayList<>();
+        HashMap<String, Double> inputDoublesListMap = new HashMap<>();
 
         // add inputs from edts to list
-        for (EditText edt : editTextList) {
-            inputDoublesList.add(Double.parseDouble(edt.getText().toString()));
-        }
-        Carpenter carpenter = new Carpenter(inputDoublesList);
+        inputDoublesListMap.put("theta", Double.parseDouble(edt_theta.getText().toString()));
+        inputDoublesListMap.put("B", Double.parseDouble(edt_B.getText().toString()));
+        inputDoublesListMap.put("A", Double.parseDouble(edt_A.getText().toString()));
+        inputDoublesListMap.put("D", Double.parseDouble(edt_D.getText().toString()));
+        inputDoublesListMap.put("E", Double.parseDouble(edt_E.getText().toString()));
+        inputDoublesListMap.put("C", Double.parseDouble(edt_C.getText().toString()));
+        inputDoublesListMap.put("S", Double.parseDouble(edt_S.getText().toString()));
+        inputDoublesListMap.put("s_mu", Double.parseDouble(edt_s_mu.getText().toString()));
+        inputDoublesListMap.put("g_pk", Double.parseDouble(edt_g_pk.getText().toString()));
+        inputDoublesListMap.put("s_kr", Double.parseDouble(edt_s_kr.getText().toString()));
+        inputDoublesListMap.put("g_kr", Double.parseDouble(edt_g_kr.getText().toString()));
+        inputDoublesListMap.put("fpk", Double.parseDouble(edt_fpk.getText().toString()));
+        inputDoublesListMap.put("k_max", Double.parseDouble(edt_k_max.getText().toString()));
+
+        Carpenter carpenter = new Carpenter(inputDoublesListMap, roof_type);
 
         // Calculate the result using Roofer class
         HashMap<String, Double> results = carpenter.prepareResults(roof_type);
