@@ -30,6 +30,8 @@ public class ResultRoof1Activity extends AppCompatActivity {
             roof_image_view_result.setImageDrawable(getResources().getDrawable(R.drawable.jednospadowy_krokwia, getApplicationContext().getTheme()));
         } else if (roof_type == 2) {
             roof_image_view_result.setImageDrawable(getResources().getDrawable(R.drawable.dwuspadowy_symetryczny_krokwia, getApplicationContext().getTheme()));
+        } else if (roof_type == 3) {
+            roof_image_view_result.setImageDrawable(getResources().getDrawable(R.drawable.dwuspadowy_niesymetryczny_krokwia_a, getApplicationContext().getTheme()));
         } else {
             throw new IllegalArgumentException("Incorrect roof type: " + roof_type);
         }

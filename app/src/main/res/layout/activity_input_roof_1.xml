@@ -54,8 +54,8 @@
                     >
 
                     <EditText
-                        android:id="@+id/roof1_input_A"
-                        android:layout_width="138dp"
+                        android:id="@+id/roof1_input_00"
+                        android:layout_width="135dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="40dp"
                         android:layout_marginTop="28dp"
@@ -64,47 +64,13 @@
                         android:importantForAutofill="no"
                         android:inputType="number|numberDecimal"
                         android:minHeight="48dp"
+                        android:textAlignment="viewStart"
                         android:textColorHint="#757575"
                         tools:ignore="DuplicateSpeakableTextCheck" />
 
                     <EditText
-                        android:id="@+id/roof1_input_B"
-                        android:layout_width="138dp"
-                        android:layout_height="48dp"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginTop="28dp"
-                        android:ems="10"
-                        android:hint="@string/hint_input_value"
-                        android:importantForAutofill="no"
-                        android:inputType="number|numberDecimal"
-                        android:minHeight="48dp"
-                        android:textColorHint="#757575"
-                        tools:ignore="DuplicateSpeakableTextCheck" />
-
-                </TableRow>
-
-                <TableRow
-                    android:gravity="center_horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <EditText
-                        android:id="@+id/roof1_input_D"
-                        android:layout_width="138dp"
-                        android:layout_height="48dp"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginTop="28dp"
-                        android:ems="10"
-                        android:hint="@string/hint_input_value"
-                        android:importantForAutofill="no"
-                        android:inputType="number|numberDecimal"
-                        android:minHeight="48dp"
-                        android:textColorHint="#757575"
-                        tools:ignore="DuplicateSpeakableTextCheck" />
-
-                    <EditText
-                        android:id="@+id/roof1_input_S"
-                        android:layout_width="138dp"
+                        android:id="@+id/roof1_input_01"
+                        android:layout_width="135dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="40dp"
                         android:layout_marginTop="28dp"
@@ -124,8 +90,8 @@
                     android:layout_height="match_parent">
 
                     <EditText
-                        android:id="@+id/roof1_input_Theta"
-                        android:layout_width="138dp"
+                        android:id="@+id/roof1_input_10"
+                        android:layout_width="135dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="40dp"
                         android:layout_marginTop="28dp"
@@ -138,8 +104,43 @@
                         tools:ignore="DuplicateSpeakableTextCheck" />
 
                     <EditText
-                        android:id="@+id/roof1_input_C"
-                        android:layout_width="138dp"
+                        android:id="@+id/roof1_input_11"
+                        android:layout_width="135dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="28dp"
+                        android:ems="10"
+                        android:hint="@string/hint_input_value"
+                        android:importantForAutofill="no"
+                        android:inputType="number|numberDecimal"
+                        android:minHeight="48dp"
+                        android:textColorHint="#757575"
+                        tools:ignore="DuplicateSpeakableTextCheck" />
+
+                </TableRow>
+
+                <TableRow
+                    android:gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <EditText
+                        android:id="@+id/roof1_input_20"
+                        android:layout_width="135dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="28dp"
+                        android:ems="10"
+                        android:hint="@string/hint_input_value"
+                        android:importantForAutofill="no"
+                        android:inputType="number|numberDecimal"
+                        android:minHeight="48dp"
+                        android:textColorHint="#757575"
+                        tools:ignore="DuplicateSpeakableTextCheck" />
+
+                    <EditText
+                        android:id="@+id/roof1_input_21"
+                        android:layout_width="135dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="40dp"
                         android:layout_marginTop="28dp"
@@ -158,8 +159,8 @@
                     android:layout_height="match_parent">
 
                     <EditText
-                        android:id="@+id/roof1_input_s_mu"
-                        android:layout_width="138dp"
+                        android:id="@+id/roof1_input_30"
+                        android:layout_width="135dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="40dp"
                         android:layout_marginTop="28dp"
@@ -172,8 +173,8 @@
                         tools:ignore="DuplicateSpeakableTextCheck" />
 
                     <EditText
-                        android:id="@+id/roof1_input_g_pk"
-                        android:layout_width="138dp"
+                        android:id="@+id/roof1_input_31"
+                        android:layout_width="135dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="40dp"
                         android:layout_marginTop="28dp"
@@ -193,8 +194,23 @@
                     android:gravity="center_horizontal">
 
                     <EditText
-                        android:id="@+id/roof1_input_E"
-                        android:layout_width="138dp"
+                        android:id="@+id/roof1_input_40"
+                        android:layout_width="135dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginTop="28dp"
+                        android:ems="10"
+                        android:hint="@string/hint_input_value"
+                        android:importantForAutofill="no"
+                        android:inputType="number|numberDecimal"
+                        android:minHeight="48dp"
+                        android:textColorHint="#757575"
+                        android:visibility="visible"
+                        tools:ignore="DuplicateSpeakableTextCheck" />
+
+                    <EditText
+                        android:id="@+id/roof1_input_41"
+                        android:layout_width="135dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="40dp"
                         android:layout_marginTop="28dp"
@@ -232,8 +248,8 @@
                     android:gravity="center_horizontal">
 
                     <EditText
-                        android:id="@+id/roof1_input_g_kr"
-                        android:layout_width="138dp"
+                        android:id="@+id/roof1_input_50"
+                        android:layout_width="135dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="40dp"
                         android:layout_marginTop="28dp"
@@ -246,8 +262,8 @@
                         tools:ignore="DuplicateSpeakableTextCheck" />
 
                     <EditText
-                        android:id="@+id/roof1_input_s_kr"
-                        android:layout_width="138dp"
+                        android:id="@+id/roof1_input_51"
+                        android:layout_width="135dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="40dp"
                         android:layout_marginTop="28dp"
@@ -267,8 +283,8 @@
                     android:gravity="center_horizontal">
 
                     <EditText
-                        android:id="@+id/roof1_input_fpk"
-                        android:layout_width="138dp"
+                        android:id="@+id/roof1_input_60"
+                        android:layout_width="135dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="40dp"
                         android:layout_marginTop="28dp"
@@ -281,8 +297,8 @@
                         tools:ignore="DuplicateSpeakableTextCheck" />
 
                     <EditText
-                        android:id="@+id/roof1_input_k_max"
-                        android:layout_width="138dp"
+                        android:id="@+id/roof1_input_61"
+                        android:layout_width="135dp"
                         android:layout_height="48dp"
                         android:layout_marginStart="40dp"
                         android:layout_marginTop="28dp"

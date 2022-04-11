@@ -4,7 +4,7 @@
     <!-- Strings for Main screen -->
     <string name="button_roof_1">Dach jednospadowy</string>
     <string name="button_roof_2">Dach dwuspadowy</string>
-    <string name="button_roof_3">Dach 3</string>
+    <string name="button_roof_3">Dach niesymetryczny</string>
     <string name="button_roof_4">Dach 4</string>
 
     <!-- Strings for calculators screen -->

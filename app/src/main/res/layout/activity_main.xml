@@ -25,6 +25,7 @@
         android:layout_width="251dp"
         android:layout_height="55dp"
         android:layout_marginTop="24dp"
+        android:onClick="openRoof3View"
         android:text="@string/button_roof_3"
         app:layout_constraintEnd_toEndOf="@+id/button_roof_2"
         app:layout_constraintStart_toStartOf="@+id/button_roof_2"

@@ -23,37 +23,35 @@ public class Carpenter {
 
     Carpenter(@NonNull HashMap<String, Double> inputValuesMap, int roof_type) {
         results = new HashMap<>();
+        // common inputs
+        input_B = inputValuesMap.get("B");
+        input_A = inputValuesMap.get("A");
+        input_D = inputValuesMap.get("D");
+        input_s_kr = inputValuesMap.get("s_kr");
+        input_g_kr = inputValuesMap.get("g_kr");
+        input_g_pk = inputValuesMap.get("g_pk");
+        input_s_mu = inputValuesMap.get("s_mu");
+
         if (roof_type == 1 || roof_type == 2) {
             input_theta = inputValuesMap.get("theta");
-            input_B = inputValuesMap.get("B");
-            input_A = inputValuesMap.get("A");
-            input_D = inputValuesMap.get("D");
-            input_E = inputValuesMap.get("E");
             input_C = inputValuesMap.get("C");
             input_S = inputValuesMap.get("S");
-            input_s_mu = inputValuesMap.get("s_mu");
-            input_g_pk = inputValuesMap.get("g_pk");
-            input_s_kr = inputValuesMap.get("s_kr");
-            input_g_kr = inputValuesMap.get("g_kr");
             input_fpk = inputValuesMap.get("fpk");
             input_k_max = inputValuesMap.get("k_max");
+
+            if (roof_type == 1) {
+                input_E = inputValuesMap.get("E");
+            }
+
         } else if (roof_type == 3) {
             input_alpha = inputValuesMap.get("alpha");
             input_beta = inputValuesMap.get("beta");
-            input_A = inputValuesMap.get("A");
-            input_B = inputValuesMap.get("B");
             input_A1 = inputValuesMap.get("A1");
             input_B1 = inputValuesMap.get("B1");
-            input_E = inputValuesMap.get("E");
-            input_D = inputValuesMap.get("D");
             input_SB = inputValuesMap.get("SB");
-            input_s_mu = inputValuesMap.get("s_mu");
             input_g_mu = inputValuesMap.get("g_mu");
-            input_g_pk = inputValuesMap.get("g_pk");
-            input_s_kr = inputValuesMap.get("s_kr");
-            input_g_kr = inputValuesMap.get("g_kr");
+            input_E = inputValuesMap.get("E");
         }
-
     }
 
     void countRoof1Values() {
@@ -191,10 +189,22 @@ public class Carpenter {
             results.put("Pk", result_Pk);
             results.put("Cd", result_Cd); // dodaj tu pole dachu
             results.put("Nr", result_Nr);
+        } else if (roof_type == 3) {
+            countRoof3Values();
+            results.put("Gamma", result_gamma);
+            results.put("LBp", result_LBp);
+            results.put("PP", result_PP);
+            results.put("NB2", result_NB2);
+            results.put("LAc", result_LAc);
+            results.put("MA1", result_MA1);
+            results.put("NA1", result_NA1);
+            results.put("SA", result_SA);
+            results.put("HB1", result_HB1);
+            results.put("HK", result_HK);
+
         } else {
             throw new IllegalArgumentException("Incorrect roof_type passed: " + roof_type);
         }
-
 
         return results;
     }

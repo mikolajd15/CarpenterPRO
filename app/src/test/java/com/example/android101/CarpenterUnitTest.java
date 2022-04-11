@@ -70,6 +70,17 @@ public class CarpenterUnitTest {
         assertEquals(0, testCarpenter_1and2.result_M1, 1e5);
         assertEquals(0, testCarpenter_1and2.result_N2, 1e5);
         assertEquals(0, testCarpenter_1and2.result_N1, 1e5);
+
+        testCarpenter_3.countRoof3Values();
+        assertEquals(0, testCarpenter_3.result_gamma,  1e5);
+        assertEquals(0, testCarpenter_3.result_LBp, 1e5);
+        assertEquals(0, testCarpenter_3.result_PP, 1e5);
+        assertEquals(0, testCarpenter_3.result_NB2, 1e5);
+        assertEquals(0, testCarpenter_3.result_LAc, 1e5);
+        assertEquals(0, testCarpenter_3.result_MA1, 1e5);
+        assertEquals(0, testCarpenter_3.result_NA1, 1e5);
+        assertEquals(0, testCarpenter_3.result_SA, 1e5);
+        assertEquals(0, testCarpenter_3.result_HB1, 1e5);
     }
 
     @Test
