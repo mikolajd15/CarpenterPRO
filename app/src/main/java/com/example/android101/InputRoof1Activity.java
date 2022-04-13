@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
+import es.dmoral.toasty.Toasty;
+
 public class InputRoof1Activity extends AppCompatActivity {
 
     EditText edt_theta, edt_B, edt_A, edt_D, edt_E, edt_C, edt_S,
@@ -41,25 +43,9 @@ public class InputRoof1Activity extends AppCompatActivity {
 
         @Override
         public void afterTextChanged(Editable editable) {
-            countButton.setEnabled(allFieldsAreFilled() && thetaIsFilledCorrectly());
+            countButton.setEnabled(allFieldsAreFilled());
         }
     };
-
-    // TODO dodaj sprawdzanie poprawności danych przed umożliwieniem kliknięcia Wylicz kąty
-    // TODO dodaj wyskakujące powiadomienie (Toast) co jest niepoprawne
-    private boolean thetaIsFilledCorrectly() {
-        if (!TextUtils.isEmpty(edt_theta.getText())) {
-            double theta_value = Double.parseDouble(edt_theta.getText().toString());
-            if (theta_value > 0 && theta_value < 90){
-                return true;
-            }
-            else {
-                Toast.makeText(getApplicationContext(), "This is my Toast message!",
-                        Toast.LENGTH_LONG).show();
-            }
-        }
-        return false;
-    }
 
     @SuppressLint("UseCompatLoadingForDrawables")
     @Override
@@ -222,21 +208,54 @@ public class InputRoof1Activity extends AppCompatActivity {
         return inputDoublesListMap;
     }
 
+    private boolean fieldsAreFilledCorrectly(int roof_type) {
+        if (roof_type == 1 || roof_type == 2) {
+            double theta_value = Double.parseDouble(edt_theta.getText().toString());
+            if (theta_value <= 0 || theta_value >= 90) {
+                Toasty.warning(getApplicationContext(), "Niepoprawna wartość dla theta: " + theta_value, Toast.LENGTH_LONG, true).show();
+                return false;
+            }
+        } else if (roof_type == 3) {
+            double alpha_value = Double.parseDouble(edt_alpha.getText().toString());
+            double beta_value = Double.parseDouble(edt_beta.getText().toString());
+            if (alpha_value <= 0 || alpha_value >= 90) {
+                Toasty.warning(getApplicationContext(), "Niepoprawna wartość dla alpha: " + alpha_value, Toast.LENGTH_SHORT, true).show();
+                return false;
+            }
+            if (beta_value <= 0 || beta_value >= 90) {
+                Toasty.warning(getApplicationContext(), "Niepoprawna wartość dla beta: " + beta_value, Toast.LENGTH_SHORT, true).show();
+                return false;
+            }
+            if (alpha_value >= beta_value) {
+                Toasty.warning(getApplicationContext(), "Alpha musi być mniejsze od beta", Toast.LENGTH_LONG, true).show();
+                return false;
+            }
+
+        } else {
+            throw new IllegalArgumentException("Niepoprawna wartość roof_type:" + roof_type);
+        }
+        return true;
+    }
+
     public void showResultsRoof1(View view) {
 
-        // Create Intent and list objects
-        Intent intent = new Intent(this, ResultRoof1Activity.class);
-        intent.putExtra("ROOF_TYPE", roof_type);
+        if (fieldsAreFilledCorrectly(roof_type)) {
+            // Create Intent and list objects
+            Intent intent = new Intent(this, ResultRoof1Activity.class);
+            intent.putExtra("ROOF_TYPE", roof_type);
 
-        // Prepare Inputs map for Carpenter
-        HashMap<String, Double> inputDoublesListMap = prepareInputsMap(roof_type);
-        Carpenter carpenter = new Carpenter(inputDoublesListMap, roof_type);
+            // Prepare Inputs map for Carpenter
+            HashMap<String, Double> inputDoublesListMap = prepareInputsMap(roof_type);
+            Carpenter carpenter = new Carpenter(inputDoublesListMap, roof_type);
 
-        // Calculate the result using Roofer class
-        HashMap<String, Double> results = carpenter.prepareResults(roof_type);
+            // Calculate the result using Roofer class
+            HashMap<String, Double> results = carpenter.prepareResults(roof_type);
 
-        // Pass the results and open next activity
-        intent.putExtra("EXTRA_ROOF1_RESULTS_MAP", results);
-        startActivity(intent);
+            // Pass the results and open next activity
+            intent.putExtra("EXTRA_ROOF1_RESULTS_MAP", results);
+            startActivity(intent);
+        } else {
+
+        }
     }
 }
