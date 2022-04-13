@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,9 +41,25 @@ public class InputRoof1Activity extends AppCompatActivity {
 
         @Override
         public void afterTextChanged(Editable editable) {
-            countButton.setEnabled(allFieldsAreFilled());
+            countButton.setEnabled(allFieldsAreFilled() && thetaIsFilledCorrectly());
         }
     };
+
+    // TODO dodaj sprawdzanie poprawności danych przed umożliwieniem kliknięcia Wylicz kąty
+    // TODO dodaj wyskakujące powiadomienie (Toast) co jest niepoprawne
+    private boolean thetaIsFilledCorrectly() {
+        if (!TextUtils.isEmpty(edt_theta.getText())) {
+            double theta_value = Double.parseDouble(edt_theta.getText().toString());
+            if (theta_value > 0 && theta_value < 90){
+                return true;
+            }
+            else {
+                Toast.makeText(getApplicationContext(), "This is my Toast message!",
+                        Toast.LENGTH_LONG).show();
+            }
+        }
+        return false;
+    }
 
     @SuppressLint("UseCompatLoadingForDrawables")
     @Override

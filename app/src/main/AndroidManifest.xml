@@ -12,14 +12,17 @@
         <activity
             android:name=".InputRoof1Activity"
             android:exported="false"
-            android:parentActivityName=".MainActivity" />
+            android:parentActivityName=".MainActivity"
+            android:launchMode="singleTop" />
         <activity
             android:name=".ResultRoof1Activity"
             android:exported="false"
-            android:parentActivityName=".InputRoof1Activity" />
+            android:parentActivityName=".InputRoof1Activity"
+            android:launchMode="singleTop"/>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

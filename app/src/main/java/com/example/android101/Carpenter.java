@@ -15,7 +15,7 @@ public class Carpenter {
     double result_gamma, result_Lp, result_Lc,
             result_H1, result_H2, result_M2, result_M1,
             result_N2, result_N1, result_K2, result_K1,
-            result_Cd, result_Nr, result_Pk;
+            result_Area, result_Nr, result_Pk;
 
     double result_LAc, result_LBp, result_SA,
             result_HK, result_HB1, result_NB2,
@@ -69,7 +69,7 @@ public class Carpenter {
         result_N1 = result_N2 - input_S / Math.sin(Math.toRadians(input_theta));
         result_K2 = result_Lp - (input_A + input_D - input_g_pk) / Math.cos(Math.toRadians(input_theta));
         result_K1 = result_K2 - input_S / Math.sin(Math.toRadians(input_theta));
-
+        double result_Cd;
         double no_areas;
         if (input_fpk != 0) {
             result_Cd = input_B - input_g_kr;
@@ -81,7 +81,7 @@ public class Carpenter {
             result_Nr = no_areas + 3;
         }
         result_Pk = result_Cd / no_areas - input_g_kr;
-        result_Cd = result_Lp * input_B; // TODO dodaj zmienna
+        result_Area = result_Lp * input_B;
     }
 
     void countRoof2Values() {
@@ -102,6 +102,7 @@ public class Carpenter {
         result_K1 = result_S1;
 
         // copy paste z dachu 1
+        double result_Cd;
         double no_areas;
         if (input_fpk != 0) {
             result_Cd = input_B - input_g_kr;
@@ -113,7 +114,7 @@ public class Carpenter {
             result_Nr = no_areas + 3;
         }
         result_Pk = result_Cd / no_areas - input_g_kr;
-        result_Cd = result_Lp * input_B; // TODO dodaj zmienna
+        result_Area = result_Lp * input_B;
     }
 
     void countRoof3Values() {
@@ -171,7 +172,7 @@ public class Carpenter {
             results.put("K2", result_K2);
             results.put("K1", result_K1);
             results.put("Pk", result_Pk);
-            results.put("Cd", result_Cd); // dodaj tu pole dachu
+            results.put("Area", result_Area);
             results.put("Nr", result_Nr);
         } else if (roof_type == 2) {
             countRoof2Values();
@@ -187,7 +188,7 @@ public class Carpenter {
             results.put("K2", result_K2);
             results.put("K1", result_K1);
             results.put("Pk", result_Pk);
-            results.put("Cd", result_Cd); // dodaj tu pole dachu
+            results.put("Area", result_Area);
             results.put("Nr", result_Nr);
         } else if (roof_type == 3) {
             countRoof3Values();

@@ -37,39 +37,17 @@
                     android:gravity="center_horizontal">
 
                     <TextView
-                        android:id="@+id/roof1_result_gamma"
+                        android:id="@+id/roof1_result_00"
                         android:layout_width="101dp"
                         android:layout_height="32dp" />
 
                     <TextView
-                        android:id="@+id/roof1_result_Lp"
+                        android:id="@+id/roof1_result_01"
                         android:layout_width="101dp"
                         android:layout_height="32dp" />
 
                     <TextView
-                        android:id="@+id/roof1_result_Lc"
-                        android:layout_width="101dp"
-                        android:layout_height="32dp" />
-
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_horizontal">
-
-                    <TextView
-                        android:id="@+id/roof1_result_K1"
-                        android:layout_width="101dp"
-                        android:layout_height="32dp" />
-
-                    <TextView
-                        android:id="@+id/roof1_result_K2"
-                        android:layout_width="101dp"
-                        android:layout_height="32dp" />
-
-                    <TextView
-                        android:id="@+id/roof1_result_N1"
+                        android:id="@+id/roof1_result_02"
                         android:layout_width="101dp"
                         android:layout_height="32dp" />
 
@@ -81,17 +59,17 @@
                     android:gravity="center_horizontal">
 
                     <TextView
-                        android:id="@+id/roof1_result_N2"
+                        android:id="@+id/roof1_result_10"
                         android:layout_width="101dp"
                         android:layout_height="32dp" />
 
                     <TextView
-                        android:id="@+id/roof1_result_M1"
+                        android:id="@+id/roof1_result_11"
                         android:layout_width="101dp"
                         android:layout_height="32dp" />
 
                     <TextView
-                        android:id="@+id/roof1_result_M2"
+                        android:id="@+id/roof1_result_12"
                         android:layout_width="101dp"
                         android:layout_height="32dp" />
 
@@ -103,17 +81,39 @@
                     android:gravity="center_horizontal">
 
                     <TextView
-                        android:id="@+id/roof1_result_H2"
+                        android:id="@+id/roof1_result_20"
                         android:layout_width="101dp"
                         android:layout_height="32dp" />
 
                     <TextView
-                        android:id="@+id/roof1_result_H1"
+                        android:id="@+id/roof1_result_21"
                         android:layout_width="101dp"
                         android:layout_height="32dp" />
 
                     <TextView
-                        android:id="@+id/roof1_result_Cd"
+                        android:id="@+id/roof1_result_22"
+                        android:layout_width="101dp"
+                        android:layout_height="32dp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal">
+
+                    <TextView
+                        android:id="@+id/roof1_result_30"
+                        android:layout_width="101dp"
+                        android:layout_height="32dp" />
+
+                    <TextView
+                        android:id="@+id/roof1_result_31"
+                        android:layout_width="101dp"
+                        android:layout_height="32dp" />
+
+                    <TextView
+                        android:id="@+id/roof1_result_32"
                         android:layout_width="101dp"
                         android:layout_height="32dp" />
 
@@ -125,12 +125,12 @@
                     android:layout_height="match_parent" >
 
                     <TextView
-                        android:id="@+id/roof1_result_Nr"
+                        android:id="@+id/roof1_result_40"
                         android:layout_width="101dp"
                         android:layout_height="32dp" />
 
                     <TextView
-                        android:id="@+id/roof1_result_Pk"
+                        android:id="@+id/roof1_result_41"
                         android:layout_width="101dp"
                         android:layout_height="32dp" />
                 </TableRow>
