@@ -258,6 +258,7 @@
                         android:importantForAutofill="no"
                         android:inputType="number|numberDecimal"
                         android:minHeight="48dp"
+                        android:textAlignment="viewStart"
                         android:textColorHint="#757575"
                         tools:ignore="DuplicateSpeakableTextCheck" />
 

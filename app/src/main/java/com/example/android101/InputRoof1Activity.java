@@ -77,7 +77,7 @@ public class InputRoof1Activity extends AppCompatActivity {
         edt_g_pk = findViewById(R.id.roof1_input_31);
         edt_g_pk.setHint("Podaj g_pk");
         edt_g_kr = findViewById(R.id.roof1_input_50);
-        edt_g_kr.setHint("Podaj g_pk");
+        edt_g_kr.setHint("Podaj g_kr");
         edt_s_kr = findViewById(R.id.roof1_input_51);
         edt_s_kr.setHint("Podaj s_kr");
 
