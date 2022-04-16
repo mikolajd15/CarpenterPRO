@@ -1,8 +1,5 @@
 package com.example.android101;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,7 +10,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -44,6 +45,78 @@ public class InputRoof1Activity extends AppCompatActivity {
         @Override
         public void afterTextChanged(Editable editable) {
             countButton.setEnabled(allFieldsAreFilled());
+        }
+    };
+
+    private void dynamicTextColorChanger(EditText edt) {
+        if (edt == edt_alpha || edt == edt_beta) {
+            boolean alpha_and_beta_are_filled = !TextUtils.isEmpty(edt_alpha.getText()) && !TextUtils.isEmpty(edt_beta.getText());
+            if (alpha_and_beta_are_filled) {
+                double alpha_value = Double.parseDouble(edt_alpha.getText().toString());
+                double beta_value = Double.parseDouble(edt_beta.getText().toString());
+                if (alpha_value >= beta_value) {
+                    edt_alpha.setTextColor(getResources().getColor(R.color.red));
+                    edt_beta.setTextColor(getResources().getColor(R.color.red));
+                } else {
+                    edt_alpha.setTextColor(getResources().getColor(R.color.black));
+                    edt_beta.setTextColor(getResources().getColor(R.color.black));
+                }
+            }
+        }
+
+        if (!TextUtils.isEmpty(edt.getText())) {
+            double value = Double.parseDouble(edt.getText().toString());
+            if (value <= 0 || value >= 90) {
+                edt.setTextColor(getResources().getColor(R.color.red));
+            } else {
+                edt.setTextColor(getResources().getColor(R.color.black));
+            }
+        }
+    }
+
+    private final TextWatcher watcherForTheta = new TextWatcher() {
+
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            dynamicTextColorChanger(edt_theta);
+        }
+    };
+    private final TextWatcher watcherForAlpha = new TextWatcher() {
+
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            dynamicTextColorChanger(edt_alpha);
+        }
+    };
+    private final TextWatcher watcherForBeta = new TextWatcher() {
+
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+            dynamicTextColorChanger(edt_beta);
         }
     };
 
@@ -90,6 +163,7 @@ public class InputRoof1Activity extends AppCompatActivity {
             edt_S = findViewById(R.id.roof1_input_11);
             edt_S.setHint("Podaj S");
             edt_theta = findViewById(R.id.roof1_input_20);
+            edt_theta.addTextChangedListener(watcherForTheta);
             edt_theta.setHint("Podaj theta");
             edt_C = findViewById(R.id.roof1_input_21);
             edt_C.setHint("Podaj C");
@@ -115,8 +189,10 @@ public class InputRoof1Activity extends AppCompatActivity {
 
         } else if (roof_type == 3) {
             edt_alpha = findViewById(R.id.roof1_input_20);
+            edt_alpha.addTextChangedListener(watcherForAlpha);
             edt_alpha.setHint("Podaj alpha");
             edt_beta = findViewById(R.id.roof1_input_21);
+            edt_beta.addTextChangedListener(watcherForBeta);
             edt_beta.setHint("Podaj beta");
             edt_A1 = findViewById(R.id.roof1_input_60);
             edt_A1.setHint("Podaj A1");
@@ -139,14 +215,13 @@ public class InputRoof1Activity extends AppCompatActivity {
         for (EditText edt : editTextList) {
             edt.addTextChangedListener(watcher);
         }
-
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
     private void setImages(int roof_type) {
 
-        ImageView roof_image_view_top = (ImageView) findViewById(R.id.iv_roof_image_top);
-        ImageView roof_image_view_bot = (ImageView) findViewById(R.id.iv_roof_image_bot);
+        ImageView roof_image_view_top = findViewById(R.id.iv_roof_image_top);
+        ImageView roof_image_view_bot = findViewById(R.id.iv_roof_image_bot);
         if (roof_type == 1) {
             roof_image_view_top.setImageDrawable(getResources().getDrawable(R.drawable.jednospadowy_budynek, getApplicationContext().getTheme()));
             roof_image_view_bot.setImageDrawable(getResources().getDrawable(R.drawable.jednospadowy_rzut_dachu, getApplicationContext().getTheme()));
@@ -213,6 +288,7 @@ public class InputRoof1Activity extends AppCompatActivity {
             double theta_value = Double.parseDouble(edt_theta.getText().toString());
             if (theta_value <= 0 || theta_value >= 90) {
                 Toasty.warning(getApplicationContext(), "Niepoprawna wartość dla theta: " + theta_value, Toast.LENGTH_LONG, true).show();
+                ((ScrollView) findViewById(R.id.scroll_view_inputs)).smoothScrollTo(edt_theta.getScrollX(), edt_theta.getScrollY());
                 return false;
             }
         } else if (roof_type == 3) {
@@ -220,14 +296,17 @@ public class InputRoof1Activity extends AppCompatActivity {
             double beta_value = Double.parseDouble(edt_beta.getText().toString());
             if (alpha_value <= 0 || alpha_value >= 90) {
                 Toasty.warning(getApplicationContext(), "Niepoprawna wartość dla alpha: " + alpha_value, Toast.LENGTH_SHORT, true).show();
+                ((ScrollView) findViewById(R.id.scroll_view_inputs)).smoothScrollTo(edt_alpha.getScrollX(), edt_alpha.getScrollY());
                 return false;
             }
             if (beta_value <= 0 || beta_value >= 90) {
                 Toasty.warning(getApplicationContext(), "Niepoprawna wartość dla beta: " + beta_value, Toast.LENGTH_SHORT, true).show();
+                ((ScrollView) findViewById(R.id.scroll_view_inputs)).smoothScrollTo(edt_beta.getScrollX(), edt_beta.getScrollY());
                 return false;
             }
             if (alpha_value >= beta_value) {
                 Toasty.warning(getApplicationContext(), "Alpha musi być mniejsze od beta", Toast.LENGTH_LONG, true).show();
+                ((ScrollView) findViewById(R.id.scroll_view_inputs)).smoothScrollTo(edt_alpha.getScrollX(), edt_alpha.getScrollY());
                 return false;
             }
 

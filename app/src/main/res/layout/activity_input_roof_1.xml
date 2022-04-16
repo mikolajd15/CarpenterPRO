@@ -20,6 +20,7 @@
         tools:ignore="UsingOnClickInXml" />
 
     <ScrollView
+        android:id="@+id/scroll_view_inputs"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -43,15 +44,13 @@
             <TableLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                >
+                android:adjustViewBounds="true">
 
                 <TableRow
-                    android:gravity="center_horizontal"
                     android:layout_width="fill_parent"
                     android:layout_height="match_parent"
                     android:adjustViewBounds="true"
-                    >
+                    android:gravity="center_horizontal">
 
                     <EditText
                         android:id="@+id/roof1_input_00"
@@ -85,9 +84,9 @@
                 </TableRow>
 
                 <TableRow
-                    android:gravity="center_horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal">
 
                     <EditText
                         android:id="@+id/roof1_input_10"
@@ -120,9 +119,9 @@
                 </TableRow>
 
                 <TableRow
-                    android:gravity="center_horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal">
 
                     <EditText
                         android:id="@+id/roof1_input_20"
@@ -154,9 +153,9 @@
                 </TableRow>
 
                 <TableRow
-                    android:gravity="center_horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal">
 
                     <EditText
                         android:id="@+id/roof1_input_30"
