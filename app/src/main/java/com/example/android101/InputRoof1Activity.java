@@ -48,28 +48,25 @@ public class InputRoof1Activity extends AppCompatActivity {
         }
     };
 
-    private void dynamicTextColorChanger(EditText edt) {
-        if (edt == edt_alpha || edt == edt_beta) {
-            boolean alpha_and_beta_are_filled = !TextUtils.isEmpty(edt_alpha.getText()) && !TextUtils.isEmpty(edt_beta.getText());
-            if (alpha_and_beta_are_filled) {
-                double alpha_value = Double.parseDouble(edt_alpha.getText().toString());
-                double beta_value = Double.parseDouble(edt_beta.getText().toString());
-                if (alpha_value >= beta_value) {
+    private void dynamicTextColorChanger() {
+        boolean alpha_and_beta_are_filled = !TextUtils.isEmpty(edt_alpha.getText()) && !TextUtils.isEmpty(edt_beta.getText());
+        if (alpha_and_beta_are_filled) {
+            double alpha_value = Double.parseDouble(edt_alpha.getText().toString());
+            double beta_value = Double.parseDouble(edt_beta.getText().toString());
+            if (alpha_value >= beta_value) {
+                edt_alpha.setTextColor(getResources().getColor(R.color.red));
+                edt_beta.setTextColor(getResources().getColor(R.color.red));
+            } else {
+                if (alpha_value <= 0 || alpha_value >= 90) {
                     edt_alpha.setTextColor(getResources().getColor(R.color.red));
-                    edt_beta.setTextColor(getResources().getColor(R.color.red));
                 } else {
                     edt_alpha.setTextColor(getResources().getColor(R.color.black));
+                }
+                if (beta_value <= 0 || beta_value >= 90) {
+                    edt_beta.setTextColor(getResources().getColor(R.color.red));
+                } else {
                     edt_beta.setTextColor(getResources().getColor(R.color.black));
                 }
-            }
-        }
-
-        if (!TextUtils.isEmpty(edt.getText())) {
-            double value = Double.parseDouble(edt.getText().toString());
-            if (value <= 0 || value >= 90) {
-                edt.setTextColor(getResources().getColor(R.color.red));
-            } else {
-                edt.setTextColor(getResources().getColor(R.color.black));
             }
         }
     }
@@ -86,7 +83,14 @@ public class InputRoof1Activity extends AppCompatActivity {
 
         @Override
         public void afterTextChanged(Editable editable) {
-            dynamicTextColorChanger(edt_theta);
+            if (!TextUtils.isEmpty(edt_theta.getText())) {
+                double value = Double.parseDouble(edt_theta.getText().toString());
+                if (value <= 0 || value >= 90) {
+                    edt_theta.setTextColor(getResources().getColor(R.color.red));
+                } else {
+                    edt_theta.setTextColor(getResources().getColor(R.color.black));
+                }
+            }
         }
     };
     private final TextWatcher watcherForAlpha = new TextWatcher() {
@@ -101,7 +105,7 @@ public class InputRoof1Activity extends AppCompatActivity {
 
         @Override
         public void afterTextChanged(Editable editable) {
-            dynamicTextColorChanger(edt_alpha);
+            dynamicTextColorChanger();
         }
     };
     private final TextWatcher watcherForBeta = new TextWatcher() {
@@ -116,7 +120,7 @@ public class InputRoof1Activity extends AppCompatActivity {
 
         @Override
         public void afterTextChanged(Editable editable) {
-            dynamicTextColorChanger(edt_beta);
+            dynamicTextColorChanger();
         }
     };
 
