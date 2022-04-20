@@ -81,7 +81,7 @@ public class InputRoof1Activity extends AppCompatActivity {
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
         }
 
-        @Override
+        @Override//TODO dodaj sprawdzenie czy nie jest kropką ani przecinkiem
         public void afterTextChanged(Editable editable) {
             if (!TextUtils.isEmpty(edt_theta.getText())) {
                 double value = Double.parseDouble(edt_theta.getText().toString());
