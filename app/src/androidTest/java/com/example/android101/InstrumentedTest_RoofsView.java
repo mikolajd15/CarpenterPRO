@@ -65,7 +65,7 @@ public class InstrumentedTest_RoofsView {
     public ActivityScenarioRule<MainActivity> mainActivityRule = new ActivityScenarioRule<>(MainActivity.class);
 
     @Test
-    public void countingValuesForRoof_1_isCorrect() {
+    public void countingValuesFor_Roof1_isCorrect() {
         Intents.init();
         // Go to roof 1
         onView(withId(R.id.button_roof_1)).perform(click());
@@ -106,7 +106,7 @@ public class InstrumentedTest_RoofsView {
     }
 
     @Test
-    public void countingValuesForRoof_2_isCorrect() {
+    public void countingValuesFor_Roof2_isCorrect() {
         Intents.init();
         // Go to roof 1
         onView(withId(R.id.button_roof_2)).perform(click());
@@ -146,7 +146,7 @@ public class InstrumentedTest_RoofsView {
     }
 
     @Test
-    public void countingValuesForRoof_3_isCorrect() {
+    public void countingValuesFor_Roof3_isCorrect() {
         Intents.init();
         // Go to roof 1
         onView(withId(R.id.button_roof_3)).perform(click());
@@ -190,7 +190,7 @@ public class InstrumentedTest_RoofsView {
     }
 
     @Test
-    public void toastsForRoof_1_areCorrect() throws InterruptedException {
+    public void toastsFor_Roof1_areCorrect() throws InterruptedException {
         // Initialize decor view needed for checking toasts
         mainActivityRule.getScenario().onActivity(activity -> {
             decorView = activity.getWindow().getDecorView();
@@ -234,7 +234,7 @@ public class InstrumentedTest_RoofsView {
     }
 
     @Test
-    public void toastsForRoof_2_areCorrect() throws InterruptedException {
+    public void toastsFor_Roof2_areCorrect() throws InterruptedException {
         // Initialize decor view needed for checking toasts
         mainActivityRule.getScenario().onActivity(activity -> {
             decorView = activity.getWindow().getDecorView();
@@ -277,7 +277,7 @@ public class InstrumentedTest_RoofsView {
     }
 
     @Test
-    public void toastsForRoof_3_areCorrect() throws InterruptedException {
+    public void toastsFor_Roof3_areCorrect() throws InterruptedException {
         // Initialize decor view needed for checking toasts
         mainActivityRule.getScenario().onActivity(activity -> {
             decorView = activity.getWindow().getDecorView();

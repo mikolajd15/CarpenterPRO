@@ -6,6 +6,7 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.intent.Intents.intended;
 import static androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent;
 import static androidx.test.espresso.intent.matcher.IntentMatchers.hasExtra;
+import static androidx.test.espresso.intent.matcher.IntentMatchers.hasExtraWithKey;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.isEnabled;
 import static androidx.test.espresso.matcher.ViewMatchers.withHint;
@@ -43,15 +44,17 @@ public class InstrumentedTest_MainView {
         onView(withText("Dach dwuspadowy")).check(matches(isDisplayed()));
         onView(withText("Dach niesymetryczny")).check(matches(isDisplayed()));
         onView(withText("Dach 4")).check(matches(isDisplayed()));
+        onView(withText("Ekran logowania")).check(matches(isDisplayed()));
 
         onView(withId(R.id.button_roof_1)).check(matches(withText("Dach jednospadowy")));
         onView(withId(R.id.button_roof_2)).check(matches(withText("Dach dwuspadowy")));
         onView(withId(R.id.button_roof_3)).check(matches(withText("Dach niesymetryczny")));
         onView(withId(R.id.button_roof_4)).check(matches(withText("Dach 4")));
+        onView(withId(R.id.button_login_screen)).check(matches(withText("Ekran logowania")));
     }
 
     @Test
-    public void navigationToRoof_1_isCorrect() {
+    public void navigationTo_Roof1_isCorrect() {
         Intents.init();
         // Go to roof 1
         onView(withId(R.id.button_roof_1)).perform(click());
@@ -79,7 +82,7 @@ public class InstrumentedTest_MainView {
     }
 
     @Test
-    public void navigationToRoof_2_isCorrect() {
+    public void navigationTo_Roof2_isCorrect() {
         Intents.init();
         // Go to roof 1
         onView(withId(R.id.button_roof_2)).perform(click());
@@ -107,7 +110,7 @@ public class InstrumentedTest_MainView {
     }
 
     @Test
-    public void navigationToRoof_3_isCorrect() {
+    public void navigationTo_Roof3_isCorrect() {
         Intents.init();
         // Go to roof 1
         onView(withId(R.id.button_roof_3)).perform(click());
@@ -131,6 +134,24 @@ public class InstrumentedTest_MainView {
         onView(withHint("Podaj B1")).perform(ViewActions.scrollTo()).check(matches(isDisplayed()));
         // Check that button is initially disabled
         onView(withId(R.id.button_roof1_count)).check(matches(not(isEnabled())));
+        Intents.release();
+    }
+
+    @Test
+    public void navigationTo_LoginScreen_isCorrect() {
+        Intents.init();
+        // Go back to login screen
+        onView(withId(R.id.button_login_screen)).perform(click());
+        // Check that correct activity is displayed
+        intended(not(hasExtraWithKey("ROOF_TYPE")));
+        intended(hasComponent(LoginMainActivity.class.getName()));
+        // Check that all needed input views are present
+        onView(withHint("Email")).check(matches(isDisplayed()));
+        onView(withHint("Password")).check(matches(isDisplayed()));
+
+        onView(withText("Login")).check(matches(isDisplayed()));
+        onView(withText("Rejestracja")).check(matches(isDisplayed()));
+
         Intents.release();
     }
 }

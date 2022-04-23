@@ -32,4 +32,9 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("ROOF_TYPE", 3);
         startActivity(intent);
     }
+
+    public void openLoginScreen(View view){
+        Intent intent = new Intent(this, LoginMainActivity.class);
+        startActivity(intent);
+    }
 }

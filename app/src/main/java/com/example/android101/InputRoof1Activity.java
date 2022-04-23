@@ -1,15 +1,18 @@
 package com.example.android101;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
@@ -32,6 +35,13 @@ public class InputRoof1Activity extends AppCompatActivity {
     ArrayList<EditText> editTextList;
     Button countButton;
     int roof_type;
+
+    private void hideKeyboard() {
+        LinearLayout mainLayout;
+        mainLayout = (LinearLayout) findViewById(R.id.inputs_lin_layout);
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(mainLayout.getWindowToken(), 0);
+    }
 
     private final TextWatcher watcher = new TextWatcher() {
         @Override
@@ -84,6 +94,10 @@ public class InputRoof1Activity extends AppCompatActivity {
         @Override//TODO dodaj sprawdzenie czy nie jest kropką ani przecinkiem
         public void afterTextChanged(Editable editable) {
             if (!TextUtils.isEmpty(edt_theta.getText())) {
+                if (TextUtils.equals(edt_theta.getText(), ".")) {
+                    edt_theta.setText("0.");
+                    edt_theta.setSelection(2);
+                }
                 double value = Double.parseDouble(edt_theta.getText().toString());
                 if (value <= 0 || value >= 90) {
                     edt_theta.setTextColor(getResources().getColor(R.color.red));
@@ -105,6 +119,10 @@ public class InputRoof1Activity extends AppCompatActivity {
 
         @Override
         public void afterTextChanged(Editable editable) {
+            if (TextUtils.equals(edt_alpha.getText(), ".")) {
+                edt_alpha.setText("0.");
+                edt_alpha.setSelection(2);
+            }
             dynamicTextColorChanger();
         }
     };
@@ -120,6 +138,10 @@ public class InputRoof1Activity extends AppCompatActivity {
 
         @Override
         public void afterTextChanged(Editable editable) {
+            if (TextUtils.equals(edt_beta.getText(), ".")) {
+                edt_beta.setText("0.");
+                edt_beta.setSelection(2);
+            }
             dynamicTextColorChanger();
         }
     };
@@ -338,7 +360,7 @@ public class InputRoof1Activity extends AppCompatActivity {
             intent.putExtra("EXTRA_ROOF1_RESULTS_MAP", results);
             startActivity(intent);
         } else {
-
+            hideKeyboard();
         }
     }
 }
