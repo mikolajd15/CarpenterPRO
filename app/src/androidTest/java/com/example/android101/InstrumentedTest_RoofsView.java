@@ -1,6 +1,5 @@
 package com.example.android101;
 
-import static androidx.coordinatorlayout.widget.CoordinatorLayout.Behavior.setTag;
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.clearText;
 import static androidx.test.espresso.action.ViewActions.click;
@@ -21,8 +20,6 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertEquals;
 
-import android.content.Context;
-import android.graphics.Color;
 import android.view.View;
 
 import androidx.test.espresso.UiController;
@@ -31,7 +28,6 @@ import androidx.test.espresso.action.ViewActions;
 import androidx.test.espresso.intent.Intents;
 import androidx.test.espresso.matcher.ViewMatchers;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
-import androidx.test.platform.app.InstrumentationRegistry;
 
 import org.hamcrest.Matcher;
 import org.junit.Rule;
@@ -71,7 +67,7 @@ public class InstrumentedTest_RoofsView {
         onView(withId(R.id.button_roof_1)).perform(click());
         // Check that correct activity InputRoof1Activity is displayed
         intended(hasExtra("ROOF_TYPE", 1));
-        intended(hasComponent(InputRoof1Activity.class.getName()));
+        intended(hasComponent(UserInputsActivity.class.getName()));
         // Pass reference values:
         onView(withHint("Podaj A")).perform(typeText("500"), closeSoftKeyboard());
         onView(withHint("Podaj B")).perform(typeText("1"), closeSoftKeyboard());
@@ -93,7 +89,7 @@ public class InstrumentedTest_RoofsView {
         onView(withId(R.id.button_roof1_count)).check(matches(isEnabled())).perform(click());
         // // Check that correct activity ResultRoof1Activity is displayed
         intended(hasExtra("ROOF_TYPE", 1));
-        intended(hasComponent(ResultRoof1Activity.class.getName()));
+        intended(hasComponent(ResultsActivity.class.getName()));
         // Verify results
         onView(withText("Ɣ = 60.00")).check(matches(isDisplayed()));
         onView(withText("Lc = 702.06")).check(matches(isDisplayed()));
@@ -112,7 +108,7 @@ public class InstrumentedTest_RoofsView {
         onView(withId(R.id.button_roof_2)).perform(click());
         // Check that correct activity InputRoof1Activity is displayed
         intended(hasExtra("ROOF_TYPE", 2));
-        intended(hasComponent(InputRoof1Activity.class.getName()));
+        intended(hasComponent(UserInputsActivity.class.getName()));
         // Pass reference values:
         onView(withHint("Podaj A")).perform(typeText("984"), closeSoftKeyboard());
         onView(withHint("Podaj B")).perform(typeText("1"), closeSoftKeyboard());
@@ -133,7 +129,7 @@ public class InstrumentedTest_RoofsView {
         onView(withId(R.id.button_roof1_count)).check(matches(isEnabled())).perform(click());
         // // Check that correct activity ResultRoof1Activity is displayed
         intended(hasExtra("ROOF_TYPE", 2));
-        intended(hasComponent(ResultRoof1Activity.class.getName()));
+        intended(hasComponent(ResultsActivity.class.getName()));
         // Verify results
         onView(withText("Ɣ = 60.00")).check(matches(isDisplayed()));
         onView(withText("Lc = 669.73")).check(matches(isDisplayed()));
@@ -152,7 +148,7 @@ public class InstrumentedTest_RoofsView {
         onView(withId(R.id.button_roof_3)).perform(click());
         // Check that correct activity InputRoof1Activity is displayed
         intended(hasExtra("ROOF_TYPE", 3));
-        intended(hasComponent(InputRoof1Activity.class.getName()));
+        intended(hasComponent(UserInputsActivity.class.getName()));
         // Pass reference values:
         onView(withHint("Podaj A")).perform(typeText("300"), closeSoftKeyboard());
         onView(withHint("Podaj B")).perform(typeText("200"), closeSoftKeyboard());
@@ -175,7 +171,7 @@ public class InstrumentedTest_RoofsView {
         onView(withId(R.id.button_roof1_count)).check(matches(isEnabled())).perform(click());
         // // Check that correct activity ResultRoof1Activity is displayed
         intended(hasExtra("ROOF_TYPE", 3));
-        intended(hasComponent(ResultRoof1Activity.class.getName()));
+        intended(hasComponent(ResultsActivity.class.getName()));
         // Verify results
         onView(withText("LAc = 397.22")).check(matches(isDisplayed()));
         onView(withText("LBp = 325.27")).check(matches(isDisplayed()));
@@ -201,7 +197,7 @@ public class InstrumentedTest_RoofsView {
         onView(withId(R.id.button_roof_1)).perform(click());
         // Check that correct activity is displayed
         intended(hasExtra("ROOF_TYPE", 1));
-        intended(hasComponent(InputRoof1Activity.class.getName()));
+        intended(hasComponent(UserInputsActivity.class.getName()));
         // Fill input parameters
         onView(withHint("Podaj A")).perform(typeText("500"), closeSoftKeyboard());
         onView(withHint("Podaj B")).perform(typeText("1"), closeSoftKeyboard());
@@ -245,7 +241,7 @@ public class InstrumentedTest_RoofsView {
         onView(withId(R.id.button_roof_2)).perform(click());
         // Check that correct activity is displayed
         intended(hasExtra("ROOF_TYPE", 2));
-        intended(hasComponent(InputRoof1Activity.class.getName()));
+        intended(hasComponent(UserInputsActivity.class.getName()));
         // Fill input parameters
         onView(withHint("Podaj A")).perform(typeText("500"), closeSoftKeyboard());
         onView(withHint("Podaj B")).perform(typeText("1"), closeSoftKeyboard());
@@ -288,7 +284,7 @@ public class InstrumentedTest_RoofsView {
         onView(withId(R.id.button_roof_3)).perform(click());
         // Check that correct activity is displayed
         intended(hasExtra("ROOF_TYPE", 3));
-        intended(hasComponent(InputRoof1Activity.class.getName()));
+        intended(hasComponent(UserInputsActivity.class.getName()));
         // Fill input parameters
         onView(withHint("Podaj A")).perform(typeText("300"), closeSoftKeyboard());
         onView(withHint("Podaj B")).perform(typeText("200"), closeSoftKeyboard());

@@ -29,6 +29,7 @@ public class LoginMainActivity extends AppCompatActivity {
 
     private EditText etEmail, etPassword;
     private String email, password;
+    // TODO jak się podpiąć pod inną bazę danych
     private final String URL = "http://91.223.167.210:99/login/login.php"; //tutaj musi byc adres ip bo emuator nie dziala na localhost
 
     private void hideKeyboard() {

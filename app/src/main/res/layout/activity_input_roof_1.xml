@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:longClickable="false"
-    tools:context=".InputRoof1Activity">
+    tools:context=".UserInputsActivity">
 
     <Button
         android:id="@+id/button_roof1_count"

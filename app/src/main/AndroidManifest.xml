@@ -35,15 +35,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".InputRoof1Activity"
+            android:name=".UserInputsActivity"
             android:exported="false"
             android:launchMode="singleTop"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".ResultRoof1Activity"
+            android:name=".ResultsActivity"
             android:exported="false"
             android:launchMode="singleTop"
-            android:parentActivityName=".InputRoof1Activity" />
+            android:parentActivityName=".UserInputsActivity" />
 
     </application>
 

@@ -14,21 +14,21 @@ public class MainActivity extends AppCompatActivity {
 
     /** Called when the user taps the Roof1 button */
     public void openRoof1View(View view){
-        Intent intent = new Intent(this, InputRoof1Activity.class);
+        Intent intent = new Intent(this, UserInputsActivity.class);
         intent.putExtra("ROOF_TYPE", 1);
         startActivity(intent);
     }
 
     /** Called when the user taps the Roof2 button */
     public void openRoof2View(View view){
-        Intent intent = new Intent(this, InputRoof1Activity.class);
+        Intent intent = new Intent(this, UserInputsActivity.class);
         intent.putExtra("ROOF_TYPE", 2);
         startActivity(intent);
     }
 
     /** Called when the user taps the Roof3 button */
     public void openRoof3View(View view){
-        Intent intent = new Intent(this, InputRoof1Activity.class);
+        Intent intent = new Intent(this, UserInputsActivity.class);
         intent.putExtra("ROOF_TYPE", 3);
         startActivity(intent);
     }

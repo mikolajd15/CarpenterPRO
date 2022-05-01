@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import java.util.HashMap;
 
-public class ResultRoof1Activity extends AppCompatActivity {
+public class ResultsActivity extends AppCompatActivity {
     int roof_type;
     HashMap<String, Double> results;
     String result_string_gamma, result_string_H1, result_string_H2, result_string_Lp,
@@ -74,7 +74,7 @@ public class ResultRoof1Activity extends AppCompatActivity {
         tv_K2.setText(String.format("K2 = %s", String.format("%.2f", results.get("K2"))));
         tv_K1.setText(String.format("K1 = %s", String.format("%.2f", results.get("K1"))));
         tv_Pk.setText(String.format("Pk = %s", String.format("%.2f", results.get("Pk"))));
-        tv_Cd.setText(String.format("Pole dachu = %s", String.format("%.2f", results.get("Area"))));
+        tv_Cd.setText(String.format("Pole = %s", String.format("%.2f", results.get("Area"))));
         tv_Nr.setText(String.format("Nr = %s", String.format("%.2f", results.get("Nr"))));
     }
 

@@ -25,7 +25,7 @@ import java.util.HashMap;
 
 import es.dmoral.toasty.Toasty;
 
-public class InputRoof1Activity extends AppCompatActivity {
+public class UserInputsActivity extends AppCompatActivity {
 
     EditText edt_theta, edt_B, edt_A, edt_D, edt_E, edt_C, edt_S,
             edt_s_mu, edt_g_pk, edt_g_kr, edt_s_kr, edt_fpk, edt_k_max;
@@ -256,7 +256,6 @@ public class InputRoof1Activity extends AppCompatActivity {
             roof_image_view_bot.setImageDrawable(getResources().getDrawable(R.drawable.dwuspadowy_symetryczny_rzut_krokwi, getApplicationContext().getTheme()));
         } else if (roof_type == 3) {
             roof_image_view_top.setImageDrawable(getResources().getDrawable(R.drawable.dwuspadowy_niesymetryczny_budynek, getApplicationContext().getTheme()));
-            //TODO zmien obrazek na niesymetryczny_rzut_krokwi
             roof_image_view_bot.setImageDrawable(getResources().getDrawable(R.drawable.dwuspadowy_symetryczny_rzut_krokwi, getApplicationContext().getTheme()));
         } else {
             throw new IllegalArgumentException("Incorrect roof type: " + roof_type);
@@ -346,7 +345,7 @@ public class InputRoof1Activity extends AppCompatActivity {
 
         if (fieldsAreFilledCorrectly(roof_type)) {
             // Create Intent and list objects
-            Intent intent = new Intent(this, ResultRoof1Activity.class);
+            Intent intent = new Intent(this, ResultsActivity.class);
             intent.putExtra("ROOF_TYPE", roof_type);
 
             // Prepare Inputs map for Carpenter

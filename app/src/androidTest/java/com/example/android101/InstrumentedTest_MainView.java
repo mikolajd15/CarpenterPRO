@@ -60,7 +60,7 @@ public class InstrumentedTest_MainView {
         onView(withId(R.id.button_roof_1)).perform(click());
         // Check that correct activity is displayed
         intended(hasExtra("ROOF_TYPE", 1));
-        intended(hasComponent(InputRoof1Activity.class.getName()));
+        intended(hasComponent(UserInputsActivity.class.getName()));
         // Check that all needed input views are present
         onView(withHint("Podaj A")).check(matches(isDisplayed()));
         onView(withHint("Podaj B")).check(matches(isDisplayed()));
@@ -88,7 +88,7 @@ public class InstrumentedTest_MainView {
         onView(withId(R.id.button_roof_2)).perform(click());
         // Check that correct activity is displayed
         intended(hasExtra("ROOF_TYPE", 2));
-        intended(hasComponent(InputRoof1Activity.class.getName()));
+        intended(hasComponent(UserInputsActivity.class.getName()));
         // Check that all needed input views are present
         onView(withHint("Podaj A")).check(matches(isDisplayed()));
         onView(withHint("Podaj B")).check(matches(isDisplayed()));
@@ -116,7 +116,7 @@ public class InstrumentedTest_MainView {
         onView(withId(R.id.button_roof_3)).perform(click());
         // Check that correct activity is displayed
         intended(hasExtra("ROOF_TYPE", 3));
-        intended(hasComponent(InputRoof1Activity.class.getName()));
+        intended(hasComponent(UserInputsActivity.class.getName()));
         // Check that all needed input views are present
         onView(withHint("Podaj A")).check(matches(isDisplayed()));
         onView(withHint("Podaj B")).check(matches(isDisplayed()));
