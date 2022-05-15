@@ -80,7 +80,7 @@ public class Carpenter {
             no_areas = Math.floor(result_Cd / (input_g_kr + input_k_max)) + 1;
             result_Nr = no_areas + 3;
         }
-        result_Pk = result_Cd / no_areas - input_g_kr;
+        result_Pk = 0;//result_Cd / no_areas - input_g_kr; //TODO
         result_Area = result_Lp * input_B;
     }
 
@@ -99,7 +99,7 @@ public class Carpenter {
         result_N1 = result_N2 - input_S / Math.sin(Math.toRadians(input_theta));
         result_K2 = (input_g_pk / 2) / Math.cos(Math.toRadians(input_theta));
         double result_S1 = result_K2 - input_S / Math.sin(Math.toRadians(input_theta));
-        result_K1 = result_S1;
+        result_K1 = 0;//result_S1; //TODO
 
         // copy paste z dachu 1
         double result_Cd;
@@ -113,7 +113,7 @@ public class Carpenter {
             no_areas = Math.floor(result_Cd / (input_g_kr + input_k_max)) + 1;
             result_Nr = no_areas + 3;
         }
-        result_Pk = result_Cd / no_areas - input_g_kr;
+        result_Pk = 0;//result_Cd / no_areas - input_g_kr; //TODO
         result_Area = result_Lp * input_B;
     }
 

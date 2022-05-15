@@ -91,7 +91,7 @@ public class UserInputsActivity extends AppCompatActivity {
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
         }
 
-        @Override//TODO dodaj sprawdzenie czy nie jest kropką ani przecinkiem
+        @Override
         public void afterTextChanged(Editable editable) {
             if (!TextUtils.isEmpty(edt_theta.getText())) {
                 if (TextUtils.equals(edt_theta.getText(), ".")) {
@@ -342,7 +342,6 @@ public class UserInputsActivity extends AppCompatActivity {
     }
 
     public void showResultsRoof1(View view) {
-
         if (fieldsAreFilledCorrectly(roof_type)) {
             // Create Intent and list objects
             Intent intent = new Intent(this, ResultsActivity.class);
@@ -355,6 +354,14 @@ public class UserInputsActivity extends AppCompatActivity {
             // Calculate the result using Roofer class
             HashMap<String, Double> results = carpenter.prepareResults(roof_type);
 
+            //Check if all results are non negative
+            for (Double result : results.values()) {
+                if (result < 0) {
+                    hideKeyboard();
+                    Toasty.warning(getApplicationContext(), "Wprowadzono niepoprawne dane", Toast.LENGTH_LONG, true).show();
+                    return;
+                }
+            }
             // Pass the results and open next activity
             intent.putExtra("EXTRA_ROOF1_RESULTS_MAP", results);
             startActivity(intent);

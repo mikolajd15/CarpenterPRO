@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -99,6 +100,12 @@ public class ResultsActivity extends AppCompatActivity {
         tv_NA1.setText(String.format("NA1 = %s", String.format("%.2f", results.get("NA1"))));
         tv_MA1.setText(String.format("MA1 = %s", String.format("%.2f", results.get("MA1"))));
         tv_PP.setText(String.format("PP = %s", String.format("%.2f", results.get("PP"))));
+
+        ((TextView) findViewById(R.id.roof1_result_30)).setVisibility(View.INVISIBLE);
+        ((TextView) findViewById(R.id.roof1_result_31)).setVisibility(View.INVISIBLE);
+        ((TextView) findViewById(R.id.roof1_result_32)).setVisibility(View.INVISIBLE);
+        ((TextView) findViewById(R.id.roof1_result_40)).setVisibility(View.INVISIBLE);
+        ((TextView) findViewById(R.id.roof1_result_41)).setVisibility(View.INVISIBLE);
     }
 
 }

@@ -3,7 +3,9 @@ package com.example.android101;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -43,6 +45,12 @@ public class RegisterActivity extends AppCompatActivity {
         imm.hideSoftInputFromWindow(mainLayout.getWindowToken(), 0);
     }
 
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return cm.getActiveNetworkInfo() != null && cm.getActiveNetworkInfo().isConnected();
+    }
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,40 +65,49 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void save(View view) {
         hideKeyboard();
-        name = etName.getText().toString().trim();
-        email = etEmail.getText().toString().trim();
-        password = etPassword.getText().toString().trim();
-        reenterPassword = etReenterPassword.getText().toString().trim();
-        if (!password.equals(reenterPassword)) {
-            Toasty.warning(getApplicationContext(), "Hasła nie są zgodne!", Toast.LENGTH_LONG, true).show();
-        } else if (!name.equals("") && !email.equals("") && !password.equals("")) {
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    if (response.equals("\nsuccess")) {
-                        Toasty.success(getApplicationContext(), "Rejestracja poprawna", Toast.LENGTH_LONG, true).show();
-                        btnRegister.setEnabled(false);
-                    } else if (response.equals("\nfailure")) {
-                        Toasty.warning(getApplicationContext(), "Coś poszło nie tak!", Toast.LENGTH_LONG, true).show();
+        if (isNetworkConnected()) {
+            Log.d("Register screen", "Network connected");
+            name = etName.getText().toString().trim();
+            email = etEmail.getText().toString().trim();
+            password = etPassword.getText().toString().trim();
+            reenterPassword = etReenterPassword.getText().toString().trim();
+            if (!password.equals(reenterPassword)) {
+                Toasty.warning(getApplicationContext(), "Hasła nie są zgodne!", Toast.LENGTH_LONG, true).show();
+            } else if (!name.equals("") && !email.equals("") && !password.equals("")) {
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        if (response.equals("\nsuccess")) {
+                            Toasty.success(getApplicationContext(), "Rejestracja poprawna", Toast.LENGTH_LONG, true).show();
+                            btnRegister.setEnabled(false);
+                        } else if (response.equals("\nfailure")) {
+                            Toasty.warning(getApplicationContext(), "Coś poszło nie tak!", Toast.LENGTH_LONG, true).show();
+                        }
                     }
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(getApplicationContext(), error.toString().trim(), Toast.LENGTH_SHORT).show();
-                }
-            }) {
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String> data = new HashMap<>();
-                    data.put("name", name);
-                    data.put("email", email);
-                    data.put("password", password);
-                    return data;
-                }
-            };
-            RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
-            requestQueue.add(stringRequest);
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.toString().trim(), Toast.LENGTH_SHORT).show();
+                    }
+                }) {
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String, String> data = new HashMap<>();
+                        data.put("name", name);
+                        data.put("email", email);
+                        data.put("password", password);
+                        return data;
+                    }
+                };
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                requestQueue.add(stringRequest);
+            } else {
+                Toasty.warning(getApplicationContext(), "Pola nie mogą być puste!", Toast.LENGTH_LONG, true).show();
+            }
+
+        } else {
+            Log.d("Register screen", "Network disconnected");
+            Toasty.error(RegisterActivity.this, "Brak połączenia", Toast.LENGTH_SHORT).show();
         }
     }
 

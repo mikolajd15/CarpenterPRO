@@ -147,10 +147,11 @@ public class InstrumentedTest_MainView {
         intended(hasComponent(LoginMainActivity.class.getName()));
         // Check that all needed input views are present
         onView(withHint("Email")).check(matches(isDisplayed()));
-        onView(withHint("Password")).check(matches(isDisplayed()));
+        onView(withHint("Hasło")).check(matches(isDisplayed()));
 
-        onView(withText("Login")).check(matches(isDisplayed()));
+        onView(withText("Logowanie")).check(matches(isDisplayed()));
         onView(withText("Rejestracja")).check(matches(isDisplayed()));
+        onView(withText("Kontynuuj jako gość")).check(matches(isDisplayed()));
 
         Intents.release();
     }

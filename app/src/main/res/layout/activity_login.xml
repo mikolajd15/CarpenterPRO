@@ -33,26 +33,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Password"
+        android:hint="Hasło"
         android:importantForAutofill="no"
         android:inputType="textPassword"
         android:minHeight="48dp"
         android:textColorHint="#546E7A" />
 
     <Button
+        android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#44a6c6"
         android:onClick="login"
-        android:text="Login"
+        android:text="Logowanie"
         android:textColor="@android:color/white"
         tools:ignore="TextContrastCheck" />
 
     <Button
-        android:id="@+id/btnDontHaveAccountRegister"
+        android:id="@+id/btnRegisterMainScreen"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="register"
         android:text="Rejestracja" />
+
+    <Button
+        android:id="@+id/btnContinueAsGuest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="continueAsGuest"
+        android:text="Kontynuuj jako gość" />
 
 </LinearLayout>
