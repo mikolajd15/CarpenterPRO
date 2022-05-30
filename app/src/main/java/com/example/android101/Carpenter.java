@@ -2,6 +2,7 @@ package com.example.android101;
 
 import androidx.annotation.NonNull;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Carpenter {
@@ -21,18 +22,30 @@ public class Carpenter {
             result_HK, result_HB1, result_NB2,
             result_NA1, result_MA1, result_PP;
 
+    //roof 4 specific inputs
+    double input_g_kk, input_alpha_p, input_beta_p, input_no_kpA, input_no_kpB, input_SA;
+    double result_alpha_A, result_beta_A, result_alpha_B, result_beta_B, result_gamme,
+            result_ksi, result_Hpk, result_B, result_D, result_C, result_fi, result_ni,
+            result_hipa, result_ro, result_w, result_Lk, result_Dkr, result_MNN_A,
+            result_MNN_B, result_L, result_N2_A, result_N1_A, result_N2_B, result_N1_B;
+
+    ArrayList<Double> PAs_list = new ArrayList<>();
+    ArrayList<Double> PBs_list = new ArrayList<>();
+    ArrayList<Double> DKLs_A_list;
+    ArrayList<Double> DKLs_B_list;
+
     Carpenter(@NonNull HashMap<String, Double> inputValuesMap, int roof_type) {
         results = new HashMap<>();
         // common inputs
-        input_B = inputValuesMap.get("B");
         input_A = inputValuesMap.get("A");
-        input_D = inputValuesMap.get("D");
         input_s_kr = inputValuesMap.get("s_kr");
         input_g_kr = inputValuesMap.get("g_kr");
         input_g_pk = inputValuesMap.get("g_pk");
         input_s_mu = inputValuesMap.get("s_mu");
 
         if (roof_type == 1 || roof_type == 2) {
+            input_B = inputValuesMap.get("B");
+            input_D = inputValuesMap.get("D");
             input_theta = inputValuesMap.get("theta");
             input_C = inputValuesMap.get("C");
             input_S = inputValuesMap.get("S");
@@ -44,6 +57,8 @@ public class Carpenter {
             }
 
         } else if (roof_type == 3) {
+            input_B = inputValuesMap.get("B");
+            input_D = inputValuesMap.get("D");
             input_alpha = inputValuesMap.get("alpha");
             input_beta = inputValuesMap.get("beta");
             input_A1 = inputValuesMap.get("A1");
@@ -51,6 +66,16 @@ public class Carpenter {
             input_SB = inputValuesMap.get("SB");
             input_g_mu = inputValuesMap.get("g_mu");
             input_E = inputValuesMap.get("E");
+
+        } else if (roof_type == 4) {
+            input_g_kk = inputValuesMap.get("g_kk");
+            input_alpha_p = inputValuesMap.get("alpha_p");
+            input_beta_p = inputValuesMap.get("beta_p");
+            input_no_kpA = inputValuesMap.get("no_kpA");
+            input_no_kpB = inputValuesMap.get("no_kpB");
+            input_E = inputValuesMap.get("E");
+            input_SA = inputValuesMap.get("SA");
+
         }
     }
 
@@ -155,6 +180,58 @@ public class Carpenter {
 
     }
 
+    void countRoof4Values() {
+        if (input_alpha_p <= 0 || input_alpha_p >= 90 || input_beta_p <= 0 || input_beta_p >= 90 || input_alpha_p >= input_beta_p) {
+            throw new IllegalArgumentException("Invalid value for alpha or beta!  Alpha = " + input_alpha + " Beta = " + input_beta);
+        }
+        //wzory_1
+        result_Hpk = (input_A - input_g_pk / 2) * Math.tan(Math.toRadians(input_alpha_p)) + input_s_mu - input_SA;
+        result_HK = result_Hpk + (input_s_kr / Math.sin(Math.toRadians(90 - input_alpha_p)));
+        result_D = (Math.tan(Math.toRadians(input_alpha_p)) * input_E) / Math.tan(Math.toRadians(input_beta_p));
+        result_B = (result_Hpk - input_s_mu) / Math.tan(Math.toRadians(input_beta_p));
+        result_C = Math.sqrt(input_A * input_A + result_B * result_B);
+        result_w = Math.sqrt(input_C * input_C + result_Hpk * result_Hpk);
+        result_gamme = Math.atan(result_Hpk / result_C);
+        result_Lk = result_w + Math.sqrt(result_D * result_D + input_E * input_E) / Math.cos(result_gamma);
+        result_fi = Math.atan(result_B / input_A);
+        result_ni = 90 - result_fi;
+        result_hipa = Math.atan(Math.cos(Math.toRadians(result_ni)) * Math.tan(Math.toRadians(45)));
+        result_ro = Math.atan(Math.sin(Math.toRadians(result_hipa)) / Math.tan(Math.toRadians(result_ni)));
+        result_ksi = Math.atan(Math.sin(Math.toRadians(result_hipa)) / Math.tan(Math.toRadians(result_fi)));
+
+        // wzory 2
+        result_Dkr = (input_A + input_E) / Math.cos(Math.toRadians(input_alpha_p));
+        result_N2_A = input_E / Math.cos(Math.toRadians(input_alpha_p));
+        result_N1_A = result_N2_A + input_SA / Math.sin(Math.toRadians(input_alpha_p));
+        result_MNN_A = (result_B + result_D) / result_Dkr;
+
+        double local_sum = 0;
+        DKLs_A_list = new ArrayList<>();
+        for (int i = 0; i < input_no_kpA; i++) {
+            local_sum += PAs_list.get(i);
+            double DKLi = (result_B + result_D - local_sum - input_g_kr * i) / result_MNN_A;
+            DKLs_A_list.add(DKLi);
+        }
+        result_alpha_A = 90 - input_alpha_p;
+        result_beta_A = 90 - input_beta_p;
+
+        // wzory 3
+        result_N2_B = result_D / Math.cos(Math.toRadians(input_beta_p));
+        result_N1_B = result_N2_B + result_SA / Math.sin(Math.toRadians(input_beta_p));
+        result_L = (result_B - input_g_kk / Math.cos(Math.toRadians(result_fi)) + result_D) / Math.cos(Math.toRadians(input_beta)); //TODO które beta?
+        result_alpha_B = 90 - input_beta_p;
+        result_beta_B = 90 - result_fi;
+        result_MNN_B = (input_A + input_E) / result_L;
+
+        local_sum = 0;
+        DKLs_B_list = new ArrayList<>();
+        for (int i = 0; i < input_no_kpB; i++) {
+            local_sum += PBs_list.get(i);
+            double DKLi = (input_A + input_E - local_sum - input_g_kr * i) / result_MNN_B;
+            DKLs_B_list.add(DKLi);
+        }
+    }
+
     @NonNull
     public HashMap<String, Double> prepareResults(int roof_type) {
 
@@ -202,6 +279,8 @@ public class Carpenter {
             results.put("SA", result_SA);
             results.put("HB1", result_HB1);
             results.put("HK", result_HK);
+        } else if (roof_type == 4) {
+            countRoof4Values();
 
         } else {
             throw new IllegalArgumentException("Incorrect roof_type passed: " + roof_type);

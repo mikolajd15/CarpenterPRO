@@ -43,7 +43,6 @@
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#44a6c6"
         android:onClick="login"
         android:text="Logowanie"
         android:textColor="@android:color/white"

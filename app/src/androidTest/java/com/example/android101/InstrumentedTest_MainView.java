@@ -43,13 +43,13 @@ public class InstrumentedTest_MainView {
         onView(withText("Dach jednospadowy")).check(matches(isDisplayed()));
         onView(withText("Dach dwuspadowy")).check(matches(isDisplayed()));
         onView(withText("Dach niesymetryczny")).check(matches(isDisplayed()));
-        onView(withText("Dach 4")).check(matches(isDisplayed()));
+        onView(withText("Dach kopertowy")).check(matches(isDisplayed()));
         onView(withText("Ekran logowania")).check(matches(isDisplayed()));
 
         onView(withId(R.id.button_roof_1)).check(matches(withText("Dach jednospadowy")));
         onView(withId(R.id.button_roof_2)).check(matches(withText("Dach dwuspadowy")));
         onView(withId(R.id.button_roof_3)).check(matches(withText("Dach niesymetryczny")));
-        onView(withId(R.id.button_roof_4)).check(matches(withText("Dach 4")));
+        onView(withId(R.id.button_roof_4)).check(matches(withText("Dach kopertowy")));
         onView(withId(R.id.button_login_screen)).check(matches(withText("Ekran logowania")));
     }
 

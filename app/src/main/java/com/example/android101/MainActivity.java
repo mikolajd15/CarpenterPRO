@@ -33,6 +33,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /** Called when the user taps the Roof4 button */
+    public void openRoof4View(View view){
+        Intent intent = new Intent(this, UserInputsActivity.class);
+        intent.putExtra("ROOF_TYPE", 4);
+        startActivity(intent);
+    }
+
     public void openLoginScreen(View view){
         Intent intent = new Intent(this, LoginMainActivity.class);
         startActivity(intent);
