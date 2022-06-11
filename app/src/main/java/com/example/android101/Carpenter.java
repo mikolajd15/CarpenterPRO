@@ -24,8 +24,7 @@ public class Carpenter {
 
     //roof 4 specific inputs
     double input_g_kk, input_alpha_p, input_beta_p, input_no_kpA, input_no_kpB, input_SA;
-    double result_alpha_A, result_beta_A, result_alpha_B, result_beta_B, result_gamme,
-            result_ksi, result_Hpk, result_B, result_D, result_C, result_fi, result_ni,
+    double result_alpha_A, result_beta_A, result_alpha_B, result_beta_B,result_ksi, result_Hpk, result_B, result_D, result_C, result_fi, result_ni,
             result_hipa, result_ro, result_w, result_Lk, result_Dkr, result_MNN_A,
             result_MNN_B, result_L, result_N2_A, result_N1_A, result_N2_B, result_N1_B;
 
@@ -191,13 +190,13 @@ public class Carpenter {
         result_B = (result_Hpk - input_s_mu) / Math.tan(Math.toRadians(input_beta_p));
         result_C = Math.sqrt(input_A * input_A + result_B * result_B);
         result_w = Math.sqrt(input_C * input_C + result_Hpk * result_Hpk);
-        result_gamme = Math.atan(result_Hpk / result_C);
+        result_gamma = Math.toDegrees(Math.atan(result_Hpk / result_C));
         result_Lk = result_w + Math.sqrt(result_D * result_D + input_E * input_E) / Math.cos(result_gamma);
-        result_fi = Math.atan(result_B / input_A);
+        result_fi = Math.toDegrees(Math.atan(result_B / input_A));
         result_ni = 90 - result_fi;
-        result_hipa = Math.atan(Math.cos(Math.toRadians(result_ni)) * Math.tan(Math.toRadians(45)));
-        result_ro = Math.atan(Math.sin(Math.toRadians(result_hipa)) / Math.tan(Math.toRadians(result_ni)));
-        result_ksi = Math.atan(Math.sin(Math.toRadians(result_hipa)) / Math.tan(Math.toRadians(result_fi)));
+        result_hipa = Math.toDegrees(Math.atan(Math.cos(Math.toRadians(result_ni)) * Math.tan(Math.toRadians(45))));
+        result_ro = Math.toDegrees(Math.atan(Math.sin(Math.toRadians(result_hipa)) / Math.tan(Math.toRadians(result_ni))));
+        result_ksi = Math.toDegrees(Math.atan(Math.sin(Math.toRadians(result_hipa)) / Math.tan(Math.toRadians(result_fi))));
 
         // wzory 2
         result_Dkr = (input_A + input_E) / Math.cos(Math.toRadians(input_alpha_p));
@@ -218,7 +217,7 @@ public class Carpenter {
         // wzory 3
         result_N2_B = result_D / Math.cos(Math.toRadians(input_beta_p));
         result_N1_B = result_N2_B + result_SA / Math.sin(Math.toRadians(input_beta_p));
-        result_L = (result_B - input_g_kk / Math.cos(Math.toRadians(result_fi)) + result_D) / Math.cos(Math.toRadians(input_beta)); //TODO które beta?
+        result_L = (result_B - input_g_kk / Math.cos(Math.toRadians(result_fi)) + result_D) / Math.cos(Math.toRadians(input_beta_p));
         result_alpha_B = 90 - input_beta_p;
         result_beta_B = 90 - result_fi;
         result_MNN_B = (input_A + input_E) / result_L;
@@ -281,6 +280,42 @@ public class Carpenter {
             results.put("HK", result_HK);
         } else if (roof_type == 4) {
             countRoof4Values();
+            // wzory 1
+            results.put("Hpk", result_Hpk);
+            results.put("HK", result_HK);
+            results.put("D", result_D);
+            results.put("B", result_B);
+            results.put("ro", result_ro);//TODO zamien C na ro
+            results.put("w", result_w);
+            results.put("gamma", result_gamma);
+            results.put("Lk", result_Lk);
+            results.put("fi", result_fi);
+            results.put("ni", result_ni);
+            results.put("hipa", result_hipa);
+            results.put("ksi", result_ksi);
+            // wzory 2
+            results.put("Dkr", result_Dkr);
+            results.put("N2_A", result_N2_A);
+            results.put("N1_A", result_N1_A);
+            results.put("MNN_A", result_MNN_A);
+            for (int i = 0; i < DKLs_A_list.size(); i++) {
+                results.put("DKLs_A" + (i + 1), DKLs_A_list.get(i));
+            }
+            results.put("alpha_A", result_alpha_A);
+            results.put("beta_A", result_beta_A);
+            // wzory 2
+            results.put("N2_B", result_N2_B);
+            results.put("N1_B", result_N1_B);
+            results.put("L", result_L);
+            results.put("alpha_B", result_alpha_B);
+            results.put("beta_B", result_beta_B);
+            results.put("MNN_B", result_MNN_B);
+            for (int i = 0; i < DKLs_B_list.size(); i++) {
+                results.put("DKLs_B" + (i + 1), DKLs_B_list.get(i));
+            }
+
+            results.put("no_kpA", input_no_kpA);
+            results.put("no_kpB", input_no_kpB);
 
         } else {
             throw new IllegalArgumentException("Incorrect roof_type passed: " + roof_type);

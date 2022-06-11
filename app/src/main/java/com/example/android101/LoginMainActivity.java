@@ -117,7 +117,7 @@ public class LoginMainActivity extends AppCompatActivity {
     }
 
     public void continueAsGuest(View view){
-        Toasty.success(getApplicationContext(), "Tryb gościa", Toast.LENGTH_LONG, true).show();
+        Toasty.success(getApplicationContext(), "Co za gość", Toast.LENGTH_LONG, true).show();
         Intent intent = new Intent(LoginMainActivity.this, MainActivity.class);
         startActivity(intent);
         finish();

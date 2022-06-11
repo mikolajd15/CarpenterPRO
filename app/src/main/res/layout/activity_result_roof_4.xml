@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ResultsActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/results_linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/text_head_Hk"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/underline"
+                android:gravity="fill"
+                android:text="Wysokość kalenicy = 30"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/text_head_Hpk"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@drawable/underline"
+                android:gravity="fill"
+                android:text="Wysokość płatwi kalenicowej = 30"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/iv_roof4_image_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/roof1_image"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/polac_a_krokwie_zwykle"
+                tools:ignore="ImageContrastCheck" />
+
+            <TextView
+                android:id="@+id/text_1_L"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/underline"
+                android:gravity="fill"
+                android:text="Długość krokwi L ="
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/text_1_alpha"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/underline"
+                android:gravity="fill"
+                android:text="Kąt krokwi alfa = "
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/text_1_N2"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/underline"
+                android:gravity="fill"
+                android:text="Długość do zaciosu N2 ="
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/text_1_N1"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/underline"
+                android:gravity="fill"
+                android:text="Długość do zaciosu N1 ="
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/iv_roof4_image_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/roof1_image"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/polac_a_kulawki"
+                tools:ignore="ImageContrastCheck" />
+
+            <TextView
+                android:id="@+id/text_2_L"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/underline"
+                android:gravity="fill"
+                android:text="Długość krokwi L ="
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/text_2_beta"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/underline"
+                android:gravity="fill"
+                android:text="Kąt krokwi beta = "
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/text_2_alpha"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/underline"
+                android:gravity="fill"
+                android:text="Kąt krokwi alfa = "
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/text_2_N1"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/underline"
+                android:gravity="fill"
+                android:text="Długość do zaciosu N2 ="
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/text_2_N2"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/underline"
+                android:gravity="fill"
+                android:text="Długość do zaciosu N1 ="
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/iv_roof4_image_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/roof1_image"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/krokwie_narozne"
+                tools:ignore="ImageContrastCheck" />
+
+            <TextView
+                android:id="@+id/text_3_L"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/underline"
+                android:gravity="fill"
+                android:text="Długość krokwi L ="
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/text_3_beta"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/underline"
+                android:gravity="fill"
+                android:text="Kat krokwi beta ="
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/text_3_alpha"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/underline"
+                android:gravity="fill"
+                android:text="Kąt zaciosu do połaci B alpha = "
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/text_3_mi"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/underline"
+                android:gravity="fill"
+                android:text="Kąt zaciosu do połaci A mi ="
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/text_3_delta"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/underline"
+                android:gravity="fill"
+                android:text="Kąt fazowania do połaci B delta ="
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/text_3_psi"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/underline"
+                android:gravity="fill"
+                android:text="Kąt fazowania do połaci A psi ="
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/iv_roof4_image_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/roof1_image"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/polac_b_krokiew_srodkowa"
+                tools:ignore="ImageContrastCheck" />
+
+            <TextView
+                android:id="@+id/text_4_L"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/underline"
+                android:gravity="fill"
+                android:text="Dynamiczne L ="
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/text_4_beta"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/underline"
+                android:gravity="fill"
+                android:text="Kąt krokwi beta ="
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/text_4_alpha"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/underline"
+                android:gravity="fill"
+                android:text="Kąt krokwi alpha ="
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/text_4_N2"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/underline"
+                android:gravity="fill"
+                android:text="Długość do zaciosu N2 ="
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/text_4_N1"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/underline"
+                android:gravity="fill"
+                android:text="Długość do zaciosu N1 ="
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/iv_roof4_image_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/roof1_image"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/polac_b_kulawki"
+                tools:ignore="ImageContrastCheck" />
+
+            <TextView
+                android:id="@+id/text_5_L"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/underline"
+                android:gravity="fill"
+                android:text="Dynamiczne L = [1, 2, 3]"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/text_5_beta"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/underline"
+                android:gravity="fill"
+                android:text="Kąt krokwi beta ="
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/text_5_alpha"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/underline"
+                android:gravity="fill"
+                android:text="Kąt krokwi alpha ="
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/text_5_N2"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/underline"
+                android:gravity="fill"
+                android:text="Długość do zaciosu N2 ="
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/text_5_N1"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/underline"
+                android:gravity="fill"
+                android:text="Długość do zaciosu N1 ="
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

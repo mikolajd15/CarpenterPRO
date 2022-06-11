@@ -27,6 +27,8 @@ import com.android.volley.toolbox.Volley;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import es.dmoral.toasty.Toasty;
 
@@ -37,6 +39,13 @@ public class RegisterActivity extends AppCompatActivity {
     private Button btnRegister;
     private final String URL = "http://91.223.167.210:99/login/register.php";
     private String name, email, password, reenterPassword;
+    final String emailRegex = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
+
+    boolean checkEmailWithRegex(String mail) {
+        Pattern pattern = Pattern.compile(emailRegex);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
 
     private void hideKeyboard() {
         LinearLayout mainLayout;
@@ -73,6 +82,8 @@ public class RegisterActivity extends AppCompatActivity {
             reenterPassword = etReenterPassword.getText().toString().trim();
             if (!password.equals(reenterPassword)) {
                 Toasty.warning(getApplicationContext(), "Hasła nie są zgodne!", Toast.LENGTH_LONG, true).show();
+            } else if (!checkEmailWithRegex(email)) {
+                Toasty.warning(getApplicationContext(), "Niepoprawny format maila!", Toast.LENGTH_LONG, true).show();
             } else if (!name.equals("") && !email.equals("") && !password.equals("")) {
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                     @Override

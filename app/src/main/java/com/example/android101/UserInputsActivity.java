@@ -233,13 +233,6 @@ public class UserInputsActivity extends AppCompatActivity {
                     editText.setTextColor(getResources().getColor(R.color.black));
                 }
             }
-
-//            if (!TextUtils.isEmpty(edt_no_kpB.getText()) && !TextUtils.isEmpty(edt_no_kpA.getText())) {
-//                btnRoof4.setEnabled(true);
-//            } else {
-//                btnRoof4.setEnabled(false);
-//            }
-
         }
     };
 
@@ -478,7 +471,7 @@ public class UserInputsActivity extends AppCompatActivity {
                 ((ScrollView) findViewById(R.id.scroll_view_inputs)).smoothScrollTo(edt_beta.getScrollX(), edt_beta.getScrollY());
                 return false;
             }
-            if (alpha_value >= beta_value) {
+            if (alpha_value >= beta_value && roof_type == 3) {
                 Toasty.warning(getApplicationContext(), "Alpha musi być mniejsze od beta", Toast.LENGTH_LONG, true).show();
                 ((ScrollView) findViewById(R.id.scroll_view_inputs)).smoothScrollTo(edt_alpha.getScrollX(), edt_alpha.getScrollY());
                 return false;
@@ -496,7 +489,6 @@ public class UserInputsActivity extends AppCompatActivity {
             if (!TextUtils.isEmpty(edt_no_kpB.getText()) && !TextUtils.isEmpty(edt_no_kpA.getText())) {
                 hideKeyboard();
                 onClick_btnroof4();
-
             }
         } else {
             if (fieldsAreFilledCorrectly(roof_type)) {

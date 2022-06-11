@@ -11,12 +11,13 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/results_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/iv_roof_image_result"
+                android:id="@+id/iv_roof4_image_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
@@ -27,6 +28,7 @@
                 tools:ignore="ImageContrastCheck" />
 
             <TableLayout
+                android:id="@+id/results_table_layout1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_horizontal">
@@ -68,7 +70,7 @@
                     <TextView
                         android:id="@+id/roof1_result_02"
                         android:layout_width="161dp"
-                        android:layout_height="43dp"
+                        android:layout_height="match_parent"
                         android:text="result = 1"
                         android:textAlignment="center"
                         android:textAllCaps="false"
@@ -148,9 +150,9 @@
                 </TableRow>
 
                 <TableRow
-                    android:gravity="center_horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" >
+                    android:layout_height="match_parent"
+                    android:gravity="center_horizontal">
 
                     <TextView
                         android:id="@+id/roof1_result_22"
