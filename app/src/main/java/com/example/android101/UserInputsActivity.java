@@ -5,8 +5,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -22,6 +24,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.textfield.TextInputLayout;
+
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -35,7 +41,7 @@ public class UserInputsActivity extends AppCompatActivity {
     EditText edt_theta, edt_B, edt_A, edt_D, edt_E, edt_C, edt_S,
             edt_s_mu, edt_g_pk, edt_g_kr, edt_s_kr, edt_fpk, edt_k_max;
     EditText edt_alpha, edt_beta, edt_A1, edt_B1, edt_g_mu, edt_SB;
-    EditText edt_unused_in_roof_1_and_2, edt_unused_in_roof_2, edt_unused_in_roof_4;
+    TextInputLayout edt_unused_in_roof_1_and_2, edt_unused_in_roof_2, edt_unused_in_roof_4;
     EditText edt_SA, edt_g_kk, edt_no_kpA, edt_no_kpB;
     ArrayList<EditText> editTextList;
     Button countButton;
@@ -73,26 +79,31 @@ public class UserInputsActivity extends AppCompatActivity {
 
     private void Add_Line(String A_or_B) {
         TableLayout tableLayoutDown = (TableLayout) findViewById(R.id.table_layout_down);
+        TextInputLayout dynamicInputLayout = new TextInputLayout(this, null, R.style.customTextInputStyle);
+
         // add edittext
         EditText dynamicEditText = new EditText(this);
+        dynamicEditText.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
         TableRow.LayoutParams params = new TableRow.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        TableRow newTableRow = new TableRow(this);
-        newTableRow.setLayoutParams(params);
-        tableLayoutDown.addView(newTableRow);
-        dynamicEditText.setLayoutParams(params);
+        //TableRow newTableRow = new TableRow(this);
+        //newTableRow.setLayoutParams(params);
+        //tableLayoutDown.addView(newTableRow);
+
+        dynamicInputLayout.setLayoutParams(params);
+        dynamicInputLayout.addView(dynamicEditText);
 
         if (Objects.equals(A_or_B, "A")) {
-            dynamicEditText.setHint("Podaj wartość dla A" + (numberOfDynamicEdtS_A + 1));
-            dynamicEditText.setId(100 + numberOfDynamicEdtS_A);
+            dynamicInputLayout.setHint("Pole kulawki PA" + (numberOfDynamicEdtS_A + 1));
+            dynamicInputLayout.setId(100 + numberOfDynamicEdtS_A);
             numberOfDynamicEdtS_A++;
         } else if (Objects.equals(A_or_B, "B")) {
-            dynamicEditText.setHint("Podaj wartość dla B" + (numberOfDynamicEdtS_B + 1));
-            dynamicEditText.setId(200 + numberOfDynamicEdtS_B);
+            dynamicInputLayout.setHint("Pole kulawki PB" + (numberOfDynamicEdtS_B + 1));
+            dynamicInputLayout.setId(200 + numberOfDynamicEdtS_B);
             numberOfDynamicEdtS_B++;
         }
-        editTextList.add(dynamicEditText);
-        dynamicEditText.addTextChangedListener(allFieldsAreFilledWatcher);
-        newTableRow.addView(dynamicEditText);
+        editTextList.add(dynamicInputLayout.getEditText());
+        dynamicInputLayout.getEditText().addTextChangedListener(allFieldsAreFilledWatcher);
+        tableLayoutDown.addView(dynamicInputLayout);
     }
 
     private void hideKeyboard() {
@@ -256,107 +267,274 @@ public class UserInputsActivity extends AppCompatActivity {
         }
     }
 
+    private void initializeEdtsRoof1() {
+        ((TextInputLayout) findViewById(R.id.roof1_input_00)).setHint("Długość bud.: A");
+        edt_A = ((TextInputLayout) findViewById(R.id.roof1_input_00)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_01)).setHint("Szerokość bud.: B");
+        edt_B = ((TextInputLayout) findViewById(R.id.roof1_input_01)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_10)).setHint("Okap tylni: D");
+        edt_D = ((TextInputLayout) findViewById(R.id.roof1_input_10)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_11)).setHint("Okap przedni E");
+        edt_E = ((TextInputLayout) findViewById(R.id.roof1_input_11)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_20)).setHint("Kąt dachu: Θ");
+        edt_theta = ((TextInputLayout) findViewById(R.id.roof1_input_20)).getEditText();
+        edt_theta.addTextChangedListener(watcherForTheta);
+        ((TextInputLayout) findViewById(R.id.roof1_input_21)).setHint("Odległość C");
+        edt_C = ((TextInputLayout) findViewById(R.id.roof1_input_21)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_30)).setHint("Szerokość murłaty");
+        edt_s_mu = ((TextInputLayout) findViewById(R.id.roof1_input_30)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_31)).setHint("Grubość płatwi kalenicowej");
+        edt_g_pk = ((TextInputLayout) findViewById(R.id.roof1_input_31)).getEditText();
+        /* iv */
+        ((TextInputLayout) findViewById(R.id.roof1_input_40)).setHint("Zacios pionowy krokwi");
+        edt_S = ((TextInputLayout) findViewById(R.id.roof1_input_40)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_50)).setHint("Grubość krokwi");
+        edt_g_kr = ((TextInputLayout) findViewById(R.id.roof1_input_50)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_51)).setHint("Szerokość krokwi");
+        edt_s_kr = ((TextInputLayout) findViewById(R.id.roof1_input_51)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_60)).setHint("Pole krokwi: Pk1");
+        edt_fpk = ((TextInputLayout) findViewById(R.id.roof1_input_60)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_61)).setHint("Max. pole krokwi");
+        edt_k_max = ((TextInputLayout) findViewById(R.id.roof1_input_61)).getEditText();
+
+        edt_unused_in_roof_1_and_2 = findViewById(R.id.roof1_input_41);
+        edt_unused_in_roof_1_and_2.setVisibility(View.GONE);
+
+        // initialize edit Texts array
+        editTextList = new ArrayList<>(Arrays.asList(edt_theta, edt_B, edt_A, edt_D, edt_C, edt_S,
+                edt_s_mu, edt_g_pk, edt_s_kr, edt_g_kr, edt_fpk, edt_k_max, edt_E));
+    }
+
+    private void initializeEdtsRoof2() {
+        ((TextInputLayout) findViewById(R.id.roof1_input_00)).setHint("Długość bud.: A");
+        edt_A = ((TextInputLayout) findViewById(R.id.roof1_input_00)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_01)).setHint("Szerokość bud.: B");
+        edt_B = ((TextInputLayout) findViewById(R.id.roof1_input_01)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_10)).setHint("Okap: D");
+        edt_D = ((TextInputLayout) findViewById(R.id.roof1_input_10)).getEditText();
+        edt_theta = ((TextInputLayout) findViewById(R.id.roof1_input_11)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_11)).setHint("Kąt dachu: Θ");
+        edt_theta.addTextChangedListener(watcherForTheta);
+        ((TextInputLayout) findViewById(R.id.roof1_input_20)).setHint("Zacios pionowy krokwi");
+        edt_S = ((TextInputLayout) findViewById(R.id.roof1_input_20)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_21)).setHint("Odległość C");
+        edt_C = ((TextInputLayout) findViewById(R.id.roof1_input_21)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_30)).setHint("Szerokość murłaty");
+        edt_s_mu = ((TextInputLayout) findViewById(R.id.roof1_input_30)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_31)).setHint("Grubość płatwi kalenicowej");
+        /* iv */
+        edt_g_pk = ((TextInputLayout) findViewById(R.id.roof1_input_31)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_50)).setHint("Grubość krokwi");
+        edt_g_kr = ((TextInputLayout) findViewById(R.id.roof1_input_50)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_51)).setHint("Szerokość krokwi");
+        edt_s_kr = ((TextInputLayout) findViewById(R.id.roof1_input_51)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_60)).setHint("Pole krokwi: Pk1");
+        edt_fpk = ((TextInputLayout) findViewById(R.id.roof1_input_60)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_61)).setHint("Max. pole krokwi");
+        edt_k_max = ((TextInputLayout) findViewById(R.id.roof1_input_61)).getEditText();
+
+        edt_unused_in_roof_2 = findViewById(R.id.roof1_input_40);
+        edt_unused_in_roof_2.setVisibility(View.GONE);
+        edt_unused_in_roof_1_and_2 = findViewById(R.id.roof1_input_41);
+        edt_unused_in_roof_1_and_2.setVisibility(View.GONE);
+
+        // initialize edit Texts array
+        editTextList = new ArrayList<>(Arrays.asList(edt_theta, edt_B, edt_A, edt_D, edt_C, edt_S,
+                edt_s_mu, edt_g_pk, edt_s_kr, edt_g_kr, edt_fpk, edt_k_max));
+    }
+
+    private void initializeEdtsRoof3() {
+        ((TextInputLayout) findViewById(R.id.roof1_input_00)).setHint("Długość części A");
+        edt_A = ((TextInputLayout) findViewById(R.id.roof1_input_00)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_01)).setHint("Długość części B");
+        edt_B = ((TextInputLayout) findViewById(R.id.roof1_input_01)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_10)).setHint("Pierwszy okap: D");
+        edt_D = ((TextInputLayout) findViewById(R.id.roof1_input_10)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_11)).setHint("Drugi okap: E");
+        edt_E = ((TextInputLayout) findViewById(R.id.roof1_input_11)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_20)).setHint("Kąt połaci A: α");
+        edt_alpha = ((TextInputLayout) findViewById(R.id.roof1_input_20)).getEditText();
+        edt_alpha.addTextChangedListener(watcherForAlpha);
+        ((TextInputLayout) findViewById(R.id.roof1_input_21)).setHint("Kąt połaci B: β");
+        edt_beta = ((TextInputLayout) findViewById(R.id.roof1_input_21)).getEditText();
+        edt_beta.addTextChangedListener(watcherForBeta);
+        ((TextInputLayout) findViewById(R.id.roof1_input_30)).setHint("Odległość A1");
+        edt_A1 = ((TextInputLayout) findViewById(R.id.roof1_input_30)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_31)).setHint("Odległość B1");
+        edt_B1 = ((TextInputLayout) findViewById(R.id.roof1_input_31)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_40)).setHint("Zacios pionowy krokwi");
+        edt_SB = ((TextInputLayout) findViewById(R.id.roof1_input_40)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_41)).setHint("Grubość płatwi kalenicowej");
+        edt_g_pk = ((TextInputLayout) findViewById(R.id.roof1_input_41)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_50)).setHint("Szerokość murłaty");
+        edt_s_mu = ((TextInputLayout) findViewById(R.id.roof1_input_50)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_51)).setHint("Grubość murłaty");
+        edt_g_mu = ((TextInputLayout) findViewById(R.id.roof1_input_51)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_60)).setHint("Szerokość krokwi");
+        edt_s_kr = ((TextInputLayout) findViewById(R.id.roof1_input_60)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_61)).setHint("Grubość krokwi");
+        edt_g_kr = ((TextInputLayout) findViewById(R.id.roof1_input_61)).getEditText();
+
+        // initialize edit Texts array
+        editTextList = new ArrayList<>(Arrays.asList(edt_alpha, edt_beta, edt_A1, edt_B1, edt_g_mu, edt_SB, edt_B, edt_A, edt_D,
+                edt_s_mu, edt_g_pk, edt_s_kr, edt_g_kr, edt_E));
+    }
+
+    private void initializeEdtsRoof4() {
+        ((TextInputLayout) findViewById(R.id.roof1_input_00)).setHint("Długość bud.: A");
+        edt_A = ((TextInputLayout) findViewById(R.id.roof1_input_00)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_01)).setHint("Długość okapu E");
+        edt_E = ((TextInputLayout) findViewById(R.id.roof1_input_01)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_10)).setHint("Kąt połaci A: α");
+        edt_alpha = ((TextInputLayout) findViewById(R.id.roof1_input_10)).getEditText();
+        edt_alpha.addTextChangedListener(watcherForAlpha);
+        ((TextInputLayout) findViewById(R.id.roof1_input_11)).setHint("Kąt połaci B: β");
+        edt_beta = ((TextInputLayout) findViewById(R.id.roof1_input_11)).getEditText();
+        edt_beta.addTextChangedListener(watcherForBeta);
+        ((TextInputLayout) findViewById(R.id.roof1_input_20)).setHint("Zacios pionowy krokwi");
+        edt_SA = ((TextInputLayout) findViewById(R.id.roof1_input_20)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_21)).setHint("Grubość krokwi narożnej");
+        edt_g_kk = ((TextInputLayout) findViewById(R.id.roof1_input_21)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_30)).setHint("Szerokość murłaty");
+        edt_s_mu = ((TextInputLayout) findViewById(R.id.roof1_input_30)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_31)).setHint("Grubość płatwi kalenicowej");
+        edt_g_pk = ((TextInputLayout) findViewById(R.id.roof1_input_31)).getEditText();
+
+        ((TextInputLayout) findViewById(R.id.roof1_input_50)).setHint("Grubość krokwi");
+        edt_g_kr = ((TextInputLayout) findViewById(R.id.roof1_input_50)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_51)).setHint("Szerokość krokwi");
+        edt_s_kr = ((TextInputLayout) findViewById(R.id.roof1_input_51)).getEditText();
+        ((TextInputLayout) findViewById(R.id.roof1_input_60)).setHint("Liczba kulawek A");
+        edt_no_kpA = ((TextInputLayout) findViewById(R.id.roof1_input_60)).getEditText();
+        edt_no_kpA.addTextChangedListener(watcherForNoKps);
+        ((TextInputLayout) findViewById(R.id.roof1_input_61)).setHint("Liczba kulawek B");
+        edt_no_kpB = ((TextInputLayout) findViewById(R.id.roof1_input_61)).getEditText();
+        edt_no_kpB.addTextChangedListener(watcherForNoKps);
+
+        edt_unused_in_roof_2 = findViewById(R.id.roof1_input_40);
+        edt_unused_in_roof_2.setVisibility(View.GONE);
+        edt_unused_in_roof_4 = findViewById(R.id.roof1_input_41);
+        edt_unused_in_roof_4.setVisibility(View.GONE);
+
+        // initialize edit Texts array
+        editTextList = new ArrayList<>(Arrays.asList(edt_A, edt_g_pk, edt_alpha, edt_beta, edt_s_mu,
+                edt_SA, edt_s_kr, edt_E, edt_no_kpA, edt_no_kpB, edt_g_kr, edt_g_kk));
+
+    }
+
     @SuppressLint("ResourceType")
     private void initializeEdts(int roof_type) {
-        // common text fields init
-        edt_A = findViewById(R.id.roof1_input_00);
-        edt_A.setHint("Podaj A");
-        edt_s_mu = findViewById(R.id.roof1_input_30);
-        edt_s_mu.setHint("Podaj s_mu");
-        edt_g_pk = findViewById(R.id.roof1_input_31);
-        edt_g_pk.setHint("Podaj g_pk");
-        edt_g_kr = findViewById(R.id.roof1_input_50);
-        edt_g_kr.setHint("Podaj g_kr");
-        edt_s_kr = findViewById(R.id.roof1_input_51);
-        edt_s_kr.setHint("Podaj s_kr");
 
-        if (roof_type == 1 || roof_type == 2 || roof_type == 3) {
-            edt_B = findViewById(R.id.roof1_input_01);
-            edt_B.setHint("Podaj B");
-            edt_D = findViewById(R.id.roof1_input_10);
-            edt_D.setHint("Podaj D");
-        }
-
-        if (roof_type == 1 || roof_type == 2) {
-
-            edt_unused_in_roof_1_and_2 = findViewById(R.id.roof1_input_41);
-            edt_unused_in_roof_1_and_2.setVisibility(View.GONE);
-
-            edt_S = findViewById(R.id.roof1_input_11);
-            edt_S.setHint("Podaj S");
-            edt_theta = findViewById(R.id.roof1_input_20);
-            edt_theta.addTextChangedListener(watcherForTheta);
-            edt_theta.setHint("Podaj theta");
-            edt_C = findViewById(R.id.roof1_input_21);
-            edt_C.setHint("Podaj C");
-            edt_fpk = findViewById(R.id.roof1_input_60);
-            edt_fpk.setHint("Podaj fpk");
-            edt_k_max = findViewById(R.id.roof1_input_61);
-            edt_k_max.setHint("Podaj k_max");
-
-            // initialize edit Texts array
-            editTextList = new ArrayList<>(Arrays.asList(edt_theta, edt_B, edt_A, edt_D, edt_C, edt_S,
-                    edt_s_mu, edt_g_pk, edt_s_kr, edt_g_kr, edt_fpk, edt_k_max));
-
-
-            if (roof_type == 1) {
-                edt_E = findViewById(R.id.roof1_input_40);
-                edt_E.setHint("Podaj E");
-                editTextList.add(edt_E);
-
-            } else /* roof 2*/ {
-                edt_unused_in_roof_2 = findViewById(R.id.roof1_input_40);
-                edt_unused_in_roof_2.setVisibility(View.GONE);
-            }
-
+//        // common text fields init
+//        ((TextInputLayout) findViewById(R.id.roof1_input_00)).setHint("Długość budynku: A");
+//        edt_A = ((TextInputLayout) findViewById(R.id.roof1_input_00)).getEditText();
+//        ((TextInputLayout) findViewById(R.id.roof1_input_30)).setHint("Podaj s_mu");
+//        edt_s_mu = ((TextInputLayout) findViewById(R.id.roof1_input_30)).getEditText();
+//        ((TextInputLayout) findViewById(R.id.roof1_input_31)).setHint("Podaj g_pk");
+//        edt_g_pk = ((TextInputLayout) findViewById(R.id.roof1_input_31)).getEditText();
+//        ((TextInputLayout) findViewById(R.id.roof1_input_50)).setHint("Podaj g_kr");
+//        edt_g_kr = ((TextInputLayout) findViewById(R.id.roof1_input_50)).getEditText();
+//        ((TextInputLayout) findViewById(R.id.roof1_input_51)).setHint("Podaj s_kr");
+//        edt_s_kr = ((TextInputLayout) findViewById(R.id.roof1_input_51)).getEditText();
+//
+//
+//        if (roof_type == 1 || roof_type == 2 || roof_type == 3) {
+//            ((TextInputLayout) findViewById(R.id.roof1_input_01)).setHint("Szerokość budynku: B");
+//            edt_B = ((TextInputLayout) findViewById(R.id.roof1_input_01)).getEditText();
+//            ((TextInputLayout) findViewById(R.id.roof1_input_10)).setHint("Podaj D");
+//            edt_D = ((TextInputLayout) findViewById(R.id.roof1_input_10)).getEditText();
+//
+//        }
+//
+//        if (roof_type == 1 || roof_type == 2) {
+//
+//            edt_unused_in_roof_1_and_2 = findViewById(R.id.roof1_input_41);
+//            edt_unused_in_roof_1_and_2.setVisibility(View.GONE);
+//            ((TextInputLayout) findViewById(R.id.roof1_input_11)).setHint("Podaj S");
+//            edt_S = ((TextInputLayout) findViewById(R.id.roof1_input_11)).getEditText();
+//            ((TextInputLayout) findViewById(R.id.roof1_input_20)).setHint("Podaj theta");
+//            edt_theta = ((TextInputLayout) findViewById(R.id.roof1_input_20)).getEditText();
+//            edt_theta.addTextChangedListener(watcherForTheta);
+//            ((TextInputLayout) findViewById(R.id.roof1_input_21)).setHint("Podaj C");
+//            edt_C = ((TextInputLayout) findViewById(R.id.roof1_input_21)).getEditText();
+//            ((TextInputLayout) findViewById(R.id.roof1_input_60)).setHint("Podaj fpk");
+//            edt_fpk = ((TextInputLayout) findViewById(R.id.roof1_input_60)).getEditText();
+//            ((TextInputLayout) findViewById(R.id.roof1_input_61)).setHint("Podaj k_max");
+//            edt_k_max = ((TextInputLayout) findViewById(R.id.roof1_input_61)).getEditText();
+//
+//            // initialize edit Texts array
+//            editTextList = new ArrayList<>(Arrays.asList(edt_theta, edt_B, edt_A, edt_D, edt_C, edt_S,
+//                    edt_s_mu, edt_g_pk, edt_s_kr, edt_g_kr, edt_fpk, edt_k_max));
+//
+//
+//            if (roof_type == 1) {
+//                ((TextInputLayout) findViewById(R.id.roof1_input_40)).setHint("Podaj E");
+//                edt_E = ((TextInputLayout) findViewById(R.id.roof1_input_40)).getEditText();
+//                editTextList.add(edt_E);
+//
+//            } else /* roof 2*/ {
+//                edt_unused_in_roof_2 = findViewById(R.id.roof1_input_40);
+//                edt_unused_in_roof_2.setVisibility(View.GONE);
+//            }
+//
+//        } else if (roof_type == 3) {
+//            ((TextInputLayout) findViewById(R.id.roof1_input_20)).setHint("Podaj alpha");
+//            edt_alpha = ((TextInputLayout) findViewById(R.id.roof1_input_20)).getEditText();
+//            edt_alpha.addTextChangedListener(watcherForAlpha);
+//            ((TextInputLayout) findViewById(R.id.roof1_input_21)).setHint("Podaj beta");
+//            edt_beta = ((TextInputLayout) findViewById(R.id.roof1_input_21)).getEditText();
+//            edt_beta.addTextChangedListener(watcherForBeta);
+//            ((TextInputLayout) findViewById(R.id.roof1_input_60)).setHint("Podaj A1");
+//            edt_A1 = ((TextInputLayout) findViewById(R.id.roof1_input_60)).getEditText();
+//            ((TextInputLayout) findViewById(R.id.roof1_input_61)).setHint("Podaj B1");
+//            edt_B1 = ((TextInputLayout) findViewById(R.id.roof1_input_61)).getEditText();
+//            ((TextInputLayout) findViewById(R.id.roof1_input_41)).setHint("Podaj g_mu");
+//            edt_g_mu = ((TextInputLayout) findViewById(R.id.roof1_input_41)).getEditText();
+//            ((TextInputLayout) findViewById(R.id.roof1_input_11)).setHint("Podaj SB");
+//            edt_SB = ((TextInputLayout) findViewById(R.id.roof1_input_11)).getEditText();
+//            ((TextInputLayout) findViewById(R.id.roof1_input_40)).setHint("Podaj E");
+//            edt_E = ((TextInputLayout) findViewById(R.id.roof1_input_40)).getEditText();
+//
+//            // initialize edit Texts array
+//            editTextList = new ArrayList<>(Arrays.asList(edt_alpha, edt_beta, edt_A1, edt_B1, edt_g_mu, edt_SB, edt_B, edt_A, edt_D,
+//                    edt_s_mu, edt_g_pk, edt_s_kr, edt_g_kr, edt_E));
+//        } else if (roof_type == 4) {
+//            ((TextInputLayout) findViewById(R.id.roof1_input_01)).setHint("Podaj SA");
+//            edt_SA = ((TextInputLayout) findViewById(R.id.roof1_input_01)).getEditText();
+//            ((TextInputLayout) findViewById(R.id.roof1_input_10)).setHint("Podaj alpha_p");
+//            edt_alpha = ((TextInputLayout) findViewById(R.id.roof1_input_10)).getEditText();
+//            edt_alpha.addTextChangedListener(watcherForAlpha);
+//            ((TextInputLayout) findViewById(R.id.roof1_input_11)).setHint("Podaj beta_p");
+//            edt_beta = ((TextInputLayout) findViewById(R.id.roof1_input_11)).getEditText();
+//            edt_beta.addTextChangedListener(watcherForBeta);
+//            ((TextInputLayout) findViewById(R.id.roof1_input_20)).setHint("Podaj E");
+//            edt_E = ((TextInputLayout) findViewById(R.id.roof1_input_20)).getEditText();
+//            ((TextInputLayout) findViewById(R.id.roof1_input_21)).setHint("Podaj g_kk");
+//            edt_g_kk = ((TextInputLayout) findViewById(R.id.roof1_input_21)).getEditText();
+//            ((TextInputLayout) findViewById(R.id.roof1_input_60)).setHint("Podaj no_kpA");
+//            edt_no_kpA = ((TextInputLayout) findViewById(R.id.roof1_input_60)).getEditText();
+//            edt_no_kpA.addTextChangedListener(watcherForNoKps);
+//            ((TextInputLayout) findViewById(R.id.roof1_input_61)).setHint("Podaj no_kpB");
+//            edt_no_kpB = ((TextInputLayout) findViewById(R.id.roof1_input_61)).getEditText();
+//            edt_no_kpB.addTextChangedListener(watcherForNoKps);
+//
+//            edt_unused_in_roof_2 = findViewById(R.id.roof1_input_40);
+//            edt_unused_in_roof_2.setVisibility(View.GONE);
+//            edt_unused_in_roof_4 = findViewById(R.id.roof1_input_41);
+//            edt_unused_in_roof_4.setVisibility(View.GONE);
+//
+//            // initialize edit Texts array
+//            editTextList = new ArrayList<>(Arrays.asList(edt_A, edt_g_pk, edt_alpha, edt_beta, edt_s_mu,
+//                    edt_SA, edt_s_kr, edt_E, edt_no_kpA, edt_no_kpB, edt_g_kr, edt_g_kk
+//            ));
+        if (roof_type == 1) {
+            initializeEdtsRoof1();
+        } else if (roof_type == 2) {
+            initializeEdtsRoof2();
         } else if (roof_type == 3) {
-            edt_alpha = findViewById(R.id.roof1_input_20);
-            edt_alpha.addTextChangedListener(watcherForAlpha);
-            edt_alpha.setHint("Podaj alpha");
-            edt_beta = findViewById(R.id.roof1_input_21);
-            edt_beta.addTextChangedListener(watcherForBeta);
-            edt_beta.setHint("Podaj beta");
-            edt_A1 = findViewById(R.id.roof1_input_60);
-            edt_A1.setHint("Podaj A1");
-            edt_B1 = findViewById(R.id.roof1_input_61);
-            edt_B1.setHint("Podaj B1");
-            edt_g_mu = findViewById(R.id.roof1_input_41);
-            edt_g_mu.setHint("Podaj g_mu");
-            edt_SB = findViewById(R.id.roof1_input_11);
-            edt_SB.setHint("Podaj SB");
-            edt_E = findViewById(R.id.roof1_input_40);
-            edt_E.setHint("Podaj E");
-            // initialize edit Texts array
-            editTextList = new ArrayList<>(Arrays.asList(edt_alpha, edt_beta, edt_A1, edt_B1, edt_g_mu, edt_SB, edt_B, edt_A, edt_D,
-                    edt_s_mu, edt_g_pk, edt_s_kr, edt_g_kr, edt_E));
+            initializeEdtsRoof3();
         } else if (roof_type == 4) {
-            edt_SA = findViewById(R.id.roof1_input_01);
-            edt_SA.setHint("Podaj SA");
-            edt_alpha = findViewById(R.id.roof1_input_10);
-            edt_alpha.addTextChangedListener(watcherForAlpha);
-            edt_alpha.setHint("Podaj alpha_p");
-            edt_beta = findViewById(R.id.roof1_input_11);
-            edt_beta.addTextChangedListener(watcherForBeta);
-            edt_beta.setHint("Podaj beta_p");
-            edt_E = findViewById(R.id.roof1_input_20);
-            edt_E.setHint("Podaj E");
-            edt_C = findViewById(R.id.roof1_input_21);
-            edt_C.setHint("Podaj C");
-            edt_no_kpA = findViewById(R.id.roof1_input_60);
-            edt_no_kpA.addTextChangedListener(watcherForNoKps);
-            edt_no_kpA.setHint("Podaj no_kpA");
-            edt_no_kpB = findViewById(R.id.roof1_input_61);
-            edt_no_kpB.addTextChangedListener(watcherForNoKps);
-            edt_no_kpB.setHint("Podaj no_kpB");
-            edt_g_kk = findViewById(R.id.roof1_input_40);
-            edt_g_kk.setHint("Podaj g_kk");
-            edt_unused_in_roof_4 = findViewById(R.id.roof1_input_41);
-            edt_unused_in_roof_4.setVisibility(View.GONE);
-            // initialize edit Texts array
-            editTextList = new ArrayList<>(Arrays.asList(edt_A, edt_g_pk, edt_alpha, edt_beta, edt_s_mu,
-                    edt_SA, edt_s_kr, edt_E, edt_C, edt_no_kpA, edt_no_kpB, edt_g_kr, edt_g_kk
-            ));
-
+            initializeEdtsRoof4();
         } else {
             throw new IllegalArgumentException("Incorrect roof_type in initialization of Edts!" + roof_type);
         }
@@ -382,7 +560,7 @@ public class UserInputsActivity extends AppCompatActivity {
             roof_image_view_bot.setImageDrawable(getResources().getDrawable(R.drawable.dwuspadowy_symetryczny_rzut_krokwi, getApplicationContext().getTheme()));
         } else if (roof_type == 3) {
             roof_image_view_top.setImageDrawable(getResources().getDrawable(R.drawable.dwuspadowy_niesymetryczny_budynek, getApplicationContext().getTheme()));
-            roof_image_view_bot.setImageDrawable(getResources().getDrawable(R.drawable.dwuspadowy_symetryczny_rzut_krokwi, getApplicationContext().getTheme()));
+            roof_image_view_bot.setVisibility(View.GONE);
         } else if (roof_type == 4) {
             roof_image_view_top.setImageDrawable(getResources().getDrawable(R.drawable.koperta_podglad_gora, getApplicationContext().getTheme()));
             roof_image_view_bot.setImageDrawable(getResources().getDrawable(R.drawable.rzut_koperta_1_nad_4, getApplicationContext().getTheme()));
@@ -440,7 +618,6 @@ public class UserInputsActivity extends AppCompatActivity {
             inputDoublesListMap.put("alpha_p", Double.parseDouble(edt_alpha.getText().toString()));
             inputDoublesListMap.put("beta_p", Double.parseDouble(edt_beta.getText().toString()));
             inputDoublesListMap.put("E", Double.parseDouble(edt_E.getText().toString()));
-            inputDoublesListMap.put("C", Double.parseDouble(edt_C.getText().toString()));
             inputDoublesListMap.put("SA", Double.parseDouble(edt_SA.getText().toString()));
             inputDoublesListMap.put("no_kpA", Double.parseDouble(edt_no_kpA.getText().toString()));
             inputDoublesListMap.put("no_kpB", Double.parseDouble(edt_no_kpB.getText().toString()));
@@ -501,11 +678,11 @@ public class UserInputsActivity extends AppCompatActivity {
                 Carpenter carpenter = new Carpenter(inputDoublesListMap, roof_type);
                 if (roof_type == 4) {
                     for (int i = 0; i < numberOfDynamicEdtS_A; i++) {
-                        EditText dynamicField = findViewById(100 + i);
+                        EditText dynamicField = ((TextInputLayout) findViewById(100 + i)).getEditText();
                         carpenter.PAs_list.add(Double.parseDouble(dynamicField.getText().toString()));
                     }
                     for (int i = 0; i < numberOfDynamicEdtS_B; i++) {
-                        EditText dynamicField = findViewById(200 + i);
+                        EditText dynamicField = ((TextInputLayout) findViewById(200 + i)).getEditText();
                         carpenter.PBs_list.add(Double.parseDouble(dynamicField.getText().toString()));
                     }
                 }

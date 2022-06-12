@@ -24,7 +24,7 @@ public class Carpenter {
 
     //roof 4 specific inputs
     double input_g_kk, input_alpha_p, input_beta_p, input_no_kpA, input_no_kpB, input_SA;
-    double result_alpha_A, result_beta_A, result_alpha_B, result_beta_B,result_ksi, result_Hpk, result_B, result_D, result_C, result_fi, result_ni,
+    double result_alpha_A, result_beta_A, result_alpha_B, result_beta_B, result_psi, result_Hpk, result_B, result_D, result_C, result_fi, result_ni,
             result_hipa, result_ro, result_w, result_Lk, result_Dkr, result_MNN_A,
             result_MNN_B, result_L, result_N2_A, result_N1_A, result_N2_B, result_N1_B;
 
@@ -180,23 +180,23 @@ public class Carpenter {
     }
 
     void countRoof4Values() {
-        if (input_alpha_p <= 0 || input_alpha_p >= 90 || input_beta_p <= 0 || input_beta_p >= 90 || input_alpha_p >= input_beta_p) {
+        if (input_alpha_p <= 0 || input_alpha_p >= 90 || input_beta_p <= 0 || input_beta_p >= 90) {
             throw new IllegalArgumentException("Invalid value for alpha or beta!  Alpha = " + input_alpha + " Beta = " + input_beta);
         }
         //wzory_1
         result_Hpk = (input_A - input_g_pk / 2) * Math.tan(Math.toRadians(input_alpha_p)) + input_s_mu - input_SA;
-        result_HK = result_Hpk + (input_s_kr / Math.sin(Math.toRadians(90 - input_alpha_p)));
+        result_HK = input_A * Math.tan(Math.toRadians(input_alpha_p)) + input_s_mu - input_SA + (input_s_kr / Math.sin(Math.toRadians(90 - input_alpha_p)));
         result_D = (Math.tan(Math.toRadians(input_alpha_p)) * input_E) / Math.tan(Math.toRadians(input_beta_p));
-        result_B = (result_Hpk - input_s_mu) / Math.tan(Math.toRadians(input_beta_p));
+        result_B = (result_HK - input_s_kr / Math.sin(Math.toRadians(90 - input_beta_p)) + input_SA - input_s_mu) / Math.tan(Math.toRadians(input_beta_p));
         result_C = Math.sqrt(input_A * input_A + result_B * result_B);
-        result_w = Math.sqrt(input_C * input_C + result_Hpk * result_Hpk);
+        result_w = Math.sqrt(result_C * result_C + (result_Hpk - input_s_mu) * (result_Hpk - input_s_mu));
         result_gamma = Math.toDegrees(Math.atan(result_Hpk / result_C));
         result_Lk = result_w + Math.sqrt(result_D * result_D + input_E * input_E) / Math.cos(result_gamma);
         result_fi = Math.toDegrees(Math.atan(result_B / input_A));
         result_ni = 90 - result_fi;
         result_hipa = Math.toDegrees(Math.atan(Math.cos(Math.toRadians(result_ni)) * Math.tan(Math.toRadians(45))));
         result_ro = Math.toDegrees(Math.atan(Math.sin(Math.toRadians(result_hipa)) / Math.tan(Math.toRadians(result_ni))));
-        result_ksi = Math.toDegrees(Math.atan(Math.sin(Math.toRadians(result_hipa)) / Math.tan(Math.toRadians(result_fi))));
+        result_psi = Math.toDegrees(Math.atan(Math.sin(Math.toRadians(result_hipa)) / Math.tan(Math.toRadians(result_fi))));
 
         // wzory 2
         result_Dkr = (input_A + input_E) / Math.cos(Math.toRadians(input_alpha_p));
@@ -212,11 +212,11 @@ public class Carpenter {
             DKLs_A_list.add(DKLi);
         }
         result_alpha_A = 90 - input_alpha_p;
-        result_beta_A = 90 - input_beta_p;
+        result_beta_A = 90 - result_ni;
 
         // wzory 3
         result_N2_B = result_D / Math.cos(Math.toRadians(input_beta_p));
-        result_N1_B = result_N2_B + result_SA / Math.sin(Math.toRadians(input_beta_p));
+        result_N1_B = result_N2_B + input_SA / Math.sin(Math.toRadians(input_beta_p));
         result_L = (result_B - input_g_kk / Math.cos(Math.toRadians(result_fi)) + result_D) / Math.cos(Math.toRadians(input_beta_p));
         result_alpha_B = 90 - input_beta_p;
         result_beta_B = 90 - result_fi;
@@ -285,16 +285,16 @@ public class Carpenter {
             results.put("HK", result_HK);
             results.put("D", result_D);
             results.put("B", result_B);
-            results.put("ro", result_ro);//TODO zamien C na ro
+            results.put("ro", result_ro); //delta
             results.put("w", result_w);
-            results.put("gamma", result_gamma);
-            results.put("Lk", result_Lk);
-            results.put("fi", result_fi);
-            results.put("ni", result_ni);
+            results.put("gamma", result_gamma); // mi
+            results.put("Lk", result_Lk); // L dla krokwi narożnej
+            results.put("fi", result_fi); // alpha
+            results.put("ni", result_ni); // beta
             results.put("hipa", result_hipa);
-            results.put("ksi", result_ksi);
+            results.put("psi", result_psi);
             // wzory 2
-            results.put("Dkr", result_Dkr);
+            results.put("Dkr", result_Dkr); // L dla połaci A
             results.put("N2_A", result_N2_A);
             results.put("N1_A", result_N1_A);
             results.put("MNN_A", result_MNN_A);
@@ -306,7 +306,7 @@ public class Carpenter {
             // wzory 2
             results.put("N2_B", result_N2_B);
             results.put("N1_B", result_N1_B);
-            results.put("L", result_L);
+            results.put("L", result_L); // L dla połaci B
             results.put("alpha_B", result_alpha_B);
             results.put("beta_B", result_beta_B);
             results.put("MNN_B", result_MNN_B);

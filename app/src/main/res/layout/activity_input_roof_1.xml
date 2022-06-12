@@ -54,34 +54,31 @@
                     android:adjustViewBounds="true"
                     android:gravity="center_horizontal">
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/roof1_input_00"
-                        android:layout_width="135dp"
-                        android:layout_height="48dp"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginTop="28dp"
-                        android:ems="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:hint="@string/hint_input_value"
-                        android:importantForAutofill="no"
-                        android:inputType="number|numberDecimal"
-                        android:minHeight="48dp"
-                        android:textAlignment="viewStart"
-                        android:textColorHint="#757575"
-                        tools:ignore="DuplicateSpeakableTextCheck" />
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-                    <EditText
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="175dp"
+                            android:layout_height="wrap_content"
+                            android:inputType="number|numberDecimal"
+                            android:textColorHint="#757575" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/roof1_input_01"
-                        android:layout_width="135dp"
-                        android:layout_height="48dp"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginTop="28dp"
-                        android:ems="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:hint="@string/hint_input_value"
-                        android:importantForAutofill="no"
-                        android:inputType="number|numberDecimal"
-                        android:minHeight="48dp"
-                        android:textColorHint="#757575"
-                        tools:ignore="DuplicateSpeakableTextCheck" />
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="175dp"
+                            android:layout_height="wrap_content"
+                            android:inputType="number|numberDecimal" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
                 </TableRow>
 
@@ -90,33 +87,32 @@
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal">
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/roof1_input_10"
-                        android:layout_width="135dp"
-                        android:layout_height="48dp"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginTop="28dp"
-                        android:ems="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:hint="@string/hint_input_value"
-                        android:importantForAutofill="no"
-                        android:inputType="number|numberDecimal"
-                        android:minHeight="48dp"
-                        android:textColorHint="#757575"
-                        tools:ignore="DuplicateSpeakableTextCheck" />
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-                    <EditText
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number|numberDecimal"
+                            android:textColorHint="#757575" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/roof1_input_11"
-                        android:layout_width="135dp"
-                        android:layout_height="48dp"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginTop="28dp"
-                        android:ems="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:hint="@string/hint_input_value"
-                        android:importantForAutofill="no"
-                        android:inputType="number|numberDecimal"
-                        android:minHeight="48dp"
-                        android:textColorHint="#757575"
-                        tools:ignore="DuplicateSpeakableTextCheck" />
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:inputType="number|numberDecimal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
 
                 </TableRow>
 
@@ -125,33 +121,32 @@
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal">
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/roof1_input_20"
-                        android:layout_width="135dp"
-                        android:layout_height="48dp"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginTop="28dp"
-                        android:ems="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:hint="@string/hint_input_value"
-                        android:importantForAutofill="no"
-                        android:inputType="number|numberDecimal"
-                        android:minHeight="48dp"
-                        android:textColorHint="#757575"
-                        tools:ignore="DuplicateSpeakableTextCheck" />
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:inputType="number|numberDecimal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/roof1_input_21"
-                        android:layout_width="135dp"
-                        android:layout_height="48dp"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginTop="28dp"
-                        android:ems="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:hint="@string/hint_input_value"
-                        android:importantForAutofill="no"
-                        android:inputType="number|numberDecimal"
-                        android:minHeight="48dp"
-                        android:textColorHint="#757575"
-                        tools:ignore="DuplicateSpeakableTextCheck" />
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:inputType="number|numberDecimal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
+
                 </TableRow>
 
                 <TableRow
@@ -159,33 +154,32 @@
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal">
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/roof1_input_30"
-                        android:layout_width="135dp"
-                        android:layout_height="48dp"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginTop="28dp"
-                        android:ems="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:hint="@string/hint_input_value"
-                        android:importantForAutofill="no"
-                        android:inputType="number|numberDecimal"
-                        android:minHeight="48dp"
-                        android:textColorHint="#757575"
-                        tools:ignore="DuplicateSpeakableTextCheck" />
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-                    <EditText
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number|numberDecimal"
+                            android:textColorHint="#757575" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/roof1_input_31"
-                        android:layout_width="135dp"
-                        android:layout_height="48dp"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginTop="28dp"
-                        android:ems="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:hint="@string/hint_input_value"
-                        android:importantForAutofill="no"
-                        android:inputType="number|numberDecimal"
-                        android:minHeight="48dp"
-                        android:textColorHint="#757575"
-                        tools:ignore="DuplicateSpeakableTextCheck" />
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:inputType="number|numberDecimal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
                 </TableRow>
 
                 <TableRow
@@ -194,35 +188,33 @@
                     android:layout_marginBottom="30dp"
                     android:gravity="center_horizontal">
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/roof1_input_40"
-                        android:layout_width="135dp"
-                        android:layout_height="48dp"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginTop="28dp"
-                        android:ems="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:hint="@string/hint_input_value"
-                        android:importantForAutofill="no"
-                        android:inputType="number|numberDecimal"
-                        android:minHeight="48dp"
-                        android:textColorHint="#757575"
-                        android:visibility="visible"
-                        tools:ignore="DuplicateSpeakableTextCheck" />
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-                    <EditText
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number|numberDecimal"
+                            android:textColorHint="#757575"
+                            tools:ignore="TextContrastCheck" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/roof1_input_41"
-                        android:layout_width="135dp"
-                        android:layout_height="48dp"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginTop="28dp"
-                        android:ems="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:hint="@string/hint_input_value"
-                        android:importantForAutofill="no"
-                        android:inputType="number|numberDecimal"
-                        android:minHeight="48dp"
-                        android:textColorHint="#757575"
-                        android:visibility="visible"
-                        tools:ignore="DuplicateSpeakableTextCheck" />
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:inputType="number|numberDecimal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
                 </TableRow>
 
             </TableLayout>
@@ -249,34 +241,31 @@
                     android:layout_height="match_parent"
                     android:gravity="center_horizontal">
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/roof1_input_50"
-                        android:layout_width="135dp"
-                        android:layout_height="48dp"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginTop="28dp"
-                        android:ems="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:hint="@string/hint_input_value"
-                        android:importantForAutofill="no"
-                        android:inputType="number|numberDecimal"
-                        android:minHeight="48dp"
-                        android:textAlignment="viewStart"
-                        android:textColorHint="#757575"
-                        tools:ignore="DuplicateSpeakableTextCheck" />
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-                    <EditText
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="175dp"
+                            android:layout_height="wrap_content"
+                            android:inputType="number|numberDecimal" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/roof1_input_51"
-                        android:layout_width="135dp"
-                        android:layout_height="48dp"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginTop="28dp"
-                        android:ems="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:hint="@string/hint_input_value"
-                        android:importantForAutofill="no"
-                        android:inputType="number|numberDecimal"
-                        android:minHeight="48dp"
-                        android:textColorHint="#757575"
-                        tools:ignore="DuplicateSpeakableTextCheck" />
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="175dp"
+                            android:layout_height="wrap_content"
+                            android:inputType="number|numberDecimal" />
+                    </com.google.android.material.textfield.TextInputLayout>
                 </TableRow>
 
                 <TableRow
@@ -285,33 +274,31 @@
                     android:layout_marginBottom="88dp"
                     android:gravity="center_horizontal">
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/roof1_input_60"
-                        android:layout_width="135dp"
-                        android:layout_height="48dp"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginTop="28dp"
-                        android:ems="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:hint="@string/hint_input_value"
-                        android:importantForAutofill="no"
-                        android:inputType="number|numberDecimal"
-                        android:minHeight="48dp"
-                        android:textColorHint="#757575"
-                        tools:ignore="DuplicateSpeakableTextCheck" />
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:inputType="number|numberDecimal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/roof1_input_61"
-                        android:layout_width="135dp"
-                        android:layout_height="48dp"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginTop="28dp"
-                        android:ems="10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:hint="@string/hint_input_value"
-                        android:importantForAutofill="no"
-                        android:inputType="number|numberDecimal"
-                        android:minHeight="48dp"
-                        android:textColorHint="#757575"
-                        tools:ignore="DuplicateSpeakableTextCheck" />
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:inputType="number|numberDecimal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+                    </com.google.android.material.textfield.TextInputLayout>
 
                 </TableRow>
 

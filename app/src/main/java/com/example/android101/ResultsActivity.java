@@ -6,50 +6,42 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.HashMap;
-import java.util.Objects;
 
 public class ResultsActivity extends AppCompatActivity {
     int roof_type;
     HashMap<String, Double> results;
-    private int numberOfDynamicEdtS_A = 0;
-    private int numberOfDynamicEdtS_B = 0;
 
     @SuppressLint("UseCompatLoadingForDrawables")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ImageView roof_image_view_result = (ImageView) findViewById(R.id.iv_roof4_image_1);
+        ImageView roof_image_view_result;
         // Get the Intent that started this activity
         Intent intent = getIntent();
         results = (HashMap<String, Double>) intent.getSerializableExtra("EXTRA_ROOF1_RESULTS_MAP");
         roof_type = intent.getIntExtra("ROOF_TYPE", 0);
 
         if (roof_type == 1) {
-            roof_image_view_result.setImageDrawable(getResources().getDrawable(R.drawable.jednospadowy_krokwia, getApplicationContext().getTheme()));
             setContentView(R.layout.activity_result_roof_1);
+            roof_image_view_result = findViewById(R.id.iv_results_image);
+            roof_image_view_result.setImageDrawable(getResources().getDrawable(R.drawable.jednospadowy_krokwia, getApplicationContext().getTheme()));
             displayResultsRoof_1_or_2();
         } else if (roof_type == 2) {
-            roof_image_view_result.setImageDrawable(getResources().getDrawable(R.drawable.dwuspadowy_symetryczny_krokwia, getApplicationContext().getTheme()));
             setContentView(R.layout.activity_result_roof_1);
+            roof_image_view_result = findViewById(R.id.iv_results_image);
+            roof_image_view_result.setImageDrawable(getResources().getDrawable(R.drawable.dwuspadowy_symetryczny_krokwia, getApplicationContext().getTheme()));
             displayResultsRoof_1_or_2();
         } else if (roof_type == 3) {
-            roof_image_view_result.setImageDrawable(getResources().getDrawable(R.drawable.dwuspadowy_niesymetryczny_krokwia_a, getApplicationContext().getTheme()));
             setContentView(R.layout.activity_result_roof_1);
+            roof_image_view_result = findViewById(R.id.iv_results_image);
+            roof_image_view_result.setImageDrawable(getResources().getDrawable(R.drawable.dwuspadowy_niesymetryczny_krokwia_a, getApplicationContext().getTheme()));
             displayResultsRoof_3();
         } else if (roof_type == 4) {
-            //roof_image_view_result.setImageDrawable(getResources().getDrawable(R.drawable.polac_a_krokwie_zwykle, getApplicationContext().getTheme()));
             setContentView(R.layout.activity_result_roof_4);
             displayResultsRoof_4();
         } else {
@@ -57,43 +49,78 @@ public class ResultsActivity extends AppCompatActivity {
         }
     }
 
-    @SuppressLint("DefaultLocale")
-    private void Add_Line(String A_or_B) {
-        TableLayout tableLayoutDown = (TableLayout) findViewById(R.id.results_table_layout1);
-        // add edittext
-        EditText dynamicEditText = new EditText(this);
-        TableRow.LayoutParams params = new TableRow.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        TableRow newTableRow = new TableRow(this);
-        newTableRow.setLayoutParams(params);
-        tableLayoutDown.addView(newTableRow);
-        dynamicEditText.setLayoutParams(params);
-
-        if (Objects.equals(A_or_B, "A")) {
-            String field_name = "\t\tDKLs_A" + (numberOfDynamicEdtS_A + 1);
-            dynamicEditText.setText(String.format(field_name + " = %s", String.format("%.2f", results.get(field_name))));
-            dynamicEditText.setId(300 + numberOfDynamicEdtS_A);
-            numberOfDynamicEdtS_A++;
-        } else if (Objects.equals(A_or_B, "B")) {
-            String field_name = "\t\tDKLs_B" + (numberOfDynamicEdtS_B + 1);
-            dynamicEditText.setText(String.format(field_name + " = %s", String.format("%.2f", results.get(field_name))));
-            dynamicEditText.setId(400 + numberOfDynamicEdtS_B);
-            numberOfDynamicEdtS_B++;
-        }
-        newTableRow.addView(dynamicEditText);
-    }
-
-    private void addImage(int drawable_id) {
-        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.results_linear_layout);
-        ImageView dynamicImage = new ImageView(this);
-
-        dynamicImage.setImageDrawable(getResources().getDrawable(drawable_id, getApplicationContext().getTheme()));
-        linearLayout.addView(dynamicImage);
-    }
 
     @SuppressLint({"DefaultLocale", "ResourceType"})
     private void displayResultsRoof_4() {
         TextView tv_headHk = findViewById(R.id.text_head_Hk);
         tv_headHk.setText(String.format("Wysokość kalenicy = %s", String.format("%.2f", results.get("HK"))));
+        TextView tv_headHpk = findViewById(R.id.text_head_Hpk);
+        tv_headHpk.setText(String.format("Wysokość płatwi kalenicowej = %s", String.format("%.2f", results.get("Hpk"))));
+        TextView tv_headB = findViewById(R.id.text_head_B);
+        tv_headB.setText(String.format("Okap połaci B: D = %s", String.format("%.2f", results.get("D"))));
+
+        TextView tv_1_L = findViewById(R.id.text_1_L);
+        tv_1_L.setText(String.format("Długość krokwi L = %s", String.format("%.2f", results.get("Dkr"))));
+        TextView tv_1_alpha = findViewById(R.id.text_1_alpha);
+        tv_1_alpha.setText(String.format("Kąt krokwi α = %s", String.format("%.1f", results.get("alpha_A"))));
+        TextView tv_1_N2 = findViewById(R.id.text_1_N2);
+        tv_1_N2.setText(String.format("Długość do zaciosu N2 = %s", String.format("%.2f", results.get("N2_A"))));
+        TextView tv_1_N1 = findViewById(R.id.text_1_N1);
+        tv_1_N1.setText(String.format("Długość do zaciosu N1 = %s", String.format("%.2f", results.get("N1_A"))));
+
+        TextView tv_2_L = findViewById(R.id.text_2_L);
+        StringBuilder Dkr_As = new StringBuilder();
+        for (int i = 0; i < results.get("no_kpA"); i++) {
+            Dkr_As.append(String.format("%.1f; ", results.get("DKLs_A" + (i + 1))));
+        }
+        tv_2_L.setText("Długości kulawek L = [" + Dkr_As + "]");
+        TextView tv_2_beta = findViewById(R.id.text_2_beta);
+        tv_2_beta.setText(String.format("Kąt kulawki β = %s", String.format("%.1f", results.get("beta_A"))));
+        TextView tv_2_alpha = findViewById(R.id.text_2_alpha);
+        tv_2_alpha.setText(String.format("Kąt kulawki α = %s", String.format("%.1f", results.get("alpha_A"))));
+        TextView tv_2_N2 = findViewById(R.id.text_2_N2);
+        tv_2_N2.setText(String.format("Długość do zaciosu N2 = %s", String.format("%.2f", results.get("N2_A"))));
+        TextView tv_2_N1 = findViewById(R.id.text_2_N1);
+        tv_2_N1.setText(String.format("Długość do zaciosu N1 = %s", String.format("%.2f", results.get("N1_A"))));
+
+        TextView tv_3_L = findViewById(R.id.text_3_L);
+        tv_3_L.setText(String.format("Długość krokwi L = %s", String.format("%.2f", results.get("Lk"))));
+        TextView tv_3_mi = findViewById(R.id.text_3_mi);
+        tv_3_mi.setText(String.format("Kąt krokwi μ = %s", String.format("%.1f", results.get("gamma"))));
+        TextView tv_3_alpha = findViewById(R.id.text_3_alpha);
+        tv_3_alpha.setText(String.format("Kąt zaciosu do połaci B: α = %s", String.format("%.1f", results.get("fi"))));
+        TextView tv_3_beta = findViewById(R.id.text_3_beta);
+        tv_3_beta.setText(String.format("Kąt zaciosu do połaci A: β = %s", String.format("%.1f", results.get("ni"))));
+        TextView tv_3_delta = findViewById(R.id.text_3_delta);
+        tv_3_delta.setText(String.format("Kąt fazowania do połaci B: δ = %s", String.format("%.1f", results.get("ro"))));
+        TextView tv_3_ro = findViewById(R.id.text_3_psi);
+        tv_3_ro.setText(String.format("Kąt fazowania do połaci A: ψ = %s", String.format("%.1f", results.get("psi"))));
+
+        TextView tv_4_L = findViewById(R.id.text_4_L);
+        tv_4_L.setText(String.format("Długość krokwi L = %s", String.format("%.2f", results.get("L"))));
+        TextView tv_4_beta = findViewById(R.id.text_4_beta);
+        tv_4_beta.setText(String.format("Kąt krokwi β = %s", String.format("%.1f", results.get("beta_B"))));
+        TextView tv_4_alpha = findViewById(R.id.text_4_alpha);
+        tv_4_alpha.setText(String.format("Kąt krokwi α = %s", String.format("%.1f", results.get("alpha_B"))));
+        TextView tv_4_N2 = findViewById(R.id.text_4_N2);
+        tv_4_N2.setText(String.format("Długość do zaciosu N2 = %s", String.format("%.2f", results.get("N2_B"))));
+        TextView tv_4_N1 = findViewById(R.id.text_4_N1);
+        tv_4_N1.setText(String.format("Długość do zaciosu N1 = %s", String.format("%.2f", results.get("N1_B"))));
+
+        TextView tv_5_L = findViewById(R.id.text_5_L);
+        StringBuilder Dkr_Bs = new StringBuilder();
+        for (int i = 0; i < results.get("no_kpB"); i++) {
+            Dkr_Bs.append(String.format("%.1f; ", results.get("DKLs_B" + (i + 1))));
+        }
+        tv_5_L.setText("Długości kulawek L = [" + Dkr_Bs + "]");
+        TextView tv_5_beta = findViewById(R.id.text_5_beta);
+        tv_5_beta.setText(String.format("Kąt krokwi β = %s", String.format("%.1f", results.get("beta_B"))));
+        TextView tv_5_alpha = findViewById(R.id.text_5_alpha);
+        tv_5_alpha.setText(String.format("Kąt krokwi α = %s", String.format("%.1f", results.get("alpha_B"))));
+        TextView tv_5_N2 = findViewById(R.id.text_5_N2);
+        tv_5_N2.setText(String.format("Długość do zaciosu N2 = %s", String.format("%.2f", results.get("N2_B"))));
+        TextView tv_5_N1 = findViewById(R.id.text_5_N1);
+        tv_5_N1.setText(String.format("Długość do zaciosu N1 = %s", String.format("%.2f", results.get("N1_B"))));
     }
 
     @SuppressLint("DefaultLocale")
@@ -152,11 +179,11 @@ public class ResultsActivity extends AppCompatActivity {
         tv_MA1.setText(String.format("MA1 = %s", String.format("%.2f", results.get("MA1"))));
         tv_PP.setText(String.format("PP = %s", String.format("%.2f", results.get("PP"))));
 
-        ((TextView) findViewById(R.id.roof1_result_30)).setVisibility(View.INVISIBLE);
-        ((TextView) findViewById(R.id.roof1_result_31)).setVisibility(View.INVISIBLE);
-        ((TextView) findViewById(R.id.roof1_result_32)).setVisibility(View.INVISIBLE);
-        ((TextView) findViewById(R.id.roof1_result_40)).setVisibility(View.INVISIBLE);
-        ((TextView) findViewById(R.id.roof1_result_41)).setVisibility(View.INVISIBLE);
+        (findViewById(R.id.roof1_result_30)).setVisibility(View.INVISIBLE);
+        (findViewById(R.id.roof1_result_31)).setVisibility(View.INVISIBLE);
+        (findViewById(R.id.roof1_result_32)).setVisibility(View.INVISIBLE);
+        (findViewById(R.id.roof1_result_40)).setVisibility(View.INVISIBLE);
+        (findViewById(R.id.roof1_result_41)).setVisibility(View.INVISIBLE);
     }
 
 }
