@@ -92,7 +92,7 @@ public class RegisterActivity extends AppCompatActivity {
                             Toasty.success(getApplicationContext(), "Rejestracja poprawna", Toast.LENGTH_LONG, true).show();
                             btnRegister.setEnabled(false);
                         } else if (response.equals("\nfailure")) {
-                            Toasty.warning(getApplicationContext(), "Coś poszło nie tak!", Toast.LENGTH_LONG, true).show();
+                            Toasty.warning(getApplicationContext(), "Konto o podanym emailu już istnieje!", Toast.LENGTH_LONG, true).show();
                         }
                     }
                 }, new Response.ErrorListener() {

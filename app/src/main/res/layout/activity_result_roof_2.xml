@@ -25,10 +25,10 @@
                 android:id="@+id/iv_results_top"
                 android:layout_width="match_parent"
                 android:layout_height="273dp"
-                app:srcCompat="@drawable/jednospadowy_budynek" />
+                app:srcCompat="@drawable/dwuspadowy_symetryczny_budynek" />
 
             <TextView
-                android:id="@+id/text_head1_H1"
+                android:id="@+id/text_head2_H1"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:background="@drawable/underline"
@@ -40,7 +40,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/text_head1_H2"
+                android:id="@+id/text_head2_H2"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:background="@drawable/underline"
@@ -52,7 +52,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/text_head1_NK"
+                android:id="@+id/text_head2_NK"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:background="@drawable/underline"
@@ -64,7 +64,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/text_head1_Pk"
+                android:id="@+id/text_head2_Pk"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:background="@drawable/underline"
@@ -76,7 +76,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/text_head1_Gamma"
+                android:id="@+id/text_head2_Gamma"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:background="@drawable/underline"
@@ -88,7 +88,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/text_head1_Area"
+                android:id="@+id/text_head2_Area"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:background="@drawable/underline"
@@ -107,11 +107,11 @@
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/roof1_image"
                 android:scaleType="fitCenter"
-                app:srcCompat="@drawable/jednospadowy_krokwia"
+                app:srcCompat="@drawable/dwuspadowy_symetryczny_krokwia"
                 tools:ignore="ImageContrastCheck" />
 
             <TextView
-                android:id="@+id/text_body1_S"
+                android:id="@+id/text_body2_S"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:background="@drawable/underline"
@@ -123,7 +123,19 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/text_body1_Lc"
+                android:id="@+id/text_body2_S1"
+                android:layout_width="match_parent"
+                android:layout_height="43dp"
+                android:background="@drawable/underline"
+                android:gravity="start|fill"
+                android:text="Długość zaciosu poziomego S1 = "
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/text_body2_Lc"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:background="@drawable/underline"
@@ -135,31 +147,19 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/text_body1_Lp"
+                android:id="@+id/text_body2_Lp"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:background="@drawable/underline"
                 android:gravity="start|fill"
-                android:text="Długość połaci Lp ="
+                android:text="Długość połaci Lp = "
                 android:textAlignment="viewStart"
                 android:textAllCaps="false"
                 android:textColor="#000000"
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/text_body1_K1"
-                android:layout_width="match_parent"
-                android:layout_height="43dp"
-                android:background="@drawable/underline"
-                android:gravity="start|fill"
-                android:text="Długość zacoisu K1 = "
-                android:textAlignment="viewStart"
-                android:textAllCaps="false"
-                android:textColor="#000000"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/text_body1_K2"
+                android:id="@+id/text_body2_K2"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:background="@drawable/underline"
@@ -171,7 +171,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/text_body1_N1"
+                android:id="@+id/text_body2_N1"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:background="@drawable/underline"
@@ -183,7 +183,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/text_body1_N2"
+                android:id="@+id/text_body2_N2"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:background="@drawable/underline"
@@ -195,7 +195,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/text_body1_M1"
+                android:id="@+id/text_body2_M1"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:background="@drawable/underline"
@@ -207,7 +207,7 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/text_body1_M2"
+                android:id="@+id/text_body2_M2"
                 android:layout_width="match_parent"
                 android:layout_height="43dp"
                 android:background="@drawable/underline"

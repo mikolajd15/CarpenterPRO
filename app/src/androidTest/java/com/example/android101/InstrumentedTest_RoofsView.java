@@ -69,19 +69,19 @@ public class InstrumentedTest_RoofsView {
         intended(hasExtra("ROOF_TYPE", 1));
         intended(hasComponent(UserInputsActivity.class.getName()));
         // Pass reference values:
-        onView(withHint("Podaj A")).perform(typeText("500"), closeSoftKeyboard());
-        onView(withHint("Podaj B")).perform(typeText("1"), closeSoftKeyboard());
-        onView(withHint("Podaj D")).perform(typeText("80"), closeSoftKeyboard());
-        onView(withHint("Podaj S")).perform(typeText("5"), closeSoftKeyboard());
-        onView(withHint("Podaj theta")).perform(typeText("30"), closeSoftKeyboard());
-        onView(withHint("Podaj C")).perform(typeText("250"), closeSoftKeyboard());
-        onView(withHint("Podaj s_mu")).perform(typeText("20"), closeSoftKeyboard());
-        onView(withHint("Podaj g_pk")).perform(typeText("16"), closeSoftKeyboard());
-        onView(withHint("Podaj E")).perform(typeText("20"), closeSoftKeyboard());
-        onView(withHint("Podaj g_kr")).perform(ViewActions.scrollTo(), typeText("1"), closeSoftKeyboard());
-        onView(withHint("Podaj s_kr")).perform(typeText("16"), closeSoftKeyboard());
-        onView(withHint("Podaj fpk")).perform(typeText("1"), closeSoftKeyboard());
-        onView(withHint("Podaj k_max")).perform(typeText("1"), closeSoftKeyboard());
+        onView(withHint("Długość bud.: A")).perform(typeText("500"), closeSoftKeyboard());
+        onView(withHint("Szerokość bud.: B")).perform(typeText("1"), closeSoftKeyboard());
+        onView(withHint("Okap tylni: D")).perform(typeText("80"), closeSoftKeyboard());
+        onView(withHint("Zacios pionowy krokwi")).perform(typeText("5"), closeSoftKeyboard());
+        onView(withHint("Kąt dachu: Θ")).perform(typeText("30"), closeSoftKeyboard());
+        onView(withHint("Odległość C")).perform(typeText("250"), closeSoftKeyboard());
+        onView(withHint("Szerokość murłaty")).perform(typeText("20"), closeSoftKeyboard());
+        onView(withHint("Grubość płatwi kalenicowej")).perform(typeText("16"), closeSoftKeyboard());
+        onView(withHint("Okap przedni E")).perform(typeText("20"), closeSoftKeyboard());
+        onView(withHint("Grubość krokwi")).perform(ViewActions.scrollTo(), typeText("1"), closeSoftKeyboard());
+        onView(withHint("Szerokość krokwi")).perform(typeText("16"), closeSoftKeyboard());
+        onView(withHint("Pole krokwi: Pk1")).perform(typeText("1"), closeSoftKeyboard());
+        onView(withHint("Max. pole krokwi")).perform(typeText("1"), closeSoftKeyboard());
         Intents.release();
 
         Intents.init();
@@ -110,18 +110,18 @@ public class InstrumentedTest_RoofsView {
         intended(hasExtra("ROOF_TYPE", 2));
         intended(hasComponent(UserInputsActivity.class.getName()));
         // Pass reference values:
-        onView(withHint("Podaj A")).perform(typeText("984"), closeSoftKeyboard());
-        onView(withHint("Podaj B")).perform(typeText("1"), closeSoftKeyboard());
-        onView(withHint("Podaj D")).perform(typeText("80"), closeSoftKeyboard());
-        onView(withHint("Podaj S")).perform(typeText("5"), closeSoftKeyboard());
-        onView(withHint("Podaj theta")).perform(typeText("30"), closeSoftKeyboard());
-        onView(withHint("Podaj C")).perform(typeText("250"), closeSoftKeyboard());
-        onView(withHint("Podaj s_mu")).perform(typeText("20"), closeSoftKeyboard());
-        onView(withHint("Podaj g_pk")).perform(typeText("16"), closeSoftKeyboard());
-        onView(withHint("Podaj g_kr")).perform(ViewActions.scrollTo(), typeText("1"), closeSoftKeyboard());
-        onView(withHint("Podaj s_kr")).perform(typeText("16"), closeSoftKeyboard());
-        onView(withHint("Podaj fpk")).perform(typeText("1"), closeSoftKeyboard());
-        onView(withHint("Podaj k_max")).perform(typeText("1"), closeSoftKeyboard());
+        onView(withHint("Długość bud.: A")).perform(typeText("984"), closeSoftKeyboard());
+        onView(withHint("Szerokość bud.: B")).perform(typeText("1"), closeSoftKeyboard());
+        onView(withHint("Okap: D")).perform(typeText("80"), closeSoftKeyboard());
+        onView(withHint("Zacios pionowy krokwi")).perform(typeText("5"), closeSoftKeyboard());
+        onView(withHint("Kąt dachu: Θ")).perform(typeText("30"), closeSoftKeyboard());
+        onView(withHint("Odległość C")).perform(typeText("250"), closeSoftKeyboard());
+        onView(withHint("Szerokość murłaty")).perform(typeText("20"), closeSoftKeyboard());
+        onView(withHint("Grubość płatwi kalenicowej")).perform(typeText("16"), closeSoftKeyboard());
+        onView(withHint("Grubość krokwi")).perform(ViewActions.scrollTo(), typeText("1"), closeSoftKeyboard());
+        onView(withHint("Szerokość krokwi")).perform(typeText("16"), closeSoftKeyboard());
+        onView(withHint("Pole krokwi: Pk1")).perform(typeText("1"), closeSoftKeyboard());
+        onView(withHint("Max. pole krokwi")).perform(typeText("1"), closeSoftKeyboard());
         Intents.release();
 
         Intents.init();
@@ -150,20 +150,20 @@ public class InstrumentedTest_RoofsView {
         intended(hasExtra("ROOF_TYPE", 3));
         intended(hasComponent(UserInputsActivity.class.getName()));
         // Pass reference values:
-        onView(withHint("Podaj A")).perform(typeText("300"), closeSoftKeyboard());
-        onView(withHint("Podaj B")).perform(typeText("200"), closeSoftKeyboard());
-        onView(withHint("Podaj D")).perform(typeText("40"), closeSoftKeyboard());
-        onView(withHint("Podaj SB")).perform(typeText("3"), closeSoftKeyboard());
-        onView(withHint("Podaj alpha")).perform(typeText("30"), closeSoftKeyboard());
-        onView(withHint("Podaj beta")).perform(typeText("45"), closeSoftKeyboard());
-        onView(withHint("Podaj s_mu")).perform(typeText("12"), closeSoftKeyboard());
-        onView(withHint("Podaj g_pk")).perform(typeText("8"), closeSoftKeyboard());
-        onView(withHint("Podaj E")).perform(ViewActions.scrollTo(), typeText("30"), closeSoftKeyboard());
-        onView(withHint("Podaj g_mu")).perform(typeText("8"), closeSoftKeyboard());
-        onView(withHint("Podaj g_kr")).perform(ViewActions.scrollTo(), typeText("4"), closeSoftKeyboard());
-        onView(withHint("Podaj s_kr")).perform(typeText("8"), closeSoftKeyboard());
-        onView(withHint("Podaj A1")).perform(typeText("150"), closeSoftKeyboard());
-        onView(withHint("Podaj B1")).perform(typeText("100"), closeSoftKeyboard());
+        onView(withHint("Długość części A")).perform(typeText("300"), closeSoftKeyboard());
+        onView(withHint("Długość części B")).perform(typeText("200"), closeSoftKeyboard());
+        onView(withHint("Pierwszy okap: D")).perform(typeText("40"), closeSoftKeyboard());
+        onView(withHint("Zacios pionowy krokwi")).perform(typeText("3"), closeSoftKeyboard());
+        onView(withHint("Kąt połaci A: α")).perform(typeText("30"), closeSoftKeyboard());
+        onView(withHint("Kąt połaci B: β")).perform(typeText("45"), closeSoftKeyboard());
+        onView(withHint("Szerokość murłaty")).perform(typeText("12"), closeSoftKeyboard());
+        onView(withHint("Grubość płatwi kalenicowej")).perform(typeText("8"), closeSoftKeyboard());
+        onView(withHint("Drugi okap: E")).perform(ViewActions.scrollTo(), typeText("30"), closeSoftKeyboard());
+        onView(withHint("Grubość murłaty")).perform(typeText("8"), closeSoftKeyboard());
+        onView(withHint("Grubość krokwi")).perform(ViewActions.scrollTo(), typeText("4"), closeSoftKeyboard());
+        onView(withHint("Szerokość krokwi")).perform(typeText("8"), closeSoftKeyboard());
+        onView(withHint("Odległość A1")).perform(typeText("150"), closeSoftKeyboard());
+        onView(withHint("Odległość B1")).perform(typeText("100"), closeSoftKeyboard());
         Intents.release();
 
         Intents.init();
@@ -199,29 +199,29 @@ public class InstrumentedTest_RoofsView {
         intended(hasExtra("ROOF_TYPE", 1));
         intended(hasComponent(UserInputsActivity.class.getName()));
         // Fill input parameters
-        onView(withHint("Podaj A")).perform(typeText("500"), closeSoftKeyboard());
-        onView(withHint("Podaj B")).perform(typeText("1"), closeSoftKeyboard());
-        onView(withHint("Podaj D")).perform(typeText("80"), closeSoftKeyboard());
-        onView(withHint("Podaj S")).perform(typeText("5"), closeSoftKeyboard());
-        onView(withHint("Podaj theta")).perform(typeText("0"), closeSoftKeyboard());
-        onView(withHint("Podaj C")).perform(typeText("250"), closeSoftKeyboard());
-        onView(withHint("Podaj s_mu")).perform(typeText("20"), closeSoftKeyboard());
-        onView(withHint("Podaj g_pk")).perform(typeText("16"), closeSoftKeyboard());
-        onView(withHint("Podaj E")).perform(typeText("20"), closeSoftKeyboard());
-        onView(withHint("Podaj g_kr")).perform(ViewActions.scrollTo(), typeText("1"), closeSoftKeyboard());
-        onView(withHint("Podaj s_kr")).perform(typeText("16"), closeSoftKeyboard());
-        onView(withHint("Podaj fpk")).perform(typeText("1"), closeSoftKeyboard());
-        onView(withHint("Podaj k_max")).perform(typeText("1"), closeSoftKeyboard());
+        onView(withHint("Długość bud.: A")).perform(typeText("500"), closeSoftKeyboard());
+        onView(withHint("Szerokość bud.: B")).perform(typeText("1"), closeSoftKeyboard());
+        onView(withHint("Okap tylni: D")).perform(typeText("80"), closeSoftKeyboard());
+        onView(withHint("Zacios pionowy krokwi")).perform(typeText("5"), closeSoftKeyboard());
+        onView(withHint("Kąt dachu: Θ")).perform(typeText("0"), closeSoftKeyboard());
+        onView(withHint("Odległość C")).perform(typeText("250"), closeSoftKeyboard());
+        onView(withHint("Szerokość murłaty")).perform(typeText("20"), closeSoftKeyboard());
+        onView(withHint("Grubość płatwi kalenicowej")).perform(typeText("16"), closeSoftKeyboard());
+        onView(withHint("Okap przedni E")).perform(typeText("20"), closeSoftKeyboard());
+        onView(withHint("Grubość krokwi")).perform(ViewActions.scrollTo(), typeText("1"), closeSoftKeyboard());
+        onView(withHint("Szerokość krokwi")).perform(typeText("16"), closeSoftKeyboard());
+        onView(withHint("Pole krokwi: Pk1")).perform(typeText("1"), closeSoftKeyboard());
+        onView(withHint("Max. pole krokwi")).perform(typeText("1"), closeSoftKeyboard());
         onView(withId(R.id.button_roof1_count)).check(matches(isEnabled())).perform(click());
         // Verify that toast is correct for value 0
-        onView(withHint("Podaj theta")).check(matches(hasTextColor(R.color.red)));
+        onView(withHint("Kąt dachu: Θ")).check(matches(hasTextColor(R.color.red)));
 
         onView(withText("Niepoprawna wartość dla theta: 0.0")).inRoot(withDecorView(not(decorView))).check(matches(isDisplayed()));
         // Clear theta, wait for 4 seconds and type value greater than 90
-        onView(withHint("Podaj theta")).perform(clearText(), closeSoftKeyboard());
+        onView(withHint("Kąt dachu: Θ")).perform(clearText(), closeSoftKeyboard());
         onView(isRoot()).perform(waitFor(3000));
-        onView(withHint("Podaj theta")).perform(typeText("91"), closeSoftKeyboard());
-        onView(withHint("Podaj theta")).check(matches(hasTextColor(R.color.red)));
+        onView(withHint("Kąt dachu: Θ")).perform(typeText("91"), closeSoftKeyboard());
+        onView(withHint("Kąt dachu: Θ")).check(matches(hasTextColor(R.color.red)));
         onView(withId(R.id.button_roof1_count)).check(matches(isEnabled())).perform(click());
         // Verify that toast is correct for value over 90
         onView(withText("Niepoprawna wartość dla theta: 91.0")).inRoot(withDecorView(not(decorView))).check(matches(isDisplayed()));
@@ -243,28 +243,28 @@ public class InstrumentedTest_RoofsView {
         intended(hasExtra("ROOF_TYPE", 2));
         intended(hasComponent(UserInputsActivity.class.getName()));
         // Fill input parameters
-        onView(withHint("Podaj A")).perform(typeText("500"), closeSoftKeyboard());
-        onView(withHint("Podaj B")).perform(typeText("1"), closeSoftKeyboard());
-        onView(withHint("Podaj D")).perform(typeText("80"), closeSoftKeyboard());
-        onView(withHint("Podaj S")).perform(typeText("5"), closeSoftKeyboard());
-        onView(withHint("Podaj theta")).perform(typeText("0"), closeSoftKeyboard());
-        onView(withHint("Podaj C")).perform(typeText("250"), closeSoftKeyboard());
-        onView(withHint("Podaj s_mu")).perform(typeText("20"), closeSoftKeyboard());
-        onView(withHint("Podaj g_pk")).perform(typeText("16"), closeSoftKeyboard());
-        onView(withHint("Podaj g_kr")).perform(ViewActions.scrollTo(), typeText("1"), closeSoftKeyboard());
-        onView(withHint("Podaj s_kr")).perform(typeText("16"), closeSoftKeyboard());
-        onView(withHint("Podaj fpk")).perform(typeText("1"), closeSoftKeyboard());
-        onView(withHint("Podaj k_max")).perform(typeText("1"), closeSoftKeyboard());
+        onView(withHint("Długość bud.: A")).perform(typeText("500"), closeSoftKeyboard());
+        onView(withHint("Szerokość bud.: B")).perform(typeText("1"), closeSoftKeyboard());
+        onView(withHint("Okap: D")).perform(typeText("80"), closeSoftKeyboard());
+        onView(withHint("Zacios pionowy krokwi")).perform(typeText("5"), closeSoftKeyboard());
+        onView(withHint("Kąt dachu: Θ")).perform(typeText("0"), closeSoftKeyboard());
+        onView(withHint("Odległość C")).perform(typeText("250"), closeSoftKeyboard());
+        onView(withHint("Szerokość murłaty")).perform(typeText("20"), closeSoftKeyboard());
+        onView(withHint("Grubość płatwi kalenicowej")).perform(typeText("16"), closeSoftKeyboard());
+        onView(withHint("Grubość krokwi")).perform(ViewActions.scrollTo(), typeText("1"), closeSoftKeyboard());
+        onView(withHint("Szerokość krokwi")).perform(typeText("16"), closeSoftKeyboard());
+        onView(withHint("Pole krokwi: Pk1")).perform(typeText("1"), closeSoftKeyboard());
+        onView(withHint("Max. pole krokwi")).perform(typeText("1"), closeSoftKeyboard());
         onView(withId(R.id.button_roof1_count)).check(matches(isEnabled())).perform(click());
         // Verify that toast is correct for value 0
-        onView(withHint("Podaj theta")).check(matches(hasTextColor(R.color.red)));
+        onView(withHint("Kąt dachu: Θ")).check(matches(hasTextColor(R.color.red)));
 
         onView(withText("Niepoprawna wartość dla theta: 0.0")).inRoot(withDecorView(not(decorView))).check(matches(isDisplayed()));
         // Clear theta, wait for 4 seconds and type value greater than 90
-        onView(withHint("Podaj theta")).perform(clearText(), closeSoftKeyboard());
+        onView(withHint("Kąt dachu: Θ")).perform(clearText(), closeSoftKeyboard());
         onView(isRoot()).perform(waitFor(3000));
-        onView(withHint("Podaj theta")).perform(typeText("91"), closeSoftKeyboard());
-        onView(withHint("Podaj theta")).check(matches(hasTextColor(R.color.red)));
+        onView(withHint("Kąt dachu: Θ")).perform(typeText("91"), closeSoftKeyboard());
+        onView(withHint("Kąt dachu: Θ")).check(matches(hasTextColor(R.color.red)));
         onView(withId(R.id.button_roof1_count)).check(matches(isEnabled())).perform(click());
         // Verify that toast is correct for value over 90
         onView(withText("Niepoprawna wartość dla theta: 91.0")).inRoot(withDecorView(not(decorView))).check(matches(isDisplayed()));
@@ -286,42 +286,41 @@ public class InstrumentedTest_RoofsView {
         intended(hasExtra("ROOF_TYPE", 3));
         intended(hasComponent(UserInputsActivity.class.getName()));
         // Fill input parameters
-        onView(withHint("Podaj A")).perform(typeText("300"), closeSoftKeyboard());
-        onView(withHint("Podaj B")).perform(typeText("200"), closeSoftKeyboard());
-        onView(withHint("Podaj D")).perform(typeText("40"), closeSoftKeyboard());
-        onView(withHint("Podaj SB")).perform(typeText("3"), closeSoftKeyboard());
-        onView(withHint("Podaj s_mu")).perform(typeText("12"), closeSoftKeyboard());
-        onView(withHint("Podaj g_pk")).perform(typeText("8"), closeSoftKeyboard());
-        onView(withHint("Podaj E")).perform(ViewActions.scrollTo(), typeText("30"), closeSoftKeyboard());
-        onView(withHint("Podaj g_mu")).perform(typeText("8"), closeSoftKeyboard());
-        onView(withHint("Podaj g_kr")).perform(ViewActions.scrollTo(), typeText("4"), closeSoftKeyboard());
-        onView(withHint("Podaj s_kr")).perform(typeText("8"), closeSoftKeyboard());
-        onView(withHint("Podaj A1")).perform(typeText("150"), closeSoftKeyboard());
-        onView(withHint("Podaj B1")).perform(typeText("100"), closeSoftKeyboard());
+        onView(withHint("Długość części A")).perform(typeText("300"), closeSoftKeyboard());
+        onView(withHint("Długość części B")).perform(typeText("200"), closeSoftKeyboard());
+        onView(withHint("Pierwszy okap: D")).perform(typeText("40"), closeSoftKeyboard());
+        onView(withHint("Zacios pionowy krokwi")).perform(typeText("3"), closeSoftKeyboard());
+        onView(withHint("Szerokość murłaty")).perform(typeText("12"), closeSoftKeyboard());
+        onView(withHint("Grubość płatwi kalenicowej")).perform(typeText("8"), closeSoftKeyboard());
+        onView(withHint("Drugi okap: E")).perform(ViewActions.scrollTo(), typeText("30"), closeSoftKeyboard());
+        onView(withHint("Grubość murłaty")).perform(typeText("8"), closeSoftKeyboard());
+        onView(withHint("Grubość krokwi")).perform(ViewActions.scrollTo(), typeText("4"), closeSoftKeyboard());
+        onView(withHint("Szerokość krokwi")).perform(typeText("8"), closeSoftKeyboard());
+        onView(withHint("Odległość A1")).perform(typeText("150"), closeSoftKeyboard());
+        onView(withHint("Odległość B1")).perform(typeText("100"), closeSoftKeyboard());
 
         // Verify that toast is correct for value 0
-        onView(withHint("Podaj alpha")).perform(ViewActions.scrollTo(), typeText("0"), closeSoftKeyboard());
-        onView(withHint("Podaj beta")).perform(typeText("45"), closeSoftKeyboard());
-        onView(withHint("Podaj alpha")).check(matches(hasTextColor(R.color.red)));
-        onView(withHint("Podaj beta")).check(matches(hasTextColor(R.color.black )));
+        onView(withHint("Kąt połaci A: α")).perform(ViewActions.scrollTo(), typeText("0"), closeSoftKeyboard());
+        onView(withHint("Kąt połaci B: β")).perform(typeText("45"), closeSoftKeyboard());
+        onView(withHint("Kąt połaci A: α")).check(matches(hasTextColor(R.color.red)));
+        onView(withHint("Kąt połaci B: β")).check(matches(hasTextColor(R.color.black)));
         onView(withId(R.id.button_roof1_count)).check(matches(isEnabled())).perform(click());
         onView(withText("Niepoprawna wartość dla alpha: 0.0")).inRoot(withDecorView(not(decorView))).check(matches(isDisplayed()));
         onView(isRoot()).perform(waitFor(3000));
 
         // Verify that toast is correct for value 91
-        onView(withHint("Podaj alpha")).perform(clearText(), typeText("40"), closeSoftKeyboard());
-        onView(withHint("Podaj beta")).perform(clearText(), typeText("91"), closeSoftKeyboard());
-        onView(withHint("Podaj alpha")).check(matches(hasTextColor(R.color.black)));
-        onView(withHint("Podaj beta")).check(matches(hasTextColor(R.color.red)));
+        onView(withHint("Kąt połaci A: α")).perform(clearText(), typeText("40"), closeSoftKeyboard());
+        onView(withHint("Kąt połaci B: β")).perform(clearText(), typeText("91"), closeSoftKeyboard());
+        onView(withHint("Kąt połaci A: α")).check(matches(hasTextColor(R.color.black)));
+        onView(withHint("Kąt połaci B: β")).check(matches(hasTextColor(R.color.red)));
         onView(withId(R.id.button_roof1_count)).check(matches(isEnabled())).perform(click());
         onView(withText("Niepoprawna wartość dla beta: 91.0")).inRoot(withDecorView(not(decorView))).check(matches(isDisplayed()));
         onView(isRoot()).perform(waitFor(3000));
-
         // Verify alpha < beta condition
-        onView(withHint("Podaj alpha")).perform(clearText(), typeText("40"), closeSoftKeyboard());
-        onView(withHint("Podaj beta")).perform(clearText(), typeText("39"), closeSoftKeyboard());
-        onView(withHint("Podaj alpha")).check(matches(hasTextColor(R.color.red)));
-        onView(withHint("Podaj beta")).check(matches(hasTextColor(R.color.red)));
+        onView(withHint("Kąt połaci A: α")).perform(clearText(), typeText("40"), closeSoftKeyboard());
+        onView(withHint("Kąt połaci B: β")).perform(clearText(), typeText("39"), closeSoftKeyboard());
+        onView(withHint("Kąt połaci A: α")).check(matches(hasTextColor(R.color.red)));
+        onView(withHint("Kąt połaci B: β")).check(matches(hasTextColor(R.color.red)));
         onView(withId(R.id.button_roof1_count)).check(matches(isEnabled())).perform(click());
         onView(withText("Alpha musi być mniejsze od beta")).inRoot(withDecorView(not(decorView))).check(matches(isDisplayed()));
 

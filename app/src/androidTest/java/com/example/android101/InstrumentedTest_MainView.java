@@ -62,19 +62,19 @@ public class InstrumentedTest_MainView {
         intended(hasExtra("ROOF_TYPE", 1));
         intended(hasComponent(UserInputsActivity.class.getName()));
         // Check that all needed input views are present
-        onView(withHint("Podaj A")).check(matches(isDisplayed()));
-        onView(withHint("Podaj B")).check(matches(isDisplayed()));
-        onView(withHint("Podaj D")).check(matches(isDisplayed()));
-        onView(withHint("Podaj S")).check(matches(isDisplayed()));
-        onView(withHint("Podaj theta")).check(matches(isDisplayed()));
-        onView(withHint("Podaj C")).check(matches(isDisplayed()));
-        onView(withHint("Podaj s_mu")).check(matches(isDisplayed()));
-        onView(withHint("Podaj g_pk")).check(matches(isDisplayed()));
-        onView(withHint("Podaj E")).check(matches(isDisplayed()));
-        onView(withHint("Podaj g_kr")).perform(ViewActions.scrollTo()).check(matches(isDisplayed()));
-        onView(withHint("Podaj s_kr")).perform(ViewActions.scrollTo()).check(matches(isDisplayed()));
-        onView(withHint("Podaj fpk")).perform(ViewActions.scrollTo()).check(matches(isDisplayed()));
-        onView(withHint("Podaj k_max")).perform(ViewActions.scrollTo()).check(matches(isDisplayed()));
+        onView(withHint("Długość bud.: A")).check(matches(isDisplayed()));
+        onView(withHint("Szerokość bud.: B")).check(matches(isDisplayed()));
+        onView(withHint("Okap tylni: D")).check(matches(isDisplayed()));
+        onView(withHint("Zacios pionowy krokwi")).check(matches(isDisplayed()));
+        onView(withHint("Kąt dachu: Θ")).check(matches(isDisplayed()));
+        onView(withHint("Odległość C")).check(matches(isDisplayed()));
+        onView(withHint("Szerokość murłaty")).check(matches(isDisplayed()));
+        onView(withHint("Grubość płatwi kalenicowej")).check(matches(isDisplayed()));
+        onView(withHint("Okap przedni E")).check(matches(isDisplayed()));
+        onView(withHint("Grubość krokwi")).perform(ViewActions.scrollTo()).check(matches(isDisplayed()));
+        onView(withHint("Szerokość krokwi")).perform(ViewActions.scrollTo()).check(matches(isDisplayed()));
+        onView(withHint("Pole krokwi: Pk1")).perform(ViewActions.scrollTo()).check(matches(isDisplayed()));
+        onView(withHint("Max. pole krokwi")).perform(ViewActions.scrollTo()).check(matches(isDisplayed()));
         onView(withId(R.id.roof1_input_41)).check(matches(not(isDisplayed())));
         // Check that button is initially disabled
         onView(withId(R.id.button_roof1_count)).check(matches(not(isEnabled())));
@@ -90,18 +90,18 @@ public class InstrumentedTest_MainView {
         intended(hasExtra("ROOF_TYPE", 2));
         intended(hasComponent(UserInputsActivity.class.getName()));
         // Check that all needed input views are present
-        onView(withHint("Podaj A")).check(matches(isDisplayed()));
-        onView(withHint("Podaj B")).check(matches(isDisplayed()));
-        onView(withHint("Podaj D")).check(matches(isDisplayed()));
-        onView(withHint("Podaj S")).check(matches(isDisplayed()));
-        onView(withHint("Podaj theta")).check(matches(isDisplayed()));
-        onView(withHint("Podaj C")).check(matches(isDisplayed()));
-        onView(withHint("Podaj s_mu")).check(matches(isDisplayed()));
-        onView(withHint("Podaj g_pk")).check(matches(isDisplayed()));
-        onView(withHint("Podaj g_kr")).perform(ViewActions.scrollTo()).check(matches(isDisplayed()));
-        onView(withHint("Podaj s_kr")).perform(ViewActions.scrollTo()).check(matches(isDisplayed()));
-        onView(withHint("Podaj fpk")).perform(ViewActions.scrollTo()).check(matches(isDisplayed()));
-        onView(withHint("Podaj k_max")).perform(ViewActions.scrollTo()).check(matches(isDisplayed()));
+        onView(withHint("Długość bud.: A")).check(matches(isDisplayed()));
+        onView(withHint("Szerokość bud.: B")).check(matches(isDisplayed()));
+        onView(withHint("Okap: D")).check(matches(isDisplayed()));
+        onView(withHint("Zacios pionowy krokwi")).check(matches(isDisplayed()));
+        onView(withHint("Kąt dachu: Θ")).check(matches(isDisplayed()));
+        onView(withHint("Odległość C")).check(matches(isDisplayed()));
+        onView(withHint("Szerokość murłaty")).check(matches(isDisplayed()));
+        onView(withHint("Grubość płatwi kalenicowej")).check(matches(isDisplayed()));
+        onView(withHint("Grubość krokwi")).perform(ViewActions.scrollTo()).check(matches(isDisplayed()));
+        onView(withHint("Szerokość krokwi")).perform(ViewActions.scrollTo()).check(matches(isDisplayed()));
+        onView(withHint("Pole krokwi: Pk1")).perform(ViewActions.scrollTo()).check(matches(isDisplayed()));
+        onView(withHint("Max. pole krokwi")).perform(ViewActions.scrollTo()).check(matches(isDisplayed()));
         onView(withId(R.id.roof1_input_40)).check(matches(not(isDisplayed())));
         onView(withId(R.id.roof1_input_41)).check(matches(not(isDisplayed())));
         // Check that button is initially disabled
@@ -118,20 +118,20 @@ public class InstrumentedTest_MainView {
         intended(hasExtra("ROOF_TYPE", 3));
         intended(hasComponent(UserInputsActivity.class.getName()));
         // Check that all needed input views are present
-        onView(withHint("Podaj A")).check(matches(isDisplayed()));
-        onView(withHint("Podaj B")).check(matches(isDisplayed()));
-        onView(withHint("Podaj D")).check(matches(isDisplayed()));
-        onView(withHint("Podaj SB")).check(matches(isDisplayed()));
-        onView(withHint("Podaj alpha")).check(matches(isDisplayed()));
-        onView(withHint("Podaj beta")).check(matches(isDisplayed()));
-        onView(withHint("Podaj s_mu")).check(matches(isDisplayed()));
-        onView(withHint("Podaj g_pk")).check(matches(isDisplayed()));
-        onView(withHint("Podaj E")).perform(ViewActions.scrollTo()).check(matches(isDisplayed()));
-        onView(withHint("Podaj g_mu")).perform(ViewActions.scrollTo()).check(matches(isDisplayed()));
-        onView(withHint("Podaj g_kr")).perform(ViewActions.scrollTo()).check(matches(isDisplayed()));
-        onView(withHint("Podaj s_kr")).perform(ViewActions.scrollTo()).check(matches(isDisplayed()));
-        onView(withHint("Podaj A1")).perform(ViewActions.scrollTo()).check(matches(isDisplayed()));
-        onView(withHint("Podaj B1")).perform(ViewActions.scrollTo()).check(matches(isDisplayed()));
+        onView(withHint("Długość części A")).check(matches(isDisplayed()));
+        onView(withHint("Długość części B")).check(matches(isDisplayed()));
+        onView(withHint("Pierwszy okap: D")).check(matches(isDisplayed()));
+        onView(withHint("Zacios pionowy krokwi")).check(matches(isDisplayed()));
+        onView(withHint("Kąt połaci A: α")).check(matches(isDisplayed()));
+        onView(withHint("Kąt połaci B: β")).check(matches(isDisplayed()));
+        onView(withHint("Szerokość murłaty")).check(matches(isDisplayed()));
+        onView(withHint("Grubość płatwi kalenicowej")).check(matches(isDisplayed()));
+        onView(withHint("Drugi okap: E")).perform(ViewActions.scrollTo()).check(matches(isDisplayed()));
+        onView(withHint("Grubość murłaty")).perform(ViewActions.scrollTo()).check(matches(isDisplayed()));
+        onView(withHint("Grubość krokwi")).perform(ViewActions.scrollTo()).check(matches(isDisplayed()));
+        onView(withHint("Szerokość krokwi")).perform(ViewActions.scrollTo()).check(matches(isDisplayed()));
+        onView(withHint("Odległość A1")).perform(ViewActions.scrollTo()).check(matches(isDisplayed()));
+        onView(withHint("Odległość B1")).perform(ViewActions.scrollTo()).check(matches(isDisplayed()));
         // Check that button is initially disabled
         onView(withId(R.id.button_roof1_count)).check(matches(not(isEnabled())));
         Intents.release();
