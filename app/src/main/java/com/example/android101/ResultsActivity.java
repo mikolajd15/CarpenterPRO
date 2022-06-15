@@ -193,7 +193,7 @@ public class ResultsActivity extends AppCompatActivity {
         TextView tv_2_L = findViewById(R.id.text_2_L);
         StringBuilder Dkr_As = new StringBuilder();
         for (int i = 0; i < results.get("no_kpA"); i++) {
-            Dkr_As.append(String.format("%.1f; ", results.get("DKLs_A cm" + (i + 1))));
+            Dkr_As.append(String.format("%.1f cm; ", results.get("DKLs_A" + (i + 1))));
         }
         tv_2_L.setText("Długości kulawek L = [" + Dkr_As + "]");
         TextView tv_2_beta = findViewById(R.id.text_2_beta);
@@ -232,7 +232,7 @@ public class ResultsActivity extends AppCompatActivity {
         TextView tv_5_L = findViewById(R.id.text_5_L);
         StringBuilder Dkr_Bs = new StringBuilder();
         for (int i = 0; i < results.get("no_kpB"); i++) {
-            Dkr_Bs.append(String.format("%.1f; ", results.get("DKLs_B cm" + (i + 1))));
+            Dkr_Bs.append(String.format("%.1f cm; ", results.get("DKLs_B" + (i + 1))));
         }
         tv_5_L.setText("Długości kulawek L = [" + Dkr_Bs + "]");
         TextView tv_5_beta = findViewById(R.id.text_5_beta);
