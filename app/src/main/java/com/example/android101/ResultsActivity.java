@@ -65,7 +65,7 @@ public class ResultsActivity extends AppCompatActivity {
 
         tv_head_H1.setText(String.format((tv_head_H1).getText() + "%s cm", String.format("%.1f", results.get("H1"))));
         tv_head_H2.setText(String.format((tv_head_H2).getText() + "%s cm", String.format("%.1f", results.get("H2"))));
-        tv_head_NK.setText(String.format((tv_head_NK).getText() + "%s cm", String.format("%.1f", results.get("Nr"))));
+        tv_head_NK.setText(String.format((tv_head_NK).getText() + "%s", String.format("%.1f", results.get("Nr"))));
         tv_head_Pk.setText(String.format((tv_head_Pk).getText() + "%s cm", String.format("%.1f", results.get("Pk"))));
         tv_head_Gamma.setText(String.format((tv_head_Gamma).getText() + "γ = %s°", String.format("%.1f", results.get("Gamma"))));
         tv_head_Area.setText(String.format((tv_head_Area).getText() + "%s m\u00b2", String.format("%.1f", results.get("Area"))));
@@ -101,7 +101,7 @@ public class ResultsActivity extends AppCompatActivity {
 
         tv_head_H1.setText(String.format((tv_head_H1).getText() + "%s cm", String.format("%.1f", results.get("H1"))));
         tv_head_H2.setText(String.format((tv_head_H2).getText() + "%s cm", String.format("%.1f", results.get("H2"))));
-        tv_head_NK.setText(String.format((tv_head_NK).getText() + "%s cm", String.format("%.1f", results.get("Nr"))));
+        tv_head_NK.setText(String.format((tv_head_NK).getText() + "%s", String.format("%.1f", results.get("Nr"))));
         tv_head_Pk.setText(String.format((tv_head_Pk).getText() + "%s cm", String.format("%.1f", results.get("Pk"))));
         tv_head_Gamma.setText(String.format((tv_head_Gamma).getText() + "γ = %s°", String.format("%.1f", results.get("Gamma"))));
         tv_head_Area.setText(String.format((tv_head_Area).getText() + "%s m\u00b2", String.format("%.1f", results.get("Area"))));
